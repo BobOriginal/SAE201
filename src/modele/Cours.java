@@ -6,7 +6,6 @@ public abstract class Cours {
 	private int nbHeure;
 	private String intituler;
 	private static int nbCours = 0;
-	
 	public Cours(int annee, int nbHeure, String intituler) {
 		super();
 		this.annee = annee;
