@@ -14,4 +14,24 @@ public abstract class Cours {
 		id = nbCours;
 		nbCours++;
 	}
+	public int getNbHeure() {
+		return nbHeure;
+	}
+	public void setNbHeure(int nbHeure) {
+		this.nbHeure = nbHeure;
+	}
+	public int getId() {
+		return id;
+	}
+	public int getAnnee() {
+		return annee;
+	}
+	public String getIntituler() {
+		return intituler;
+	}
+	public static int getNbCours() {
+		return nbCours;
+	}
+	
+	
 }
