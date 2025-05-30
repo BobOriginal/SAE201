@@ -2,11 +2,11 @@ package modele;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import vue.Fenetre;
+import vue.FactureFen;
 
 public class Main extends Application {
 	public void start(Stage f) throws Exception {
-		f = new Fenetre();
+		f = new FactureFen();
 		f.show();
 	}
 

@@ -1,10 +1,13 @@
 package controleur;
 
+import Exceptions.EtudiantNullException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class FactureControllerClass {
+
+    private modele.Personne etudiant;
 
     @FXML
     private Label Adresse_Resumer;
@@ -55,9 +58,21 @@ public class FactureControllerClass {
     public void initialize() {
         Cree_Button.setDisable(true);
         Archiver_Button.setDisable(true);
-        Modifier_Button.setDisable(true);
-
     }
 
+    public void setEleve(modele.Personne p) {
+        try {
+
+            if (p != null) {
+                etudiant = p;
+            } else {
+
+                throw new EtudiantNullException();
+            }
+        } catch (EtudiantNullException e) {
+            System.out.println(e);
+            // A terme, faire en sorte qu'il ramène a la pafe principale
+        }
+    }
 
 }
