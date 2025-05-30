@@ -1,7 +1,8 @@
-package controleur;
+package modele;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import vue.Fenetre;
 
 public class Main extends Application {
 	public void start(Stage f) throws Exception {

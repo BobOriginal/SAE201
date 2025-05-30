@@ -1,4 +1,4 @@
-package controleur;
+package vue;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,14 +15,16 @@ public class Fenetre extends Stage {
 		this.setHeight(635);
 		Scene sc = new Scene(creerSceneGraph());
 		this.setScene(sc);
+		this.setTitle("ODD");
 
 	}
 
 	private Pane creerSceneGraph() throws IOException {
-		File fichier = new File("sources/full_facture.fxml");
+		File fichier = new File("src/vue/full_facture.fxml");
 		FXMLLoader loader;
 		loader = new FXMLLoader(fichier.toURI().toURL());
 		Pane racine = loader.load();
+
 		return racine;
 	}
 

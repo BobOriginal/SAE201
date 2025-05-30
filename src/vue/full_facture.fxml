@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.FactureControllerClass">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="312.0" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
          <children>
@@ -28,7 +28,7 @@
             </Label>
             <VBox layoutY="221.0" prefHeight="160.0" prefWidth="312.0" spacing="25.0">
                <children>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
+                  <Button id="Rappel_Button" fx:id="Rappel_Button" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -36,12 +36,12 @@
                         <Point3D />
                      </rotationAxis>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
+                  <Button fx:id="Cotisation_Button" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
+                  <Button fx:id="Facturation_Button" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -53,12 +53,12 @@
             </VBox>
             <VBox layoutY="474.0" prefWidth="312.0" spacing="25.0">
                <children>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
+                  <Button fx:id="Liste_Inscrit" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
+                  <Button fx:id="Quitter_Button" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -77,14 +77,16 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="27.0" prefWidth="255.0" text="étudiant actuel">
-                     <font>
-                        <Font name="Arial Bold" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
+                  <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="224.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="255.0" text="étudiant actuel">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="Changer_Eleve_Button" mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Changer élève" />
+                     </children>
+                  </VBox>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="27.0" prefWidth="255.0" text="Création de Facture" underline="true">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
@@ -99,7 +101,7 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="222.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Creation" />
+                  <Button fx:id="Cree_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="222.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Creation" />
                   <Label alignment="CENTER" contentDisplay="CENTER" text="Modifier la facture" underline="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
@@ -110,8 +112,8 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Archiver" />
-                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Modifier" />
+                        <Button fx:id="Archiver_Button" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Archiver" />
+                        <Button fx:id="Modifier_Button" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Modifier" />
                      </children>
                   </HBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
@@ -121,32 +123,32 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Régler par :">
+                        <Label fx:id="Nom_Resumer" text="Régler par :">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Adresse : ">
+                        <Label fx:id="Adresse_Resumer" text="Adresse : ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Montant :">
+                        <Label fx:id="Montant_Resumer" text="Montant :">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Montant payer :">
+                        <Label fx:id="Montant_Payer_Resumer" text="Montant payer :">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Reste a payer :">
+                        <Label fx:id="Reste_Resumer" text="Reste a payer :">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Mode paiement : ">
+                        <Label fx:id="Mode_Paiement_Resumer" text="Mode paiement : ">
                            <font>
                               <Font size="15.0" />
                            </font>

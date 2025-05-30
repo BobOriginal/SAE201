@@ -1,12 +1,8 @@
 package controleur;
 
-import java.io.File;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 
 public class FactureControllerClass {
 
@@ -54,4 +50,13 @@ public class FactureControllerClass {
 
     @FXML
     private Label Reste_Resumer;
+
+    @FXML
+    public void initialize() {
+        Cree_Button.setDisable(true);
+        Archiver_Button.setDisable(true);
+        Modifier_Button.setDisable(true);
+
+    }
+
 }
