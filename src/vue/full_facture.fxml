@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="115.0" fitWidth="210.0" layoutX="51.0" layoutY="35.0">
                <image>
-                  <Image url="@ODD_Logo_v1.png" />
+                  <Image url="@ODD_Logo_v1.png"/>
                </image>
             </ImageView>
             <Label layoutX="39.0" layoutY="175.0" prefHeight="35.0" prefWidth="234.0" text="Suivi des paiements" textAlignment="CENTER" textFill="WHITE" underline="true">
