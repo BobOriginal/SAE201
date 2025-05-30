@@ -12,7 +12,7 @@ public class Fenetre extends Stage {
 
 	public Fenetre() throws IOException {
 		this.setWidth(900);
-		this.setHeight(600);
+		this.setHeight(635);
 		Scene sc = new Scene(creerSceneGraph());
 		this.setScene(sc);
 
