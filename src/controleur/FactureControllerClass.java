@@ -75,4 +75,13 @@ public class FactureControllerClass {
         }
     }
 
+    public void quitter() {
+        System.out.println("Fenetre fermer correctement...");
+        System.exit(0);
+    }
+
+    public void ouvrirFacture() {
+
+    }
+
 }

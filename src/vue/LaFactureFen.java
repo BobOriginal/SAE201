@@ -8,9 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class FactureFen extends Fenetre {
+public class LaFactureFen extends Fenetre {
 
-    public FactureFen() throws IOException {
+    public LaFactureFen() throws IOException {
+        super();
+
         this.setTitle("Liste des employés");
         this.setResizable(true);
         Scene laScene = new Scene(creerSceneGraph());
