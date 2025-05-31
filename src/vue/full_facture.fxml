@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="115.0" fitWidth="210.0" layoutX="51.0" layoutY="35.0">
                <image>
-                  <Image url="@ODD_Logo_v1.png" />
+                  <Image url="@../../sources/ODD_Logo_v1.png" />
                </image>
             </ImageView>
             <Label layoutX="39.0" layoutY="175.0" prefHeight="35.0" prefWidth="234.0" text="Suivi des paiements" textAlignment="CENTER" textFill="WHITE" underline="true">
@@ -79,7 +79,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="224.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="255.0" text="étudiant actuel">
+                        <Label fx:id="Nom_Etudiant" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="255.0" text="étudiant actuel">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
                            </font>

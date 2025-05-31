@@ -11,8 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import modele.Personne;
 
 public class FactureControllerClass {
 
@@ -64,9 +64,13 @@ public class FactureControllerClass {
     private Label Reste_Resumer;
 
     @FXML
-    public void initialize() {
-        // Cree_Button.setDisable(true);
-        Archiver_Button.setDisable(true);
+    private Label Nom_Etudiant;
+
+    @FXML
+    public void initialize(Personne e) {
+        Nom_Etudiant.setText(e.getNom() + " " + e.getPrenom());
+        Nom_Resumer.setText("Régler par : " + e.getNom());
+        Adresse_Resumer.setText("Addresse : ");
     }
 
     public void setEleve(modele.Personne p) {
@@ -74,7 +78,11 @@ public class FactureControllerClass {
 
             if (p != null) {
                 etudiant = p;
+                initialize(p);
+
             } else {
+                Cree_Button.setDisable(true);
+                Archiver_Button.setDisable(true);
 
                 throw new EtudiantNullException();
             }
@@ -98,7 +106,7 @@ public class FactureControllerClass {
             Parent root = fxmlLoader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("Nouvelle Fenêtre");
+            stage.setTitle("Facturation");
             stage.setScene(new Scene(root, 620, 877));
             stage.show();
 
