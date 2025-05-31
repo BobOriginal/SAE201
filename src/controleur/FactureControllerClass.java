@@ -1,9 +1,18 @@
 package controleur;
 
+import java.io.File;
+import java.io.IOException;
+
 import Exceptions.EtudiantNullException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class FactureControllerClass {
 
@@ -56,7 +65,7 @@ public class FactureControllerClass {
 
     @FXML
     public void initialize() {
-        Cree_Button.setDisable(true);
+        // Cree_Button.setDisable(true);
         Archiver_Button.setDisable(true);
     }
 
@@ -80,8 +89,21 @@ public class FactureControllerClass {
         System.exit(0);
     }
 
-    public void ouvrirFacture() {
+    public void ouvrirFacture(ActionEvent event) {
+        try {
 
+            File fichier = new File("src/vue/rendu_facture.fxml");
+            FXMLLoader fxmlLoader;
+            fxmlLoader = new FXMLLoader(fichier.toURI().toURL());
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Nouvelle Fenêtre");
+            stage.setScene(new Scene(root, 620, 877));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }

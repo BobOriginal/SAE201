@@ -101,7 +101,7 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="Cree_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="222.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Creation" />
+                  <Button fx:id="Cree_Button" mnemonicParsing="false" onAction="#ouvrirFacture" prefHeight="25.0" prefWidth="222.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Creation" />
                   <Label alignment="CENTER" contentDisplay="CENTER" text="Modifier la facture" underline="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
