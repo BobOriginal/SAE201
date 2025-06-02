@@ -1,4 +1,4 @@
-package modele;
+package Exceptions;
 
 public class DoublonCoursException extends Exception {
 

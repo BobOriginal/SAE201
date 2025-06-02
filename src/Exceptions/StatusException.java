@@ -1,4 +1,4 @@
-package modele;
+package Exceptions;
 
 public class StatusException extends Exception {
 

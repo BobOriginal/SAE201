@@ -2,6 +2,9 @@ package modele;
 
 import java.util.ArrayList;
 
+import Exceptions.DoublonCoursException;
+import Exceptions.StatusException;
+
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
 	final static String ELEVE_PLEIN_TARIF= "plein tarif";
@@ -11,6 +14,7 @@ public class Personne {
 	private String prenom;
 	private String status;
 	private ArrayList<Cours> mesCours;	
+	private int nbHeureCours;
 	private ArrayList<CotisationAnnuelle> mesCotisation;
 	static int nbPersonne = 0;
 	
@@ -67,8 +71,13 @@ public class Personne {
 		return mesCours;
 	}
 	
+	public int getNbHeureCours() {
+		return nbHeureCours;
+	}
+
 	private void addCours(Cours c) {
 		mesCours.add(c);
+		nbHeureCours = nbHeureCours + c.getNbHeure();
 	}
 	
 	public void ajouterUnCours(Cours c) {
