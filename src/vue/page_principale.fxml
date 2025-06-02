@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
@@ -14,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.PagePrincpaleControllerClass">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.PagePrincpaleControllerClass">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="312.0" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
          <children>
@@ -76,14 +82,6 @@
          </padding>
       </Pane>
       <BorderPane prefHeight="200.0" prefWidth="588.0">
-         <center>
-            <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="Nom_Eleve_Col" prefWidth="75.0" text="élève" />
-                <TableColumn fx:id="Info_Paiement_Col" prefWidth="137.0" text="Info de paiement" />
-              </columns>
-            </TableView>
-         </center>
          <top>
             <Label text="Odd -Logiciel comptable" underline="true" BorderPane.alignment="CENTER">
                <font>
@@ -100,6 +98,16 @@
          <padding>
             <Insets top="25.0" />
          </padding>
+         <center>
+            <TableView fx:id="tvListePersonne" prefHeight="497.0" prefWidth="417.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn prefWidth="122.0" text="Nom" />
+                  <TableColumn prefWidth="122.0" text="Prénom" />
+                  <TableColumn prefWidth="122.0" text="Montant Dû" />
+                  <TableColumn prefWidth="122.0" text="Montant Payé" />
+               </columns>
+            </TableView>
+         </center>
       </BorderPane>
    </children>
 </HBox>

@@ -3,8 +3,6 @@ package modele;
 import java.util.Iterator;
 
 public class CotisationAnnuelle {
-	
-	
 	private int id;
 	private int annee;
 	private Double total;

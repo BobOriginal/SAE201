@@ -12,8 +12,6 @@ import modele.Personne;
 
 public class PagePrincipaleFen extends Fenetre {
 
-    private Personne e1 = null;
-
     public PagePrincipaleFen() throws IOException {
 
         this.setTitle("Organizatore di Dance");
@@ -30,18 +28,5 @@ public class PagePrincipaleFen extends Fenetre {
         Pane racine = loader.load();
 
         return racine;
-    }
-
-    private Personne fauxEleveTest() {
-
-        try {
-            e1 = new Personne("Conan", "Tom", "plein tarif");
-            e1.ajouterUnCours(new modele.CoursAvancer(2025, 4, "oui"));
-            ctrl.setEleve(e1);
-        } catch (StatusException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return e1;
     }
 }
