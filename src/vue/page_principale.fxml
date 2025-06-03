@@ -99,12 +99,13 @@
             <Insets top="25.0" />
          </padding>
          <center>
-            <TableView fx:id="tvListePersonne" prefHeight="497.0" prefWidth="417.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tvListePersonne" minWidth="-Infinity" prefHeight="497.0" prefWidth="500.0" BorderPane.alignment="CENTER">
                <columns>
-                  <TableColumn prefWidth="122.0" text="Nom" />
-                  <TableColumn prefWidth="122.0" text="Prénom" />
-                  <TableColumn prefWidth="122.0" text="Montant Dû" />
-                  <TableColumn prefWidth="122.0" text="Montant Payé" />
+                  <TableColumn fx:id="nom" prefWidth="100.0" text="Nom" />
+                  <TableColumn fx:id="prenom" prefWidth="100.0" text="Prénom" />
+                  <TableColumn fx:id="prenom1" prefWidth="100.0" text="Status" />
+                  <TableColumn prefWidth="100.0" text="Montant Dû" />
+                  <TableColumn prefWidth="100.0" text="Montant Payé" />
                </columns>
             </TableView>
          </center>
