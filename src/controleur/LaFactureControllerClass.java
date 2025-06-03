@@ -42,10 +42,12 @@ public class LaFactureControllerClass {
     private Label Ville_Val;
 
     public void inizialize(modele.Personne p) {
+        Sexe_Nom_Prenom_Val.setText(setSexeNomPrenom(p));
 
     }
 
-    private void setSexeNomPrenom(modele.Personne p) {
+    private String setSexeNomPrenom(modele.Personne p) {
+        return p.getNom() + " " + p.getPrenom();
     }
 
 }
