@@ -41,4 +41,11 @@ public class LaFactureControllerClass {
     @FXML
     private Label Ville_Val;
 
+    public void inizialize(modele.Personne p) {
+
+    }
+
+    private void setSexeNomPrenom(modele.Personne p) {
+    }
+
 }
