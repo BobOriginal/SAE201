@@ -41,7 +41,9 @@ public class LaFactureControllerClass {
     @FXML
     private Label Ville_Val;
 
-    public void inizialize(modele.Personne p) {
+    public void initialize(modele.Personne p) {
+
+        System.out.println("ok");
         Sexe_Nom_Prenom_Val.setText(setSexeNomPrenom(p));
 
     }

@@ -3,14 +3,14 @@ package vue;
 import java.io.File;
 import java.io.IOException;
 
-import Exceptions.StatusException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import modele.Cours;
-import modele.Personne;
+import javafx.stage.Stage;
 
-public class PagePrincipaleFen extends Fenetre {
+public class PagePrincipaleFen extends Stage {
+
+    private controleur.PagePrincpaleControllerClass ctrl;
 
     public PagePrincipaleFen() throws IOException {
 

@@ -11,7 +11,7 @@ public class Main extends Application {
 	static private ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
 
 	public void start(Stage f) throws Exception {
-		f = new FactureFen();
+		f = new FactureFen(new Personne("Dupont", "Nominoé", "non inscrit"));
 		f.show();
 	}
 
