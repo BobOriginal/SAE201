@@ -83,7 +83,7 @@
       </Pane>
       <BorderPane prefHeight="200.0" prefWidth="588.0">
          <top>
-            <Label text="Odd -Logiciel comptable" underline="true" BorderPane.alignment="CENTER">
+            <Label text="Odd - Logiciel comptable" underline="true" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
