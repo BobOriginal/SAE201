@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="312.0" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="115.0" fitWidth="210.0" layoutX="51.0" layoutY="35.0">
+               <image>
+                  <Image url="@ODD_Logo_v1.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="39.0" layoutY="175.0" prefHeight="35.0" prefWidth="234.0" text="Suivi des paiements" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <VBox layoutY="221.0" prefHeight="160.0" prefWidth="312.0" spacing="25.0">
+               <children>
+                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </Button>
+                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="35.0" right="35.0" />
+               </padding>
+            </VBox>
+            <VBox layoutY="474.0" prefWidth="312.0" spacing="25.0">
+               <children>
+                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="35.0" left="35.0" right="35.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+      </Pane>
+   </left>
+   <right>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="588.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Rappel des élèves impayés " underline="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <padding>
+            <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+         </padding>
+         <bottom>
+            <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Envoyer un rappel" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+         </bottom>
+         <center>
+            <TableView prefHeight="497.0" prefWidth="417.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn prefWidth="100.0" text="Nom" />
+                <TableColumn prefWidth="100.0" text="Prénom" />
+                  <TableColumn prefWidth="105.6" text="Cours inscrits" />
+                  <TableColumn prefWidth="113.0" text="Montant Dû" />
+                  <TableColumn prefWidth="107.0" text="Montant Payé" />
+              </columns>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
+      </BorderPane>
+   </right>
+</BorderPane>
