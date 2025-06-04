@@ -97,11 +97,11 @@
          <center>
             <TableView fx:id="tvListePersonneImpayes" prefHeight="497.0" prefWidth="417.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="nom" prefWidth="100.0" text="Nom" />
-                <TableColumn fx:id="prenom" prefWidth="100.0" text="Prénom" />
-                  <TableColumn fx:id="status" prefWidth="105.6" text="Status" />
-                  <TableColumn fx:id="montantDu" prefWidth="113.0" text="Montant Dû" />
-                  <TableColumn fx:id="montantPaye" prefWidth="107.0" text="Montant Payé" />
+                <TableColumn fx:id="nom" minWidth="105.0" prefWidth="-1.0" resizable="false" text="Nom" />
+                <TableColumn fx:id="prenom" minWidth="105.0" prefWidth="-1.0" resizable="false" text="Prénom" />
+                  <TableColumn fx:id="status" minWidth="105.0" prefWidth="-1.0" resizable="false" text="Status" />
+                  <TableColumn fx:id="montantDu" minWidth="105.0" prefWidth="-1.0" resizable="false" text="Montant Dû" />
+                  <TableColumn fx:id="montantPaye" minWidth="106.0" prefWidth="-1.0" resizable="false" text="Montant Payé" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

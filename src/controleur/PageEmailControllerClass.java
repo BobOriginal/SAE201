@@ -41,7 +41,8 @@ public class PageEmailControllerClass {
     private TextArea taContenu;
     @FXML
     void quitter(ActionEvent event) {
-
+        System.out.println("Fenetre fermer correctement...");
+        System.exit(0);
     }
 
     @FXML

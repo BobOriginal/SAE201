@@ -26,7 +26,7 @@ public class Main extends Application {
 		Application.launch();
 	}
 	
-	public static ObservableList<Personne_Montant> getLesEmployes(){
+	public static ObservableList<Personne_Montant> getLesEmployes() throws StatusException{
 		try {
 			listPersonne.add(new Personne_Montant(new Personne("test1", "test","non inscrit"),0.00,34.4));
 			listPersonne.add(new Personne_Montant(new Personne("test2", "test","non inscrit"),32.45,0.00));

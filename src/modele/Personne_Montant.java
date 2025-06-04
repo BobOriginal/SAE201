@@ -1,6 +1,7 @@
 package modele;
 
 public class Personne_Montant {
+    
     private double montantDu;
     private double montantPaye;
     private Personne pers;
