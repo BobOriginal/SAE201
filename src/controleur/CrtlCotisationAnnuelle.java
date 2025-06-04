@@ -33,13 +33,13 @@ public class CrtlCotisationAnnuelle {
     @FXML
     private Button bnModifier;
 
-
+    @FXML
     private TableView<InfoTabView> listeCotisation;
 
     @FXML void initialize() {
-    	
+    	Donnee.chargementDonnees();
     	TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView,String>("Nom");
-		colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));	
+		colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
 		listeCotisation.getColumns().set(0, colonne1);
 		TableColumn<InfoTabView, String> colonne2 = new TableColumn<InfoTabView,String>("Prenom");
 		colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
