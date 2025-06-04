@@ -2,9 +2,13 @@ package controleur;
 
 import java.io.IOException;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import modele.Main;
 
 public class PageEmailControllerClass {
@@ -28,6 +32,14 @@ public class PageEmailControllerClass {
     private Button Quitter;
 
     @FXML
+    private TextField tfObjet;
+    
+    @FXML
+    private TextField tfDestinataires;
+    
+    @FXML
+    private TextArea taContenu;
+    @FXML
     void quitter(ActionEvent event) {
 
     }
@@ -44,6 +56,8 @@ public class PageEmailControllerClass {
     }
 
     public void initialize(){
+        BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty()).or(taContenu.textProperty().isEmpty());
+		bnEnvoyer.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
         bnRappel.setDisable(true);
     }
 }
