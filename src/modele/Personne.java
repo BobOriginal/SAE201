@@ -1,6 +1,7 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import Exceptions.DoublonCoursException;
 import Exceptions.StatusException;
@@ -13,16 +14,20 @@ public class Personne {
 	private String nom;
 	private String prenom;
 	private String status;
+	private String sexe;
 	private ArrayList<Cours> mesCours;	
 	private int nbHeureCours;
-	private ArrayList<CotisationAnnuelle> mesCotisation;
+	private CotisationAnnuelle maCotisation;
 	static int nbPersonne = 0;
+	private String adresse;
 	
 	
-	public Personne(String nom, String prenom, String status) throws StatusException {
+	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe) throws StatusException {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
+		this.adresse = adresse;
+		this.sexe = sexe;
 		if(status == ELEVE_TARIF_REDUIT || 
 		   status == ELEVE_PLEIN_TARIF	||
 		   status == NON_INSCRIT) {
@@ -33,6 +38,9 @@ public class Personne {
 		id = nbPersonne;
 		nbPersonne++;
 		mesCours = new ArrayList<Cours>();
+		Calendar c = Calendar.getInstance();
+		int year = c.get(Calendar.YEAR);
+		maCotisation = new CotisationAnnuelle(year, typePaiment, this);
 	}
 
 	public String getNom() {
@@ -80,6 +88,19 @@ public class Personne {
 		nbHeureCours = nbHeureCours + c.getNbHeure();
 	}
 	
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+
+	public CotisationAnnuelle getMaCotisation() {
+		return maCotisation;
+	}
+
 	public void ajouterUnCours(Cours c) {
 		try {
 			if(c == null) {
@@ -94,6 +115,12 @@ public class Personne {
 		}
 	}
 	
+	public void payer(Double valeur) {
+		Double dejaPayer = maCotisation.getDejaPayer()+valeur;
+		Double resteApayer = maCotisation.getResteAPayer()-valeur;
+		maCotisation.setDejaPayer(dejaPayer);
+		maCotisation.setResteAPayer(resteApayer);
+	}
 	
 	
 }

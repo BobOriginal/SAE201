@@ -15,133 +15,71 @@ public class CotisationAnnuelle {
 	private String typePaiment;
 	private Double dejaPayer;
 	private Double resteAPayer;
-	private Personne personne;
 	private ArrayList<Boolean> aPayer3fois = new ArrayList<Boolean>(3);
 	
-	public CotisationAnnuelle(int annee, String typePaiment, Personne personne) {
+	public CotisationAnnuelle(int annee, String typePaiment, Personne p) {
 		super();
 		this.annee = annee;
 		this.typePaiment = typePaiment;
-		this.personne = personne;
 		if(typePaiment == PAIMENT_MULTIPLE) {
 			aPayer3fois.add(false);
 			aPayer3fois.add(false);
 			aPayer3fois.add(false);
 		}
-		calculTotal();
+		
+		calculTotal(p);
+		dejaPayer = 0.0;
 		resteAPayer = total;
 	}
 	
-	private void calculTotal() {
+	@SuppressWarnings("unlikely-arg-type")
+	private void calculTotal(Personne p) {
 		Double res = Tarif.prixInscription;
-		if(personne.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
-			res = res + Tarif.prixCourPleinTarif.get(personne.getNbHeureCours());
-		}else if(personne.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
-			res = res + Tarif.prixCourTarifReduit.get(personne.getNbHeureCours());
+		if(p.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
+			res = res + Tarif.prixCourPleinTarif.get(p.getNbHeureCours());
+		}else if(p.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
+			res = res + Tarif.prixCourTarifReduit.get(p.getNbHeureCours());
 		}else {
 			res = res + Tarif.prixNonInscrit;
 		}
 	}
-	
-	private void payer(Double prix) {
-		resteAPayer -= prix; 
+
+	public int getId() {
+		return id;
+	}
+
+	public int getAnnee() {
+		return annee;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public String getTypePaiment() {
+		return typePaiment;
+	}
+
+	public Double getDejaPayer() {
+		return dejaPayer;
+	}
+
+	public Double getResteAPayer() {
+		return resteAPayer;
+	}
+
+	public ArrayList<Boolean> getaPayer3fois() {
+		return aPayer3fois;
+	}
+
+	void setDejaPayer(Double dejaPayer) {
+		this.dejaPayer = dejaPayer;
+	}
+
+	void setResteAPayer(Double resteAPayer) {
+		this.resteAPayer = resteAPayer;
 	}
 	
-	public void paimentDeLaCotisation(Double prix) {
-		try {
-			if(personne.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
-				if(typePaiment == PAIMENT_UNIQUE) {
-					if(prix > total) {
-						throw new Exceptions.PaimentTropEleverException();
-					}else if(prix < total) {
-						throw new Exceptions.PaimentTropBasException();
-					}
-					payer(prix);
-				}else {
-					int numDuPaiment = 1;
-					Iterator<Boolean> iter = aPayer3fois.iterator();
-					while(iter.hasNext() && iter.next() == true) {
-						numDuPaiment++;
-					}
-					if(numDuPaiment == 1) {
-						if(prix > Tarif.prixCourPleinTarif3fois.get(personne.getNbHeureCours()).getPremier_versement()) {
-							throw new Exceptions.PaimentTropEleverException();
-						}
-						else if(prix < Tarif.prixCourPleinTarif3fois.get(personne.getNbHeureCours()).getPremier_versement()) {
-							throw new Exceptions.PaimentTropBasException();
-						}
-						payer(prix);
-						
-					}else if(numDuPaiment == 2) {
-						if(prix > Tarif.prixCourPleinTarif3fois.get(personne.getNbHeureCours()).getDeuxieme_versement()) {
-							throw new Exceptions.PaimentTropEleverException();
-						}
-						else if(prix < Tarif.prixCourPleinTarif3fois.get(personne.getNbHeureCours()).getDeuxieme_versement()) {
-							throw new Exceptions.PaimentTropBasException();
-						}
-						payer(prix);
-					}else if(numDuPaiment == 3) {
-						if(prix > Tarif.prixCourPleinTarif3fois.get(personne.getNbHeureCours()).getTroisieme_versement()) {
-							throw new Exceptions.PaimentTropEleverException();
-						}
-						else if(prix < Tarif.prixCourPleinTarif3fois.get(personne.getNbHeureCours()).getTroisieme_versement()) {
-							throw new Exceptions.PaimentTropBasException();
-						}
-						payer(prix);
-					}
-				}
-			}else if(personne.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
-				if(typePaiment == PAIMENT_UNIQUE) {
-					if(prix > total) {
-						throw new Exceptions.PaimentTropEleverException();
-					}else if(prix < total) {
-						throw new Exceptions.PaimentTropBasException();
-					}
-					payer(prix);
-				}else {
-					int numDuPaiment = 1;
-					Iterator<Boolean> iter = aPayer3fois.iterator();
-					while(iter.hasNext() && iter.next() == true) {
-						numDuPaiment++;
-					}
-					if(numDuPaiment == 1) {
-						if(prix > Tarif.prixCourTarifReduit3fois.get(personne.getNbHeureCours()).getPremier_versement()) {
-							throw new Exceptions.PaimentTropEleverException();
-						}
-						else if(prix < Tarif.prixCourTarifReduit3fois.get(personne.getNbHeureCours()).getPremier_versement()) {
-							throw new Exceptions.PaimentTropBasException();
-						}
-						payer(prix);
-						
-					}else if(numDuPaiment == 2) {
-						if(prix > Tarif.prixCourTarifReduit3fois.get(personne.getNbHeureCours()).getDeuxieme_versement()) {
-							throw new Exceptions.PaimentTropEleverException();
-						}
-						else if(prix < Tarif.prixCourTarifReduit3fois.get(personne.getNbHeureCours()).getDeuxieme_versement()) {
-							throw new Exceptions.PaimentTropBasException();
-						}
-						payer(prix);
-					}else if(numDuPaiment == 3) {
-						if(prix > Tarif.prixCourTarifReduit3fois.get(personne.getNbHeureCours()).getTroisieme_versement()) {
-							throw new Exceptions.PaimentTropEleverException();
-						}
-						else if(prix < Tarif.prixCourTarifReduit3fois.get(personne.getNbHeureCours()).getTroisieme_versement()) {
-							throw new Exceptions.PaimentTropBasException();
-						}
-						payer(prix);
-					}
-				}
-			}else {
-				if(prix > Tarif.prixNonInscrit) {
-					throw new Exceptions.PaimentTropEleverException();
-				}else if(prix < Tarif.prixNonInscrit) {
-					throw new Exceptions.PaimentTropBasException();
-				}
-				payer(prix);
-			}
-		}catch (PaimentExecption e) {
-			System.out.println("Paiment invalide");
-		}
-	}
+	
 	
 }
