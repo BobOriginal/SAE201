@@ -3,8 +3,6 @@ package modele;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import Exceptions.PaimentExecption;
-
 public class CotisationAnnuelle {
 	static final String PAIMENT_UNIQUE = "paiment unique";
 	static final String PAIMENT_MULTIPLE = "paiment multiple";
@@ -16,6 +14,9 @@ public class CotisationAnnuelle {
 	private Double dejaPayer;
 	private Double resteAPayer;
 	private ArrayList<Boolean> aPayer3fois = new ArrayList<Boolean>(3);
+	private ArrayList<Double> prixCours = new ArrayList<Double>();
+	private ArrayList<Double> aPayers = new ArrayList<Double>();
+	private Double dejaPayerCour;
 	
 	public CotisationAnnuelle(int annee, String typePaiment, Personne p) {
 		super();
@@ -28,6 +29,7 @@ public class CotisationAnnuelle {
 		}
 		
 		calculTotal(p);
+		calculPrixCour(p);
 		dejaPayer = 0.0;
 		resteAPayer = total;
 	}
@@ -43,6 +45,23 @@ public class CotisationAnnuelle {
 			res = res + Tarif.prixNonInscrit;
 		}
 	}
+	@SuppressWarnings("unlikely-arg-type")
+	private void calculPrixCour(Personne p) {
+		if(p.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
+			Iterator<Cours> iter = p.getMesCours().iterator();
+			while(iter.hasNext()) {
+				prixCours.add(Tarif.prixCourPleinTarif.get(iter.next().getNbHeure()));
+			}
+		}else if(p.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
+			Iterator<Cours> iter = p.getMesCours().iterator();
+			while(iter.hasNext()) {
+				prixCours.add(Tarif.prixCourTarifReduit.get(iter.next().getNbHeure()));
+			}
+		}else {
+			prixCours = null;
+		}
+	}
+	
 
 	public int getId() {
 		return id;
@@ -80,6 +99,9 @@ public class CotisationAnnuelle {
 		this.resteAPayer = resteAPayer;
 	}
 	
+	public Boolean aPayer() {
+		return resteAPayer==0;
+	}
 	
 	
 }
