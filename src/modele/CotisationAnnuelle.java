@@ -15,7 +15,7 @@ public class CotisationAnnuelle {
 	private Double resteAPayer;
 	private ArrayList<Boolean> aPayer3fois = new ArrayList<Boolean>(3);
 	private ArrayList<Double> prixCours = new ArrayList<Double>();
-	private ArrayList<Double> aPayers = new ArrayList<Double>();
+	private ArrayList<Boolean> aPayersCours = new ArrayList<Boolean>();
 	private Double dejaPayerCour;
 	
 	public CotisationAnnuelle(int annee, String typePaiment, Personne p) {
@@ -51,18 +51,36 @@ public class CotisationAnnuelle {
 			Iterator<Cours> iter = p.getMesCours().iterator();
 			while(iter.hasNext()) {
 				prixCours.add(Tarif.prixCourPleinTarif.get(iter.next().getNbHeure()));
+				aPayersCours.add(false);
+				
 			}
 		}else if(p.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
 			Iterator<Cours> iter = p.getMesCours().iterator();
 			while(iter.hasNext()) {
 				prixCours.add(Tarif.prixCourTarifReduit.get(iter.next().getNbHeure()));
+				aPayersCours.add(false);
 			}
 		}else {
 			prixCours = null;
+			aPayersCours = null;
+		}
+	}
+	private void calculdejaPayerCour(Personne p) {
+		dejaPayerCour = dejaPayer;
+		if(p.getStatus() != Personne.NON_INSCRIT ) {
+			Iterator<Double> iter = prixCours.iterator();
+			int i = 0;
+			while(iter.hasNext()) {
+				Double prix = iter.next();
+				i++;
+				if(prix <= dejaPayerCour) {
+					dejaPayerCour = dejaPayerCour - prix;
+					aPayersCours.set(i, true);
+				}
+			}
 		}
 	}
 	
-
 	public int getId() {
 		return id;
 	}
@@ -91,8 +109,9 @@ public class CotisationAnnuelle {
 		return aPayer3fois;
 	}
 
-	void setDejaPayer(Double dejaPayer) {
+	void setDejaPayer(Double dejaPayer, Personne p) {
 		this.dejaPayer = dejaPayer;
+		calculdejaPayerCour(p);
 	}
 
 	void setResteAPayer(Double resteAPayer) {
@@ -102,6 +121,20 @@ public class CotisationAnnuelle {
 	public Boolean aPayer() {
 		return resteAPayer==0;
 	}
+
+	public ArrayList<Double> getPrixCours() {
+		return prixCours;
+	}
+
+	public ArrayList<Boolean> getaPayersCours() {
+		return aPayersCours;
+	}
+
+	public Double getDejaPayerCour() {
+		return dejaPayerCour;
+	}
+	
+	
 	
 	
 }

@@ -1,13 +1,12 @@
 package controleur;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import modele.Main;
+import modele.Donnee;
 import modele.Personne;
 
 public class PagePrincpaleControllerClass {
@@ -40,7 +39,7 @@ public class PagePrincpaleControllerClass {
 		colonne3.setCellValueFactory(new PropertyValueFactory<Personne,String>("status"));
         tvListePersonne.getColumns().set(2,colonne3);
 
-        tvListePersonne.setItems(Main.getLesEmployes());
+        tvListePersonne.setItems(Donnee.getLesPersonnes());
         tvListePersonne.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 

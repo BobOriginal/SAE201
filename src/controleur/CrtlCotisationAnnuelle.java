@@ -10,7 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.Donnee;
-import modele.Personne;
+import modele.InfoTabView;
 
 public class CrtlCotisationAnnuelle {
 
@@ -34,19 +34,34 @@ public class CrtlCotisationAnnuelle {
     private Button bnModifier;
 
 
-    private TableView<Personne> listeCotisation;
+    private TableView<InfoTabView> listeCotisation;
 
     @FXML void initialize() {
-    	TableColumn<Personne, String> colonne1 = new TableColumn<Personne,String>("Nom");
-		colonne1.setCellValueFactory(new PropertyValueFactory<Personne,String>("nom"));	
+    	
+    	TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView,String>("Nom");
+		colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));	
 		listeCotisation.getColumns().set(0, colonne1);
-		TableColumn<Personne, String> colonne2 = new TableColumn<Personne,String>("Prenom");
-		colonne2.setCellValueFactory(new PropertyValueFactory<Personne, String>("prenom"));
+		TableColumn<InfoTabView, String> colonne2 = new TableColumn<InfoTabView,String>("Prenom");
+		colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
 		listeCotisation.getColumns().set(1, colonne2);
-
-
+		TableColumn<InfoTabView, String> colonne3 = new TableColumn<InfoTabView,String>("Status");
+		colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("Status"));
+		listeCotisation.getColumns().set(2, colonne3);
+		TableColumn<InfoTabView, String> colonne4 = new TableColumn<InfoTabView,String>("Type de paiement");
+		colonne4.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("typePaiement"));
+		listeCotisation.getColumns().set(3, colonne4);
+		TableColumn<InfoTabView, Boolean> colonne5 = new TableColumn<InfoTabView,Boolean>("A Payer");
+		colonne5.setCellValueFactory(new PropertyValueFactory<InfoTabView, Boolean>("aPayer"));
+		listeCotisation.getColumns().set(4, colonne5);
+		TableColumn<InfoTabView, Double> colonne6 = new TableColumn<InfoTabView,Double>("Montant");
+		colonne6.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montant"));
+		listeCotisation.getColumns().set(5, colonne6);
+		TableColumn<InfoTabView, String> colonne7 = new TableColumn<InfoTabView,String>("Paiement deja effectuer");
+		colonne7.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("paimentEffectuer"));
+		listeCotisation.getColumns().set(6, colonne7);
 		
-		listeCotisation.setItems(Donnee.getLesPersonnes());
+		
+		listeCotisation.setItems(Donnee.getLesInfo());
 		listeCotisation.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		
 		//A FAIRE griser les boutons Modifier et Supprimer quand aucune sélection

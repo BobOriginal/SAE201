@@ -118,7 +118,7 @@ public class Personne {
 	public void payer(Double valeur) {
 		Double dejaPayer = maCotisation.getDejaPayer()+valeur;
 		Double resteApayer = maCotisation.getResteAPayer()-valeur;
-		maCotisation.setDejaPayer(dejaPayer);
+		maCotisation.setDejaPayer(dejaPayer, this);
 		maCotisation.setResteAPayer(resteApayer);
 	}
 	
