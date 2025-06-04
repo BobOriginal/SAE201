@@ -23,7 +23,7 @@
             </Label>
             <VBox layoutY="221.0" prefHeight="160.0" prefWidth="312.0" spacing="25.0">
                <children>
-                  <Button fx:id="Ouvrir_Rappel" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
+                  <Button fx:id="bnRappel" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
                      <font>
                         <Font size="15.0" />
                      </font>

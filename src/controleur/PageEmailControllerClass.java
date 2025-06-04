@@ -16,7 +16,7 @@ public class PageEmailControllerClass {
     private Button bnEnvoyer;
 
     @FXML
-    private Button Ouvrir_Rappel;
+    private Button bnRappel;
 
     @FXML
     private Button bnAnnuler;
@@ -43,5 +43,8 @@ public class PageEmailControllerClass {
         Main.ouvrirRappel(event);
     }
 
+    public void initialize(){
+        bnRappel.setDisable(true);
+    }
 }
 

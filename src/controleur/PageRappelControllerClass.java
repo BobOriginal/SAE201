@@ -80,5 +80,7 @@ public class PageRappelControllerClass {
         // Permet de griser lorsqu'on ne sélectionne rien
         BooleanBinding bool = Bindings.equal(tvListePersonneImpayes.getSelectionModel().selectedIndexProperty(),-1);
 		bnRappel.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
+
+        Ouvrir_Rappel.setDisable(true);
     }
 }
