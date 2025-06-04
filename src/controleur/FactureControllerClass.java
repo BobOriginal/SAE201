@@ -61,6 +61,7 @@ public class FactureControllerClass {
         Nom_Etudiant.setText(e.getNom() + " " + e.getPrenom());
         Nom_Resumer.setText("Régler par : " + e.getNom());
         Adresse_Resumer.setText("Addresse : ");
+        Montant_Resumer.setText("Montant payer : ");
     }
 
     public void quitter() {
