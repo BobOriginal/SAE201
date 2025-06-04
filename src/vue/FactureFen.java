@@ -7,10 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import modele.Personne;
 
 public class FactureFen extends Stage {
 
     private static modele.Personne lapersonne;
+    private static modele.Personne personneTampon;
+
     private controleur.FactureControllerClass ctrl;
 
     public FactureFen(modele.Personne personne) throws IOException {
@@ -32,22 +35,13 @@ public class FactureFen extends Stage {
         Pane racine = loader.load();
         ctrl = loader.getController();
 
+        personneTampon = lapersonne;
         ctrl.initialize(lapersonne);
         return racine;
     }
 
-    public modele.Personne getPersonne() {
-        return lapersonne;
-    }
+    public static Personne backUp() {
+        return lapersonne = personneTampon;
 
-    public static void ouvrirFacture() {
-        try {
-
-            LaFactureFen facture = new LaFactureFen(lapersonne);
-            facture.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
