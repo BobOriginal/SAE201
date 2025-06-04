@@ -1,5 +1,7 @@
 package controleur;
 
+import java.io.IOException;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
@@ -48,8 +50,9 @@ public class PageRappelControllerClass {
     private Button Quitter;
 
     @FXML
-    void rappel(ActionEvent event) {
-
+    void rappel(ActionEvent event) throws IOException {
+        Main.ouvrirEmail(event);
+        Main.fermerRappel(event);
     }
 
     @FXML
