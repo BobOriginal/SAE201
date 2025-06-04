@@ -5,9 +5,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -79,7 +81,7 @@
       </Pane>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="588.0" style="-fx-background-color: #D9D9D9;">
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="0.0" prefWidth="200.0" spacing="95.0" BorderPane.alignment="CENTER">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="224.0">
                      <children>
@@ -91,9 +93,9 @@
                         <Button fx:id="Changer_Eleve_Button" mnemonicParsing="false" onAction="#changer_eleve" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Changer élève" />
                      </children>
                   </VBox>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="27.0" prefWidth="255.0" text="Création de Facture" underline="true">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Modifier la facture" underline="true">
                      <font>
-                        <Font name="Arial Bold" size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
@@ -105,35 +107,45 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Modifier la facture" underline="true">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="200.0" spacing="50.0">
                      <children>
                         <Button fx:id="Archiver_Button" mnemonicParsing="false" onAction="#archiver" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Archiver" />
                         <Button fx:id="Modifier_Button" mnemonicParsing="false" onAction="#modifier" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Modifier" />
                      </children>
                   </HBox>
-                  <Label text="Résumer de la facture : ">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                   <VBox prefHeight="176.0" prefWidth="120.0" spacing="10.0">
                      <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0">
+                           <children>
+                              <RadioButton fx:id="Madame" mnemonicParsing="false" onAction="#modifierGenre" text="Madame">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="genre" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="Monsieur" mnemonicParsing="false" onAction="#modifierGenre" text="Monsieur" toggleGroup="$genre" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label text="Régler par :">
+                              <Label text="Nom : ">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="Regler_Par_Resumer" prefHeight="25.0" prefWidth="136.0" />
+                              <TextField fx:id="Regler_Par_Resumer" prefHeight="25.0" prefWidth="154.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Prenom : ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Prenom_Resumer" prefHeight="25.0" prefWidth="136.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -144,16 +156,6 @@
                                  </font>
                               </Label>
                               <TextField fx:id="Adresse_Resumer" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label text="Montant :">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="Montant_Resumer" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -176,18 +178,48 @@
                               <TextField fx:id="Reste_Payer_Resumer" />
                            </children>
                         </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Mode paiement : ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Mode_Paiement_Resumer" prefHeight="25.0" prefWidth="125.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Ville : ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Ville_Resumer" prefHeight="25.0" prefWidth="133.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Code Postal : ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Code_Postal_Resumer" prefHeight="25.0" prefWidth="133.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Date de la facture : ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Date_Facture_Resumer" prefHeight="25.0" prefWidth="97.0" />
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Mode paiement : ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="Mode_Paiement_Resumer" prefHeight="25.0" prefWidth="133.0" />
-                     </children>
-                  </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                      <children>
                         <Button fx:id="Annuler_Button" mnemonicParsing="false" onAction="#annuler" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Annuler" />
@@ -198,9 +230,6 @@
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
             </VBox>
          </center>
          <left>
@@ -227,7 +256,7 @@
                                           </HBox>
                                           <HBox prefHeight="0.0" prefWidth="0.0">
                                              <children>
-                                                <Label text="le" />
+                                                <Label text="le " />
                                                 <Label fx:id="Date_Val" text=" value" />
                                              </children>
                                           </HBox>
@@ -253,7 +282,7 @@
                               </VBox>
                            </children>
                            <padding>
-                              <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </HBox>
                      </top>

@@ -24,8 +24,10 @@ public class Personne {
 	private CotisationAnnuelle maCotisation;
 	static int nbPersonne = 0;
 	private StringProperty adresse = new SimpleStringProperty();
-	private IntegerProperty codePostal = new SimpleIntegerProperty();
+	private StringProperty codePostal = new SimpleStringProperty();
 	private StringProperty ville = new SimpleStringProperty();
+
+	private boolean factureArchiver = false;
 
 	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe)
 			throws StatusException {
@@ -33,8 +35,8 @@ public class Personne {
 		super();
 
 		// A terme, devra être passer en paramètre.
-		ville.set("lannion");
-		codePostal.set(22300);
+		ville.set(" lannion");
+		codePostal.set("22300");
 
 		this.nom.set(nom);
 		this.prenom.set(prenom);
@@ -117,12 +119,20 @@ public class Personne {
 		return sexe;
 	}
 
-	public IntegerProperty getCodePostal() {
+	public StringProperty getCodePostal() {
 		return codePostal;
 	}
 
 	public StringProperty getVille() {
 		return ville;
+	}
+
+	public boolean getEtatArchivage() {
+		return factureArchiver;
+	}
+
+	public void setEtatArchivage(boolean nouvelEtat) {
+		factureArchiver = nouvelEtat;
 	}
 
 	public void ajouterUnCours(Cours c) {

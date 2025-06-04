@@ -1,23 +1,28 @@
 package modele;
 
+import java.io.IOException;
+
 import Exceptions.StatusException;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import vue.FactureFen;
+import vue.PagePrincipaleFen;
 
 public class Main extends Application {
 	private static ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
 	public static ListeDesFacturesArchiver listeFacture;
 
+	private FactureFen pageFacture;
+
 	public void start(Stage f) throws Exception {
-		f = new FactureFen(new Personne("Dupont", "Alice", "non inscrit", "12 rue des Lilas", "chèque", "F"));
-		f.show();
+		pageFacture = new FactureFen(new Personne("Dupont", "Alice", "non inscrit", "12 rue des Lilas", "chèque", "F"));
+		pageFacture.show();
 	}
 
 	public static void main(String args[]) {
-		ListeDesFacturesArchiver listeFacture = new ListeDesFacturesArchiver();
+		listeFacture = new ListeDesFacturesArchiver();
 		Application.launch();
 	}
 
@@ -56,5 +61,15 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 		return listPersonne;
+	}
+
+	public static void retourMenu() {
+		try {
+			PagePrincipaleFen fenetrePrincipale = new PagePrincipaleFen();
+			fenetrePrincipale.show();
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+
 	}
 }

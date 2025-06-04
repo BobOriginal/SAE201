@@ -1,18 +1,18 @@
 package controleur;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import modele.Personne;
-import vue.FactureFen;
+import modele.Facture;
+import modele.Main;
 
 public class FactureControllerClass {
 
@@ -70,9 +70,6 @@ public class FactureControllerClass {
     private Label Montant_Payer_Val;
 
     @FXML
-    private TextField Montant_Resumer;
-
-    @FXML
     private Label Nom_Etudiant;
 
     @FXML
@@ -112,6 +109,18 @@ public class FactureControllerClass {
     private Button Enregistrer_Button;
 
     @FXML
+    private TextField Prenom_Resumer;
+
+    @FXML
+    private TextField Ville_Resumer;
+
+    @FXML
+    private TextField Code_Postal_Resumer;
+
+    @FXML
+    private TextField Date_Facture_Resumer;
+
+    @FXML
     void AllerAuRappel(ActionEvent event) {
 
     }
@@ -123,7 +132,10 @@ public class FactureControllerClass {
 
     @FXML
     void archiver(ActionEvent event) {
-
+        personne.setEtatArchivage(true);
+        modele.Facture facture = new Facture(personne);
+        Main.listeFacture.ajouterArchive(facture);
+        Numero_Val.setText(" " + facture.getNumero());
     }
 
     @FXML
@@ -139,18 +151,13 @@ public class FactureControllerClass {
         montantPayerTampon = Montant_Payer_Val.getText();
         modePaiementTampon = Mode_Paiement_Val.getText();
 
-        Annuler_Button.setDisable(false);
-        Enregistrer_Button.setDisable(false);
-        Regler_Par_Resumer.setDisable(false);
-        Adresse_Resumer.setDisable(false);
-        Montant_Resumer.setDisable(false);
-        Montant_Payer_Resumer.setDisable(false);
-        Reste_Payer_Resumer.setDisable(false);
-        Mode_Paiement_Resumer.setDisable(false);
+        enableDisable(false);
     }
 
     @FXML
     void retourMenu(ActionEvent event) {
+
+        Main.retourMenu();
 
     }
 
@@ -158,25 +165,26 @@ public class FactureControllerClass {
     public void initialize(modele.Personne e) {
         personne = e;
 
-        Annuler_Button.setDisable(true);
-        Enregistrer_Button.setDisable(true);
-        Regler_Par_Resumer.setDisable(true);
-        Adresse_Resumer.setDisable(true);
-        Montant_Resumer.setDisable(true);
-        Montant_Payer_Resumer.setDisable(true);
-        Reste_Payer_Resumer.setDisable(true);
-        Mode_Paiement_Resumer.setDisable(true);
+        enableDisable(true);
 
         Nom_Etudiant.textProperty().bind(e.getNom());
-        Adr_Val.textProperty().bind(e.getAdresse());
-        Code_Postal_Val.textProperty().bind(Bindings.convert(e.getCodePostal()));
-        Ville_Val.textProperty().bind(e.getVille());
-
         Regler_Par_Resumer.textProperty().bindBidirectional(e.getNom());
+        Prenom_Resumer.textProperty().bindBidirectional(e.getPrenom());
+
+        Adr_Val.textProperty().bind(e.getAdresse());
         Adresse_Resumer.textProperty().bindBidirectional(e.getAdresse());
 
+        Code_Postal_Val.textProperty().bind(Bindings.convert(e.getCodePostal()));
+        Code_Postal_Resumer.textProperty().bindBidirectional(e.getCodePostal());
+
+        Ville_Val.textProperty().bind(e.getVille());
+        Ville_Resumer.textProperty().bindBidirectional(e.getVille());
+
+        Date_Facture_Resumer.setText(aujourdhui());
+        Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
+
         StringBinding sexeNomPrenomBinding = Bindings.createStringBinding(
-                () -> e.getSexe() + " " + e.getNom() + " " + e.getPrenom());
+                () -> e.getSexe().get() + " " + e.getNom().get() + " " + e.getPrenom().get());
 
         Sexe_Nom_Prenom_Val.textProperty().bind(sexeNomPrenomBinding);
     }
@@ -190,25 +198,35 @@ public class FactureControllerClass {
         personne.setNom(nomTampon);
         personne.setAdresse(adresseTampon);
 
-        Annuler_Button.setDisable(true);
-        Enregistrer_Button.setDisable(true);
-        Regler_Par_Resumer.setDisable(true);
-        Adresse_Resumer.setDisable(true);
-        Montant_Resumer.setDisable(true);
-        Montant_Payer_Resumer.setDisable(true);
-        Reste_Payer_Resumer.setDisable(true);
-        Mode_Paiement_Resumer.setDisable(true);
+        enableDisable(true);
+    }
+
+    public String aujourdhui() {
+        // Merci a developpez.net, j'avais la flemme
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
     public void enregistrer() {
-        Annuler_Button.setDisable(true);
-        Enregistrer_Button.setDisable(true);
-        Regler_Par_Resumer.setDisable(true);
-        Adresse_Resumer.setDisable(true);
-        Montant_Resumer.setDisable(true);
-        Montant_Payer_Resumer.setDisable(true);
-        Reste_Payer_Resumer.setDisable(true);
-        Mode_Paiement_Resumer.setDisable(true);
+        enableDisable(true);
+    }
+
+    public void modifierGenre() {
+
+    }
+
+    public void enableDisable(boolean val) {
+        Annuler_Button.setDisable(val);
+        Enregistrer_Button.setDisable(val);
+        Regler_Par_Resumer.setDisable(val);
+        Adresse_Resumer.setDisable(val);
+        Montant_Payer_Resumer.setDisable(val);
+        Reste_Payer_Resumer.setDisable(val);
+        Mode_Paiement_Resumer.setDisable(val);
+        Prenom_Resumer.setDisable(val);
+        Ville_Resumer.setDisable(val);
+        Prenom_Resumer.setDisable(val);
+        Code_Postal_Resumer.setDisable(val);
+        Date_Facture_Resumer.setDisable(val);
     }
 
 }
