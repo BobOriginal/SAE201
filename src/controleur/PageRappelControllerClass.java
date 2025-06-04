@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.Main;
 import modele.Personne;
+import modele.Personne_Montant;
 
 public class PageRappelControllerClass {
 
@@ -20,7 +21,7 @@ public class PageRappelControllerClass {
     private Button Ouvrir_Facture;
 
     @FXML
-    private TableView<Personne> tvListePersonneImpayes;
+    private TableView<Personne_Montant> tvListePersonneImpayes;
 
     @FXML
     private Button Ouvrir_Rappel;
@@ -32,19 +33,19 @@ public class PageRappelControllerClass {
     private Button Ouvrir_Cotisation;
 
     @FXML
-    private TableColumn<Personne, String> nom;
+    private TableColumn<Personne_Montant, String> nom;
 
     @FXML
-    private TableColumn<Personne, String> prenom;
+    private TableColumn<Personne_Montant, String> prenom;
 
     @FXML
-    private TableColumn<Personne, Double> montantPaye;
+    private TableColumn<Personne_Montant, Double> montantPaye;
 
     @FXML
-    private TableColumn<Personne, String> status;
+    private TableColumn<Personne_Montant, String> status;
 
     @FXML
-    private TableColumn<Personne , Double> montantDu;
+    private TableColumn<Personne_Montant , Double> montantDu;
 
     @FXML
     private Button Quitter;
@@ -63,17 +64,17 @@ public class PageRappelControllerClass {
 
     public void initialize(){
         // Permet d'ajouter les colonnes et un nom pour chaque en-tete 
-		nom.setCellValueFactory(new PropertyValueFactory<Personne,String>("nom"));
+		nom.setCellValueFactory(new PropertyValueFactory<Personne_Montant,String>("nom"));
         tvListePersonneImpayes.getColumns().set(0, nom);
-		prenom.setCellValueFactory(new PropertyValueFactory<Personne,String>("prenom"));
+		prenom.setCellValueFactory(new PropertyValueFactory<Personne_Montant,String>("prenom"));
         tvListePersonneImpayes.getColumns().set(1,prenom);
-		status.setCellValueFactory(new PropertyValueFactory<Personne,String>("status"));
+		status.setCellValueFactory(new PropertyValueFactory<Personne_Montant,String>("status"));
         tvListePersonneImpayes.getColumns().set(2,status);
-		montantPaye.setCellValueFactory(new PropertyValueFactory<Personne,Double>("montantPaye"));
-        tvListePersonneImpayes.getColumns().set(1,prenom);
-		montantDu.setCellValueFactory(new PropertyValueFactory<Personne,Double>("montantDu"));
-        tvListePersonneImpayes.getColumns().set(2,status);
-        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main. 
+		montantPaye.setCellValueFactory(new PropertyValueFactory<Personne_Montant,Double>("montantPaye"));
+        tvListePersonneImpayes.getColumns().set(1,montantPaye);
+		montantDu.setCellValueFactory(new PropertyValueFactory<Personne_Montant,Double>("montantDu"));
+        tvListePersonneImpayes.getColumns().set(2,montantDu);
+        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
         tvListePersonneImpayes.setItems(Main.getLesEmployes());
         tvListePersonneImpayes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 

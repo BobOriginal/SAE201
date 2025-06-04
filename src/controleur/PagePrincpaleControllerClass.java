@@ -38,9 +38,6 @@ public class PagePrincpaleControllerClass {
         TableColumn<Personne,String> colonne3 = new TableColumn<Personne,String>("Statut");
 		colonne3.setCellValueFactory(new PropertyValueFactory<Personne,String>("status"));
         tvListePersonne.getColumns().set(2,colonne3);
-
-        tvListePersonne.setItems(Main.getLesEmployes());
-        tvListePersonne.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
 

@@ -12,7 +12,7 @@ import vue.PageEmailFen;
 import vue.PageRappelFen;
 
 public class Main extends Application {
-	static private ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
+	static private ObservableList<Personne_Montant> listPersonne = FXCollections.observableArrayList();
 	static private PageEmailFen fEmailFen;
 	static private PageRappelFen fRappelFen;
 	public void start(Stage f) throws Exception {
@@ -26,18 +26,19 @@ public class Main extends Application {
 		Application.launch();
 	}
 	
-	public static ObservableList<Personne> getLesEmployes(){
+	public static ObservableList<Personne_Montant> getLesEmployes(){
 		try {
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
-			listPersonne.add(new Personne("test", "test","non inscrit"));
+			listPersonne.add(new Personne_Montant(new Personne("test1", "test","non inscrit"),0.00,34.4));
+			listPersonne.add(new Personne_Montant(new Personne("test2", "test","non inscrit"),32.45,0.00));
+			listPersonne.add(new Personne_Montant(new Personne("test3", "test","non inscrit"),0.00,34.4));
+			listPersonne.add(new Personne_Montant(new Personne("test4", "test","non inscrit"),32.45,0.00));
+			listPersonne.add(new Personne_Montant(new Personne("test5", "test","non inscrit"),0.00,0.00));
+			listPersonne.add(new Personne_Montant(new Personne("test6", "test","non inscrit"),32.45,34.4));
+			listPersonne.add(new Personne_Montant(new Personne("test7", "test","non inscrit"),0.00,0.00));
+			listPersonne.add(new Personne_Montant(new Personne("test8", "test","non inscrit"),32.45,34.4));
+			listPersonne.add(new Personne_Montant(new Personne("test9", "test","non inscrit"),32.45,0.00));
+			listPersonne.add(new Personne_Montant(new Personne("test10", "test","non inscrit"),0.00,34.4));
+			listPersonne.add(new Personne_Montant(new Personne("test11", "test","non inscrit"),32.45,0.00));
         } catch (StatusException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
