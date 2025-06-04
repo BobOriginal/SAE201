@@ -21,7 +21,7 @@ public class CotisationAnnuelle {
 	}
 	
 	private void calculTotal() {
-		Double res = Tarif.prixInscription;
+		Integer res = Tarif.prixInscription;
 		if(personne.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
 			Iterator<Cours> iter = personne.getMesCours().iterator();
 			while(iter.hasNext()) {

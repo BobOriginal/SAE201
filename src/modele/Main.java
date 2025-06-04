@@ -1,11 +1,16 @@
+
 package modele;
+
+import java.io.IOException;
 
 import Exceptions.StatusException;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import vue.PagePrincipaleFen;
+
 
 public class Main extends Application {
 	static private ObservableList<Personne> listPersonne = FXCollections.observableArrayList();

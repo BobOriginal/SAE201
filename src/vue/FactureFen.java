@@ -6,12 +6,20 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-public class FactureFen extends Fenetre {
+public class FactureFen extends Stage {
 
-    public FactureFen() throws IOException {
+    private static modele.Personne lapersonne;
+    private controleur.FactureControllerClass ctrl;
+
+    public FactureFen(modele.Personne personne) throws IOException {
+
+        lapersonne = personne;
+
         this.setTitle("Organizatore di Dance");
         this.setResizable(true);
+
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
     }
@@ -23,7 +31,23 @@ public class FactureFen extends Fenetre {
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
         ctrl = loader.getController();
+
+        ctrl.initialize(lapersonne);
         return racine;
     }
 
+    public modele.Personne getPersonne() {
+        return lapersonne;
+    }
+
+    public static void ouvrirFacture() {
+        try {
+
+            LaFactureFen facture = new LaFactureFen(lapersonne);
+            facture.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

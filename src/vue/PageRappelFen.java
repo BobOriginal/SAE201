@@ -1,19 +1,15 @@
 package vue;
 
-import java.io.File;
-import java.io.IOException;
-
-import Exceptions.StatusException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import modele.Cours;
-import modele.Personne;
+import java.io.File;
+import java.io.IOException;
 
-public class PagePrincipaleFen extends Stage{
+public class PageRappelFen extends Stage {
 
-    public PagePrincipaleFen() throws IOException {
+    public PageRappelFen() throws IOException {
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(true);
@@ -23,7 +19,7 @@ public class PagePrincipaleFen extends Stage{
 
     private Pane creerSceneGraph() throws IOException {
 
-        File fichier = new File("src/vue/page_principale.fxml");
+        File fichier = new File("src/vue/page_rappel.fxml");
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
