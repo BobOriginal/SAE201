@@ -1,5 +1,4 @@
 package controleur;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
@@ -10,6 +9,7 @@ import modele.Donnee;
 import modele.Personne;
 
 public class PagePrincpaleControllerClass {
+    
     @FXML
     private TableView<Personne> tvListePersonne;
     @FXML
@@ -29,6 +29,8 @@ public class PagePrincpaleControllerClass {
         System.exit(0);
     }
     public void initialize(){
+    	
+    	
         TableColumn<Personne,String> colonne1 = new TableColumn<Personne,String>("Nom");
 		colonne1.setCellValueFactory(new PropertyValueFactory<Personne,String>("nom"));
         tvListePersonne.getColumns().set(0,colonne1);

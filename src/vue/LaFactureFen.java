@@ -3,31 +3,38 @@ package vue;
 import java.io.File;
 import java.io.IOException;
 
-import Exceptions.StatusException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import modele.Cours;
-import modele.Personne;
 
-public class PagePrincipaleFen extends Stage{
+public class LaFactureFen extends Stage {
 
-    public PagePrincipaleFen() throws IOException {
+    private controleur.LaFactureControllerClass ctrl;
+    private static modele.Personne lapersonne;
 
-        this.setTitle("Organizatore di Dance");
+    public LaFactureFen(modele.Personne personne) throws IOException {
+
+        lapersonne = personne;
+
+        System.out.println("Vous rentrer dans la facture" + lapersonne);
+        this.setTitle("Facturation");
         this.setResizable(true);
+
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
     }
 
     private Pane creerSceneGraph() throws IOException {
 
-        File fichier = new File("src/vue/page_principale.fxml");
+        File fichier = new File("src/vue/rendu_facture.fxml");
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
+        ctrl = loader.getController();
 
+        ctrl.initialize(lapersonne);
         return racine;
     }
+
 }

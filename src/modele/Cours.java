@@ -3,10 +3,10 @@ package modele;
 public abstract class Cours {
 	private int id;
 	private int annee;
-	private int nbHeure;
+	private Double nbHeure;
 	private String intituler;
 	private static int nbCours = 0;
-	public Cours(int annee, int nbHeure, String intituler) {
+	public Cours(int annee, Double nbHeure, String intituler) {
 		super();
 		this.annee = annee;
 		this.nbHeure = nbHeure;
@@ -14,10 +14,10 @@ public abstract class Cours {
 		id = nbCours;
 		nbCours++;
 	}
-	public int getNbHeure() {
+	public Double getNbHeure() {
 		return nbHeure;
 	}
-	public void setNbHeure(int nbHeure) {
+	public void setNbHeure(Double nbHeure) {
 		this.nbHeure = nbHeure;
 	}
 	public int getId() {

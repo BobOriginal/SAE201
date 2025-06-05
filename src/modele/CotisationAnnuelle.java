@@ -9,14 +9,14 @@ public class CotisationAnnuelle {
 	
 	private int id;
 	private int annee;
-	private Double total;
+	private Integer total;
 	private String typePaiment;
-	private Double dejaPayer;
-	private Double resteAPayer;
+	private Integer dejaPayer;
+	private Integer resteAPayer;
 	private ArrayList<Boolean> aPayer3fois = new ArrayList<Boolean>(3);
-	private ArrayList<Double> prixCours = new ArrayList<Double>();
+	private ArrayList<Integer> prixCours = new ArrayList<Integer>();
 	private ArrayList<Boolean> aPayersCours = new ArrayList<Boolean>();
-	private Double dejaPayerCour;
+	private Integer dejaPayerCour;
 	
 	public CotisationAnnuelle(int annee, String typePaiment, Personne p) {
 		super();
@@ -27,26 +27,31 @@ public class CotisationAnnuelle {
 			aPayer3fois.add(false);
 			aPayer3fois.add(false);
 		}
-		
-		calculTotal(p);
+		Tarif.initTarif();
+		total = 0;
 		calculPrixCour(p);
-		dejaPayer = 0.0;
+		dejaPayer = 0;
 		resteAPayer = total;
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
-	private void calculTotal(Personne p) {
-		Double res = Tarif.prixInscription;
-		if(p.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
-			res = res + Tarif.prixCourPleinTarif.get(p.getNbHeureCours());
-		}else if(p.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
-			res = res + Tarif.prixCourTarifReduit.get(p.getNbHeureCours());
+	void calculTotal(Personne p) {
+		
+		if(p.getStatus().equals(Personne.ELEVE_PLEIN_TARIF)) {
+			if(Tarif.prixCourPleinTarif.get(p.getNbHeureCours()) == null){
+				System.out.println(p.getNbHeureCours());
+			}
+			total = Tarif.prixCourPleinTarif.get(p.getNbHeureCours());
+		}else if(p.getStatus().equals(Personne.ELEVE_TARIF_REDUIT)) {
+			if(Tarif.prixCourTarifReduit.get(p.getNbHeureCours()) == null){
+				System.out.println(p.getNbHeureCours());
+			}
+			total = Tarif.prixCourTarifReduit.get(p.getNbHeureCours());
 		}else {
-			res = res + Tarif.prixNonInscrit;
+			total = Tarif.prixNonInscrit;
 		}
+		
 	}
-	@SuppressWarnings("unlikely-arg-type")
-	private void calculPrixCour(Personne p) {
+	void calculPrixCour(Personne p) {
 		if(p.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
 			Iterator<Cours> iter = p.getMesCours().iterator();
 			while(iter.hasNext()) {
@@ -65,13 +70,13 @@ public class CotisationAnnuelle {
 			aPayersCours = null;
 		}
 	}
-	private void calculdejaPayerCour(Personne p) {
+	void calculdejaPayerCour(Personne p) {
 		dejaPayerCour = dejaPayer;
 		if(p.getStatus() != Personne.NON_INSCRIT ) {
-			Iterator<Double> iter = prixCours.iterator();
+			Iterator<Integer> iter = prixCours.iterator();
 			int i = 0;
 			while(iter.hasNext()) {
-				Double prix = iter.next();
+				Integer prix = iter.next();
 				i++;
 				if(prix <= dejaPayerCour) {
 					dejaPayerCour = dejaPayerCour - prix;
@@ -89,7 +94,7 @@ public class CotisationAnnuelle {
 		return annee;
 	}
 
-	public Double getTotal() {
+	public Integer getTotal() {
 		return total;
 	}
 
@@ -97,11 +102,11 @@ public class CotisationAnnuelle {
 		return typePaiment;
 	}
 
-	public Double getDejaPayer() {
+	public Integer getDejaPayer() {
 		return dejaPayer;
 	}
 
-	public Double getResteAPayer() {
+	public Integer getResteAPayer() {
 		return resteAPayer;
 	}
 
@@ -109,12 +114,12 @@ public class CotisationAnnuelle {
 		return aPayer3fois;
 	}
 
-	void setDejaPayer(Double dejaPayer, Personne p) {
+	void setDejaPayer(Integer dejaPayer, Personne p) {
 		this.dejaPayer = dejaPayer;
 		calculdejaPayerCour(p);
 	}
 
-	void setResteAPayer(Double resteAPayer) {
+	void setResteAPayer(Integer resteAPayer) {
 		this.resteAPayer = resteAPayer;
 	}
 	
@@ -122,15 +127,15 @@ public class CotisationAnnuelle {
 		return resteAPayer==0;
 	}
 
-	public ArrayList<Double> getPrixCours() {
+	public ArrayList<Integer> getPrixCours() {
 		return prixCours;
 	}
 
-	public ArrayList<Boolean> getaPayersCours() {
+	public ArrayList<Boolean> getAPayersCours() {
 		return aPayersCours;
 	}
 
-	public Double getDejaPayerCour() {
+	public Integer getDejaPayerCour() {
 		return dejaPayerCour;
 	}
 	

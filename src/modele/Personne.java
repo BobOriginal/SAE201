@@ -3,8 +3,8 @@ package modele;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import Exceptions.DoublonCoursException;
-import Exceptions.StatusException;
+import Exceptions.*;
+
 
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
@@ -16,7 +16,7 @@ public class Personne {
 	private String status;
 	private String sexe;
 	private ArrayList<Cours> mesCours;	
-	private int nbHeureCours;
+	private Double nbHeureCours;
 	private CotisationAnnuelle maCotisation;
 	static int nbPersonne = 0;
 	private String adresse;
@@ -28,6 +28,7 @@ public class Personne {
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.sexe = sexe;
+		nbHeureCours = 0.0 ;
 		if(status == ELEVE_TARIF_REDUIT || 
 		   status == ELEVE_PLEIN_TARIF	||
 		   status == NON_INSCRIT) {
@@ -35,8 +36,7 @@ public class Personne {
 		}else {
 			throw new StatusException();
 		}
-		id = nbPersonne;
-		nbPersonne++;
+		id = nbPersonne++;
 		mesCours = new ArrayList<Cours>();
 		Calendar c = Calendar.getInstance();
 		int year = c.get(Calendar.YEAR);
@@ -79,14 +79,11 @@ public class Personne {
 		return mesCours;
 	}
 	
-	public int getNbHeureCours() {
+	public Double getNbHeureCours() {
 		return nbHeureCours;
 	}
 
-	private void addCours(Cours c) {
-		mesCours.add(c);
-		nbHeureCours = nbHeureCours + c.getNbHeure();
-	}
+	
 	
 	public String getAdresse() {
 		return adresse;
@@ -100,7 +97,13 @@ public class Personne {
 	public CotisationAnnuelle getMaCotisation() {
 		return maCotisation;
 	}
-
+	private void addCours(Cours c) {
+		mesCours.add(c);
+		nbHeureCours = nbHeureCours + c.getNbHeure();
+		maCotisation.calculTotal(this);
+		maCotisation.calculPrixCour(this);
+		maCotisation.calculdejaPayerCour(this);
+	}
 	public void ajouterUnCours(Cours c) {
 		try {
 			if(c == null) {
@@ -108,19 +111,40 @@ public class Personne {
 			}else if(mesCours.contains(c)){
 				throw new DoublonCoursException();
 			}
+			else if(status.equals(NON_INSCRIT)) {
+				throw new StatusException();
+			}
+			else if(status.equals(ELEVE_PLEIN_TARIF) && nbHeureCours + c.getNbHeure() > 7.5) {
+				throw new TropDeCoursExecption();
+			}
+			else if(status.equals(ELEVE_TARIF_REDUIT) && nbHeureCours + c.getNbHeure() > 5.0) {
+				throw new TropDeCoursExecption();
+			}
 			addCours(c);
 		}catch (NullPointerException e) {
 			System.out.println("Cours valeur null");
 		}catch (DoublonCoursException e) {
+		}catch (StatusException e) {
+			System.out.println("On ne peux pas ajouter un cours a une personne non inscrit");
+		}catch (TropDeCoursExecption e) {
+			
 		}
 	}
 	
-	public void payer(Double valeur) {
-		Double dejaPayer = maCotisation.getDejaPayer()+valeur;
-		Double resteApayer = maCotisation.getResteAPayer()-valeur;
+	public void payer(Integer valeur) {
+		Integer dejaPayer = maCotisation.getDejaPayer()+valeur;
+		Integer resteApayer = maCotisation.getResteAPayer()-valeur;
 		maCotisation.setDejaPayer(dejaPayer, this);
 		maCotisation.setResteAPayer(resteApayer);
 	}
+
+	@Override
+	public String toString() {
+		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", status=" + status + ", sexe=" + sexe
+				+ ", mesCours=" + mesCours + ", nbHeureCours=" + nbHeureCours + ", maCotisation=" + maCotisation
+				+ ", adresse=" + adresse + "]";
+	}
+	
 	
 	
 }

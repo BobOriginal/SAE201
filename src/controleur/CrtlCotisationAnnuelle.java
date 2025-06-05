@@ -45,7 +45,7 @@ public class CrtlCotisationAnnuelle {
 		colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
 		listeCotisation.getColumns().set(1, colonne2);
 		TableColumn<InfoTabView, String> colonne3 = new TableColumn<InfoTabView,String>("Status");
-		colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("Status"));
+		colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("status"));
 		listeCotisation.getColumns().set(2, colonne3);
 		TableColumn<InfoTabView, String> colonne4 = new TableColumn<InfoTabView,String>("Type de paiement");
 		colonne4.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("typePaiement"));
