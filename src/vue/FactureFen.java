@@ -27,12 +27,12 @@ public class FactureFen extends Stage {
 
     private Pane creerSceneGraph() throws IOException {
         File fichier;
-
-        if (lapersonne.getEtatArchivage() == false) {
-            fichier = new File("src/vue/full_facture.fxml");
+        fichier = new File("src/vue/full_facture.fxml");
+        /*if (lapersonne.getEtatArchivage() == false) {
+            
         } else {
             fichier = new File("src/vue/factureArchiver.fxml");
-        }
+        }*/
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();

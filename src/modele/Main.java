@@ -1,12 +1,17 @@
 package modele;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import vue.FactureFen;
 import vue.FenCotisationAnnuelle;
+import vue.PageEmailFen;
 import vue.PagePrincipaleFen;
+import vue.PageRappelFen;
 
 
 public class Main extends Application {
@@ -14,11 +19,15 @@ public class Main extends Application {
 	private static FenCotisationAnnuelle fenCotisationAnnuelle;
 	private static FactureFen fenFacture;
 	private static PagePrincipaleFen fenPrincipal;
+	private static PageEmailFen fenEmail;
+	private static PageRappelFen fenRappel;
 	
 	public void start(Stage f) throws Exception {
 		fenCotisationAnnuelle = new FenCotisationAnnuelle();
-		fenFacture = new FactureFen();
+		//fenFacture = new FactureFen();
 		fenPrincipal = new PagePrincipaleFen();
+		fenEmail = new PageEmailFen();
+		fenRappel = new PageRappelFen();
 		fenPrincipal.show();
 	}
 
@@ -44,5 +53,18 @@ public class Main extends Application {
 	
 	public static void retourMenu() {
 		
+	}
+	
+	public static void ouvrirRappel(ActionEvent event) throws IOException{
+		fenRappel.show();
+	}
+	public static void ouvrirEmail(ActionEvent event) throws IOException{
+		fenEmail.show();
+	}
+	public static void fermerRappel(ActionEvent event) throws IOException{
+		fenRappel.close();
+	}
+	public static void fermerEmail(ActionEvent event) throws IOException{
+		fenEmail.close();
 	}
 }

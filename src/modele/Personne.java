@@ -168,13 +168,13 @@ public class Personne {
 			}else if(mesCours.contains(c)){
 				throw new DoublonCoursException();
 			}
-			else if(status.equals(NON_INSCRIT)) {
+			else if(status.get().equals(NON_INSCRIT)) {
 				throw new StatusException();
 			}
-			else if(status.equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
+			else if(status.get().equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
 				throw new TropDeCoursExecption();
 			}
-			else if(status.equals(ELEVE_TARIF_REDUIT) && ((nbHeureCours.get()) + c.getNbHeure()) > 5.0) {
+			else if(status.get().equals(ELEVE_TARIF_REDUIT) && ((nbHeureCours.get()) + c.getNbHeure()) > 5.0) {
 				throw new TropDeCoursExecption();
 			}
 			addCours(c);

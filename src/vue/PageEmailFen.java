@@ -1,32 +1,31 @@
 package vue;
-
-import java.io.File;
-import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import java.io.File;
+import java.io.IOException;
 
-public class PagePrincipaleFen extends Stage {
+public class PageEmailFen extends Stage{
 
-    private controleur.PagePrincpaleControllerClass ctrl;
 
-    public PagePrincipaleFen() throws IOException {
+
+    public PageEmailFen() throws IOException {
 
         this.setTitle("Organizatore di Dance");
-        this.setResizable(true);
+        this.setResizable(false);
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
     }
 
     private Pane creerSceneGraph() throws IOException {
 
-        File fichier = new File("src/vue/page_principale.fxml");
+        File fichier = new File("src/vue/page_email.fxml");
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
 
         return racine;
+    
     }
 }

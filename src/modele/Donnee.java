@@ -81,16 +81,7 @@ public class Donnee {
 			lesPersonnes.add(p11);
 			lesPersonnes.add(p12);
 			lesPersonnes.add(p13);
-			Iterator<Personne> iter1 = lesPersonnes.iterator();
-			
-			while(iter1.hasNext()) {
-				Personne p = iter1.next();
-				lesInfo.add(new InfoTabView(p));
-				int i = 0;
-				for(i = 0; i < p.getMesCours().size();i++) {
-					lesInfoCours.add(new InfoTabView(p, i));
-				}
-			}
+		
 		} catch (StatusException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,15 +93,12 @@ public class Donnee {
 			while(iter1.hasNext()) {
 				Personne p = iter1.next();
 				lesInfo.add(new InfoTabView(p));
-				
 				int i = 0;
 				for(i = 0; i < p.getMesCours().size();i++) {
 					lesInfoCours.add(new InfoTabView(p, i));
 				}
 			}
 	}
-	
-	
 	protected static void initTarif() {
 		prixCourPleinTarif.put(0.75,91);
 		prixCourPleinTarif.put(1.00,112);
@@ -194,6 +182,4 @@ public class Donnee {
 	private void removeTarifReduit(Double nombreHeur){
 		prixCourTarifReduit.remove(nombreHeur);
 	}
-	
-	
 }
