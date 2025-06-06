@@ -80,16 +80,17 @@ public class PageRappelControllerClass {
 
     public void initialize() throws StatusException{
 
-        // Permet d'ajouter les colonnes et un nom pour chaque en-tete 
+        // Permet d'ajouter les colonnes et un nom pour chaque en-tete
+        
 		nom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
         tvListePersonneImpayes.getColumns().set(0,nom);
 		prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("prenom"));
         tvListePersonneImpayes.getColumns().set(1,prenom);
 		status.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("status"));
         tvListePersonneImpayes.getColumns().set(2,status);
-		montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montantDu"));
+		montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montant"));
         tvListePersonneImpayes.getColumns().set(3,montantDu);
-		montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montantPaye"));
+		montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("paiementEffectuer"));
         tvListePersonneImpayes.getColumns().set(4,montantPaye);
 
         // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
