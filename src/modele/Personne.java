@@ -12,10 +12,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
-	final static String ELEVE_PLEIN_TARIF= "plein tarif";
+	final static String ELEVE_PLEIN_TARIF = "plein tarif";
 	final static String NON_INSCRIT = "non inscrit";
 	private int id;
 	private StringProperty nom = new SimpleStringProperty();
@@ -30,24 +29,24 @@ public class Personne {
 	private StringProperty codePostal = new SimpleStringProperty();
 	private StringProperty ville = new SimpleStringProperty();
 	private boolean factureArchiver = false;
-	
-	
-	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe) throws StatusException {
+
+	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe)
+			throws StatusException {
 		super();
 		ville.set(" lannion");
 		codePostal.set("22300");
-		
+
 		this.nom.set(nom);
 		this.prenom.set(prenom);
 		this.adresse.set(adresse);
 		this.sexe.set(sexe);
-		
-		nbHeureCours.set(0.0) ;
-		if(status == ELEVE_TARIF_REDUIT || 
-		   status == ELEVE_PLEIN_TARIF	||
-		   status == NON_INSCRIT) {
+
+		nbHeureCours.set(0.0);
+		if (status == ELEVE_TARIF_REDUIT ||
+				status == ELEVE_PLEIN_TARIF ||
+				status == NON_INSCRIT) {
 			this.status.set(status);
-		}else {
+		} else {
 			throw new StatusException();
 		}
 		id = nbPersonne++;
@@ -64,16 +63,15 @@ public class Personne {
 	public StringProperty nomProperty() {
 		return nom;
 	}
-	
+
 	public void setNom(String nom) {
 		this.nom.set(nom);
 	}
-	
-	
+
 	public String getPrenom() {
 		return prenom.get();
 	}
-	
+
 	public StringProperty prenomProperty() {
 		return prenom;
 	}
@@ -85,11 +83,10 @@ public class Personne {
 	public String getStatus() {
 		return status.get();
 	}
-	
+
 	public StringProperty statusProperty() {
 		return status;
 	}
-	
 
 	public void setStatus(String status) {
 		this.status.set(status);
@@ -102,21 +99,19 @@ public class Personne {
 	public static int getNbPersonne() {
 		return nbPersonne;
 	}
-	
+
 	public ArrayList<Cours> getMesCours() {
 		return mesCours;
 	}
-	
+
 	public Double getNbHeureCours() {
 		return nbHeureCours.get();
 	}
-	
+
 	public DoubleProperty nbHeureCoursProperty() {
 		return nbHeureCours;
 	}
 
-	
-	
 	public String getAdresse() {
 		return adresse.get();
 	}
@@ -124,7 +119,7 @@ public class Personne {
 	public void setAdresse(String adresse) {
 		this.adresse.set(adresse);
 	}
-	
+
 	public StringProperty adresseProperty() {
 		return adresse;
 	}
@@ -132,7 +127,6 @@ public class Personne {
 	public CotisationAnnuelle getMaCotisation() {
 		return maCotisation;
 	}
-	
 
 	public StringProperty sexeProperty() {
 		return sexe;
@@ -153,7 +147,7 @@ public class Personne {
 	public void setEtatArchivage(boolean nouvelEtat) {
 		factureArchiver = nouvelEtat;
 	}
-	
+
 	private void addCours(Cours c) {
 		mesCours.add(c);
 		nbHeureCours.set(nbHeureCours.get() + c.getNbHeure());
@@ -161,36 +155,34 @@ public class Personne {
 		maCotisation.calculPrixCour(this);
 		maCotisation.calculdejaPayerCour(this);
 	}
+
 	public void ajouterUnCours(Cours c) {
 		try {
-			if(c == null) {
+			if (c == null) {
 				throw new NullPointerException();
-			}else if(mesCours.contains(c)){
+			} else if (mesCours.contains(c)) {
 				throw new DoublonCoursException();
-			}
-			else if(status.get().equals(NON_INSCRIT)) {
+			} else if (status.get().equals(NON_INSCRIT)) {
 				throw new StatusException();
-			}
-			else if(status.get().equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
+			} else if (status.get().equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
 				throw new TropDeCoursExecption();
-			}
-			else if(status.get().equals(ELEVE_TARIF_REDUIT) && ((nbHeureCours.get()) + c.getNbHeure()) > 5.0) {
+			} else if (status.get().equals(ELEVE_TARIF_REDUIT) && ((nbHeureCours.get()) + c.getNbHeure()) > 5.0) {
 				throw new TropDeCoursExecption();
 			}
 			addCours(c);
-		}catch (NullPointerException e) {
+		} catch (NullPointerException e) {
 			System.out.println("Cours valeur null");
-		}catch (DoublonCoursException e) {
-		}catch (StatusException e) {
+		} catch (DoublonCoursException e) {
+		} catch (StatusException e) {
 			System.out.println("On ne peux pas ajouter un cours a une personne non inscrit");
-		}catch (TropDeCoursExecption e) {
-			
+		} catch (TropDeCoursExecption e) {
+
 		}
 	}
-	
+
 	public void payer(Integer valeur) {
-		Integer dejaPayer = maCotisation.getDejaPayer()+valeur;
-		Integer resteApayer = maCotisation.getResteAPayer()-valeur;
+		Integer dejaPayer = maCotisation.getDejaPayer() + valeur;
+		Integer resteApayer = maCotisation.getResteAPayer() - valeur;
 		maCotisation.setDejaPayer(dejaPayer, this);
 		maCotisation.setResteAPayer(resteApayer);
 	}
@@ -201,7 +193,5 @@ public class Personne {
 				+ ", mesCours=" + mesCours + ", nbHeureCours=" + nbHeureCours + ", maCotisation=" + maCotisation
 				+ ", adresse=" + adresse + "]";
 	}
-	
-	
-	
+
 }
