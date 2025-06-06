@@ -1,4 +1,7 @@
 package controleur;
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
@@ -20,6 +23,9 @@ public class PagePrincpaleControllerClass {
 
     @FXML
     private Button Ouvrir_Rappel;
+    
+    @FXML
+    private Button Ouvrir_Liste;
 
     @FXML
     private Button Quitter;
@@ -27,6 +33,24 @@ public class PagePrincpaleControllerClass {
     public void quitter() {
         System.out.println("Fenetre fermer correctement...");
         System.exit(0);
+    }
+
+    @FXML
+    void rappel(ActionEvent event) throws IOException {
+        Main.ouvrirRappel(event);
+        Main.fermerMenu(event);
+    }
+
+    @FXML
+    void ouvrirCotisations(ActionEvent event) throws IOException{
+        Main.ouvrirCotisation(event);
+        Main.fermerMenu(event);
+    }
+
+    @FXML
+    void ouvrirFacturation(ActionEvent event)throws IOException {
+        Main.ouvrirFacture(event);
+        Main.fermerMenu(event);
     }
     public void initialize(){
         TableColumn<Personne,String> colonne1 = new TableColumn<Personne,String>("Nom");
@@ -38,6 +62,8 @@ public class PagePrincpaleControllerClass {
         TableColumn<Personne,String> colonne3 = new TableColumn<Personne,String>("Statut");
 		colonne3.setCellValueFactory(new PropertyValueFactory<Personne,String>("status"));
         tvListePersonne.getColumns().set(2,colonne3);
+
+        Ouvrir_Liste.setDisable(true);
     }
 
 
