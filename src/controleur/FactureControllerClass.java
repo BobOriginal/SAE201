@@ -5,10 +5,13 @@ import java.time.format.DateTimeFormatter;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import modele.Facture;
@@ -23,6 +26,11 @@ public class FactureControllerClass {
     private String montantPayerTampon;
     private String resteApayerTampon;
     private String modePaiementTampon;
+
+    private StringProperty sexeDestinataire = new SimpleStringProperty();
+    private StringProperty nomDestinataire = new SimpleStringProperty();
+    private StringProperty prenomDestinataire = new SimpleStringProperty();
+    private StringProperty espace = new SimpleStringProperty(" ");
 
     @FXML
     private Label Adr_Val;
@@ -121,6 +129,12 @@ public class FactureControllerClass {
     private TextField Date_Facture_Resumer;
 
     @FXML
+    private RadioButton Monsieur;
+
+    @FXML
+    private RadioButton Madame;
+
+    @FXML
     void AllerAuRappel(ActionEvent event) {
 
     }
@@ -183,10 +197,13 @@ public class FactureControllerClass {
         Date_Facture_Resumer.setText(aujourdhui());
         Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
 
-        StringBinding sexeNomPrenomBinding = Bindings.createStringBinding(
-                () -> e.getSexe().get() + " " + e.getNom().get() + " " + e.getPrenom().get());
+        // StringBinding value = (StringBinding) sexeDestinataire
+        // .concat(nomDestinataire
+        // .concat(espace
+        // .concat(prenomDestinataire.concat(espace))));
 
-        Sexe_Nom_Prenom_Val.textProperty().bind(sexeNomPrenomBinding);
+        Sexe_Nom_Prenom_Val.textProperty().bind(value);
+
     }
 
     public void quitter() {
@@ -215,6 +232,8 @@ public class FactureControllerClass {
     }
 
     public void enableDisable(boolean val) {
+        Monsieur.setDisable(val);
+        Madame.setDisable(val);
         Annuler_Button.setDisable(val);
         Enregistrer_Button.setDisable(val);
         Regler_Par_Resumer.setDisable(val);
@@ -227,6 +246,9 @@ public class FactureControllerClass {
         Prenom_Resumer.setDisable(val);
         Code_Postal_Resumer.setDisable(val);
         Date_Facture_Resumer.setDisable(val);
+
+        Archiver_Button.setDisable(!val);
+        Modifier_Button.setDisable(!val);
     }
 
 }
