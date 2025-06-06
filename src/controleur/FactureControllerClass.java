@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import modele.Donnee;
 import modele.Facture;
 import modele.Main;
 
@@ -148,7 +149,7 @@ public class FactureControllerClass {
     void archiver(ActionEvent event) {
         personne.setEtatArchivage(true);
         modele.Facture facture = new Facture(personne);
-        Main.listeFacture.ajouterArchive(facture);
+        Donnee.listeFacture.ajouterArchive(facture);
         Numero_Val.setText(" " + facture.getNumero());
     }
 
@@ -181,25 +182,25 @@ public class FactureControllerClass {
 
         enableDisable(true);
 
-        Nom_Etudiant.textProperty().bind(e.getNom());
-        Regler_Par_Resumer.textProperty().bindBidirectional(e.getNom());
-        Prenom_Resumer.textProperty().bindBidirectional(e.getPrenom());
+        Nom_Etudiant.textProperty().bind(e.nomProperty());
+        Regler_Par_Resumer.textProperty().bindBidirectional(e.nomProperty());
+        Prenom_Resumer.textProperty().bindBidirectional(e.prenomProperty());
 
-        Adr_Val.textProperty().bind(e.getAdresse());
-        Adresse_Resumer.textProperty().bindBidirectional(e.getAdresse());
+        Adr_Val.textProperty().bind(e.adresseProperty());
+        Adresse_Resumer.textProperty().bindBidirectional(e.adresseProperty());
 
-        Code_Postal_Val.textProperty().bind(Bindings.convert(e.getCodePostal()));
-        Code_Postal_Resumer.textProperty().bindBidirectional(e.getCodePostal());
+        Code_Postal_Val.textProperty().bind(Bindings.convert(e.codePostalProperty()));
+        Code_Postal_Resumer.textProperty().bindBidirectional(e.codePostalProperty());
 
-        Ville_Val.textProperty().bind(e.getVille());
-        Ville_Resumer.textProperty().bindBidirectional(e.getVille());
+        Ville_Val.textProperty().bind(e.villeProperty());
+        Ville_Resumer.textProperty().bindBidirectional(e.villeProperty());
 
         Date_Facture_Resumer.setText(aujourdhui());
         Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
 
-        sexeDestinataire.bindBidirectional(e.getSexe());
-        nomDestinataire.bindBidirectional(e.getNom());
-        prenomDestinataire.bindBidirectional(e.getPrenom());
+        sexeDestinataire.bindBidirectional(e.sexeProperty());
+        nomDestinataire.bindBidirectional(e.nomProperty());
+        prenomDestinataire.bindBidirectional(e.prenomProperty());
 
         StringBinding value = (StringBinding) sexeDestinataire
                 .concat(espace
