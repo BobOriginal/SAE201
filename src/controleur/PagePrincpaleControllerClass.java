@@ -38,19 +38,19 @@ public class PagePrincpaleControllerClass {
     @FXML
     void rappel(ActionEvent event) throws IOException {
         Main.ouvrirRappel(event);
-        Main.fermerMenu(event);
+        Main.fermerMain(event);
     }
 
     @FXML
     void ouvrirCotisations(ActionEvent event) throws IOException{
         Main.ouvrirCotisation(event);
-        Main.fermerMenu(event);
+        Main.fermerMain(event);
     }
 
     @FXML
     void ouvrirFacturation(ActionEvent event)throws IOException {
         Main.ouvrirFacture(event);
-        Main.fermerMenu(event);
+        Main.fermerMain(event);
     }
     public void initialize(){
         TableColumn<Personne,String> colonne1 = new TableColumn<Personne,String>("Nom");

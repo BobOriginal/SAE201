@@ -1,5 +1,6 @@
 package controleur;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -136,13 +137,15 @@ public class FactureControllerClass {
     private RadioButton Madame;
 
     @FXML
-    void AllerAuRappel(ActionEvent event) {
-
+    void AllerAuRappel(ActionEvent event) throws IOException {
+        Main.ouvrirRappel(event);
+        Main.fermerFacture(event);
     }
 
     @FXML
-    void allerAuCotisation(ActionEvent event) {
-
+    void allerAuCotisation(ActionEvent event) throws IOException {
+        Main.ouvrirCotisation(event);
+        Main.fermerCotisation(event);
     }
 
     @FXML
@@ -170,9 +173,9 @@ public class FactureControllerClass {
     }
 
     @FXML
-    void retourMenu(ActionEvent event) {
-
-        Main.retourMenu();
+    void retourMenu(ActionEvent event) throws IOException {
+        Main.ouvrirMain(event);
+        Main.fermerFacture(event);
 
     }
 
@@ -256,5 +259,6 @@ public class FactureControllerClass {
         Archiver_Button.setDisable(!val);
         Modifier_Button.setDisable(!val);
     }
+
 
 }

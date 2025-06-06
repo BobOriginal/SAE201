@@ -55,7 +55,23 @@ public class PageRappelControllerClass {
         Main.ouvrirEmail(event);
         Main.fermerRappel(event);
     }
+    @FXML
+    void ouvrirCotisations(ActionEvent event) throws IOException {
+        Main.ouvrirCotisation(event);
+        Main.fermerRappel(event);
+    }
 
+    @FXML
+    void ouvrirFacturation(ActionEvent event) throws IOException{
+        Main.ouvrirFacture(event);
+        Main.fermerRappel(event);
+    }
+
+    @FXML
+    void ouvrirMenu(ActionEvent event) throws IOException{
+        Main.ouvrirMain(event);
+        Main.fermerRappel(event);
+    }
     @FXML
     void quitter(ActionEvent event) {
         System.out.println("Fenetre fermer correctement...");

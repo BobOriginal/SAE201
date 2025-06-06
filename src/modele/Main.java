@@ -50,11 +50,6 @@ public class Main extends Application {
 		Donnee.chargementLesInfo();
 		return Donnee.getLesInfo();
 	}
-	
-	public static void retourMenu() {
-		
-	}
-	
 	public static void ouvrirRappel(ActionEvent event) throws IOException{
 		fenRappel.show();
 	}
@@ -66,5 +61,23 @@ public class Main extends Application {
 	}
 	public static void fermerEmail(ActionEvent event) throws IOException{
 		fenEmail.close();
+	}
+	public static void ouvrirFacture(ActionEvent event) throws IOException{
+		fenFacture.show();
+	}
+	public static void fermerFacture(ActionEvent event) throws IOException{
+		fenFacture.close();
+	}
+	public static void ouvrirMain(ActionEvent event)throws IOException{
+		fenPrincipal.show();
+	}
+	public static void fermerMain(ActionEvent event) throws IOException{
+		fenPrincipal.close();
+	}
+	public static void ouvrirCotisation(ActionEvent event) throws IOException{
+		fenCotisationAnnuelle.show();
+	}
+	public static void fermerCotisation(ActionEvent event) throws IOException{
+		fenCotisationAnnuelle.close();
 	}
 }

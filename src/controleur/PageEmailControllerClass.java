@@ -47,7 +47,7 @@ public class PageEmailControllerClass {
 
     @FXML
     void envoyer(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -60,6 +60,8 @@ public class PageEmailControllerClass {
         BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty()).or(taContenu.textProperty().isEmpty());
 		bnEnvoyer.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
         bnRappel.setDisable(true);
+        Ouvrir_Cotisation.setDisable(true);
+        Ouvrir_Facture.setDisable(true);
     }
 }
 

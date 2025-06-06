@@ -23,7 +23,7 @@
             </Label>
             <VBox layoutY="221.0" prefHeight="160.0" prefWidth="312.0" spacing="25.0">
                <children>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
+                  <Button minHeight="33.0" mnemonicParsing="false" onAction="#ouvrirRappel" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -31,12 +31,12 @@
                         <Point3D />
                      </rotationAxis>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
+                  <Button fx:id="bnCotisations" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
+                  <Button minHeight="33.0" mnemonicParsing="false" onAction="#ouvrirFacturations" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -48,12 +48,12 @@
             </VBox>
             <VBox layoutY="474.0" prefWidth="312.0" spacing="25.0">
                <children>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
+                  <Button minHeight="33.0" mnemonicParsing="false" onAction="#ouvrirMain" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
+                  <Button minHeight="33.0" mnemonicParsing="false" onAction="#fermer" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
                      <font>
                         <Font size="15.0" />
                      </font>
