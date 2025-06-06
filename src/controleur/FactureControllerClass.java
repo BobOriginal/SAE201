@@ -197,10 +197,15 @@ public class FactureControllerClass {
         Date_Facture_Resumer.setText(aujourdhui());
         Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
 
-        // StringBinding value = (StringBinding) sexeDestinataire
-        // .concat(nomDestinataire
-        // .concat(espace
-        // .concat(prenomDestinataire.concat(espace))));
+        sexeDestinataire.bindBidirectional(e.getSexe());
+        nomDestinataire.bindBidirectional(e.getNom());
+        prenomDestinataire.bindBidirectional(e.getPrenom());
+
+        StringBinding value = (StringBinding) sexeDestinataire
+                .concat(espace
+                        .concat(nomDestinataire
+                                .concat(espace
+                                        .concat(prenomDestinataire))));
 
         Sexe_Nom_Prenom_Val.textProperty().bind(value);
 
