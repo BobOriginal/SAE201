@@ -13,8 +13,6 @@ public class Main extends Application {
 	private static FenCotisationAnnuelle fenCotisationAnnuelle;
 	
 	public void start(Stage f) throws Exception {
-		Tarif.initTarif();
-		Donnee.chargementDonnees();
 		fenPrincipale = new PagePrincipaleFen();
 		fenCotisationAnnuelle = new FenCotisationAnnuelle();
 		fenCotisationAnnuelle.show();
@@ -22,6 +20,20 @@ public class Main extends Application {
 
 	public static void main(String args[]) {
 		Application.launch();
+	}
+	
+	static public ObservableList<InfoTabView> getLesInfoCours(){
+		Donnee.initTarif();
+		Donnee.chargementDonnees();
+		Donnee.chargementLesInfo();
+		return Donnee.getLesInfoCours();
+	}
+	
+	static public ObservableList<InfoTabView> getLesInfo(){
+		Donnee.initTarif();
+		Donnee.chargementDonnees();
+		Donnee.chargementLesInfo();
+		return Donnee.getLesInfo();
 	}
 	
 }

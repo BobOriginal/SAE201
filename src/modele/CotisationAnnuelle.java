@@ -27,7 +27,7 @@ public class CotisationAnnuelle {
 			aPayer3fois.add(false);
 			aPayer3fois.add(false);
 		}
-		Tarif.initTarif();
+		Donnee.initTarif();
 		total = 0;
 		calculPrixCour(p);
 		dejaPayer = 0;
@@ -37,17 +37,17 @@ public class CotisationAnnuelle {
 	void calculTotal(Personne p) {
 		
 		if(p.getStatus().equals(Personne.ELEVE_PLEIN_TARIF)) {
-			if(Tarif.prixCourPleinTarif.get(p.getNbHeureCours()) == null){
+			if(Donnee.prixCourPleinTarif.get(p.getNbHeureCours()) == null){
 				System.out.println(p.getNbHeureCours());
 			}
-			total = Tarif.prixCourPleinTarif.get(p.getNbHeureCours());
+			total = Donnee.prixCourPleinTarif.get(p.getNbHeureCours());
 		}else if(p.getStatus().equals(Personne.ELEVE_TARIF_REDUIT)) {
-			if(Tarif.prixCourTarifReduit.get(p.getNbHeureCours()) == null){
+			if(Donnee.prixCourTarifReduit.get(p.getNbHeureCours()) == null){
 				System.out.println(p.getNbHeureCours());
 			}
-			total = Tarif.prixCourTarifReduit.get(p.getNbHeureCours());
+			total = Donnee.prixCourTarifReduit.get(p.getNbHeureCours());
 		}else {
-			total = Tarif.prixNonInscrit;
+			total = Donnee.prixNonInscrit;
 		}
 		
 	}
@@ -55,14 +55,14 @@ public class CotisationAnnuelle {
 		if(p.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
 			Iterator<Cours> iter = p.getMesCours().iterator();
 			while(iter.hasNext()) {
-				prixCours.add(Tarif.prixCourPleinTarif.get(iter.next().getNbHeure()));
+				prixCours.add(Donnee.prixCourPleinTarif.get(iter.next().getNbHeure()));
 				aPayersCours.add(false);
 				
 			}
 		}else if(p.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
 			Iterator<Cours> iter = p.getMesCours().iterator();
 			while(iter.hasNext()) {
-				prixCours.add(Tarif.prixCourTarifReduit.get(iter.next().getNbHeure()));
+				prixCours.add(Donnee.prixCourTarifReduit.get(iter.next().getNbHeure()));
 				aPayersCours.add(false);
 			}
 		}else {

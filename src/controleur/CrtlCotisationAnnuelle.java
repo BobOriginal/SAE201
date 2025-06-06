@@ -9,8 +9,8 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import modele.Donnee;
 import modele.InfoTabView;
+import modele.Main;
 
 public class CrtlCotisationAnnuelle {
 
@@ -37,7 +37,7 @@ public class CrtlCotisationAnnuelle {
     private TableView<InfoTabView> listeCotisation;
 
     @FXML void initialize() {
-    	Donnee.chargementDonnees();
+
     	TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView,String>("Nom");
 		colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
 		listeCotisation.getColumns().set(0, colonne1);
@@ -57,11 +57,11 @@ public class CrtlCotisationAnnuelle {
 		colonne6.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montant"));
 		listeCotisation.getColumns().set(5, colonne6);
 		TableColumn<InfoTabView, String> colonne7 = new TableColumn<InfoTabView,String>("Paiement deja effectuer");
-		colonne7.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("paimentEffectuer"));
+		colonne7.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("paiementEffectuer"));
 		listeCotisation.getColumns().set(6, colonne7);
 		
 		
-		listeCotisation.setItems(Donnee.getLesInfo());
+		listeCotisation.setItems(Main.getLesInfo());
 		listeCotisation.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		
 		//A FAIRE griser les boutons Modifier et Supprimer quand aucune sélection
