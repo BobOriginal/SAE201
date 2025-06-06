@@ -17,6 +17,7 @@ public class Donnee {
 	static HashMap<Double,Paiement3fois> prixCourTarifReduit3fois = new HashMap<Double, Paiement3fois>();
 	static Integer prixNonInscrit = 44;
 	static Integer prixInscription = 33;
+	public static ListeDesFacturesArchiver listeFacture;
 	
 	static public void chargementDonnees() { 
 		try {

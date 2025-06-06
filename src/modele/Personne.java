@@ -3,7 +3,14 @@ package modele;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import Exceptions.*;
+import Exceptions.DoublonCoursException;
+import Exceptions.StatusException;
+import Exceptions.TropDeCoursExecption;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 
 public class Personne {
@@ -11,28 +18,35 @@ public class Personne {
 	final static String ELEVE_PLEIN_TARIF= "plein tarif";
 	final static String NON_INSCRIT = "non inscrit";
 	private int id;
-	private String nom;
-	private String prenom;
-	private String status;
-	private String sexe;
-	private ArrayList<Cours> mesCours;	
-	private Double nbHeureCours;
+	private StringProperty nom = new SimpleStringProperty();
+	private StringProperty prenom = new SimpleStringProperty();
+	private StringProperty status = new SimpleStringProperty();
+	private StringProperty sexe = new SimpleStringProperty();
+	private ArrayList<Cours> mesCours;
+	private DoubleProperty nbHeureCours = new SimpleDoubleProperty();
 	private CotisationAnnuelle maCotisation;
 	static int nbPersonne = 0;
-	private String adresse;
+	private StringProperty adresse = new SimpleStringProperty();
+	private StringProperty codePostal = new SimpleStringProperty();
+	private StringProperty ville = new SimpleStringProperty();
+	private boolean factureArchiver = false;
 	
 	
 	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe) throws StatusException {
 		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.sexe = sexe;
-		nbHeureCours = 0.0 ;
+		ville.set(" lannion");
+		codePostal.set("22300");
+		
+		this.nom.set(nom);
+		this.prenom.set(prenom);
+		this.adresse.set(adresse);
+		this.sexe.set(sexe);
+		
+		nbHeureCours.set(0.0) ;
 		if(status == ELEVE_TARIF_REDUIT || 
 		   status == ELEVE_PLEIN_TARIF	||
 		   status == NON_INSCRIT) {
-			this.status = status;
+			this.status.set(status);
 		}else {
 			throw new StatusException();
 		}
@@ -44,27 +58,41 @@ public class Personne {
 	}
 
 	public String getNom() {
+		return nom.get();
+	}
+
+	public StringProperty nomProperty() {
 		return nom;
 	}
-
+	
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.nom.set(nom);
 	}
-
+	
+	
 	public String getPrenom() {
+		return prenom.get();
+	}
+	
+	public StringProperty prenomProperty() {
 		return prenom;
 	}
 
 	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+		this.prenom.set(prenom);
 	}
 
 	public String getStatus() {
+		return status.get();
+	}
+	
+	public StringProperty statusProperty() {
 		return status;
 	}
+	
 
 	public void setStatus(String status) {
-		this.status = status;
+		this.status.set(status);
 	}
 
 	public int getId() {
@@ -80,26 +108,55 @@ public class Personne {
 	}
 	
 	public Double getNbHeureCours() {
+		return nbHeureCours.get();
+	}
+	
+	public DoubleProperty nbHeureCoursProperty() {
 		return nbHeureCours;
 	}
 
 	
 	
 	public String getAdresse() {
-		return adresse;
+		return adresse.get();
 	}
 
 	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+		this.adresse.set(adresse);
 	}
-
+	
+	public StringProperty adresseProperty() {
+		return adresse;
+	}
 
 	public CotisationAnnuelle getMaCotisation() {
 		return maCotisation;
 	}
+	
+
+	public StringProperty sexeProperty() {
+		return sexe;
+	}
+
+	public StringProperty codePostalProperty() {
+		return codePostal;
+	}
+
+	public StringProperty villeProperty() {
+		return ville;
+	}
+
+	public boolean getEtatArchivage() {
+		return factureArchiver;
+	}
+
+	public void setEtatArchivage(boolean nouvelEtat) {
+		factureArchiver = nouvelEtat;
+	}
+	
 	private void addCours(Cours c) {
 		mesCours.add(c);
-		nbHeureCours = nbHeureCours + c.getNbHeure();
+		nbHeureCours.set(nbHeureCours.get() + c.getNbHeure());
 		maCotisation.calculTotal(this);
 		maCotisation.calculPrixCour(this);
 		maCotisation.calculdejaPayerCour(this);
@@ -114,10 +171,10 @@ public class Personne {
 			else if(status.equals(NON_INSCRIT)) {
 				throw new StatusException();
 			}
-			else if(status.equals(ELEVE_PLEIN_TARIF) && nbHeureCours + c.getNbHeure() > 7.5) {
+			else if(status.equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
 				throw new TropDeCoursExecption();
 			}
-			else if(status.equals(ELEVE_TARIF_REDUIT) && nbHeureCours + c.getNbHeure() > 5.0) {
+			else if(status.equals(ELEVE_TARIF_REDUIT) && ((nbHeureCours.get()) + c.getNbHeure()) > 5.0) {
 				throw new TropDeCoursExecption();
 			}
 			addCours(c);

@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class FactureFen extends Stage {
 
     private static modele.Personne lapersonne;
+
     private controleur.FactureControllerClass ctrl;
 
     public FactureFen(modele.Personne personne) throws IOException {
@@ -22,32 +23,25 @@ public class FactureFen extends Stage {
 
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
+        this.close();
     }
 
     private Pane creerSceneGraph() throws IOException {
+        File fichier;
 
-        File fichier = new File("src/vue/full_facture.fxml");
+        if (lapersonne.getEtatArchivage() == false) {
+            fichier = new File("src/vue/full_facture.fxml");
+        } else {
+            fichier = new File("src/vue/factureArchiver.fxml");
+        }
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
         ctrl = loader.getController();
 
         ctrl.initialize(lapersonne);
+
         return racine;
     }
 
-    public modele.Personne getPersonne() {
-        return lapersonne;
-    }
-
-    public static void ouvrirFacture() {
-        try {
-
-            LaFactureFen facture = new LaFactureFen(lapersonne);
-            facture.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
