@@ -103,9 +103,9 @@
                <columns>
                   <TableColumn fx:id="nom" prefWidth="100.0" text="Nom" />
                   <TableColumn fx:id="prenom" prefWidth="100.0" text="Prénom" />
-                  <TableColumn fx:id="prenom1" prefWidth="100.0" text="Status" />
-                  <TableColumn prefWidth="100.0" text="Montant Dû" />
-                  <TableColumn prefWidth="100.0" text="Montant Payé" />
+                  <TableColumn fx:id="status" prefWidth="100.0" text="Status" />
+                  <TableColumn fx:id="montantDu" prefWidth="100.0" text="Montant Dû" />
+                  <TableColumn fx:id="montantPaye" prefWidth="100.0" text="Montant Payé" />
                </columns>
             </TableView>
          </center>

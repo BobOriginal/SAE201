@@ -8,13 +8,14 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import modele.InfoTabView;
 import modele.Main;
-import modele.Personne;
 
 public class PagePrincpaleControllerClass {
-    
+
     @FXML
-    private TableView<Personne> tvListePersonne;
+    private TableView<InfoTabView> tvListePersonne;
+    
     @FXML
     private Button Ouvrir_Cotisation;
 
@@ -29,7 +30,22 @@ public class PagePrincpaleControllerClass {
 
     @FXML
     private Button Quitter;
+    
+    @FXML
+    private TableColumn<InfoTabView, String> nom;
 
+    @FXML
+    private TableColumn<InfoTabView, String> prenom;
+
+    @FXML
+    private TableColumn<InfoTabView, Double> montantPaye;
+
+    @FXML
+    private TableColumn<InfoTabView, String> status;
+
+    @FXML
+    private TableColumn<InfoTabView, Double> montantDu;
+        
     public void quitter() {
         System.out.println("Fenetre fermer correctement...");
         System.exit(0);
@@ -53,15 +69,22 @@ public class PagePrincpaleControllerClass {
         Main.fermerMain(event);
     }
     public void initialize(){
-        TableColumn<Personne,String> colonne1 = new TableColumn<Personne,String>("Nom");
-		colonne1.setCellValueFactory(new PropertyValueFactory<Personne,String>("nom"));
-        tvListePersonne.getColumns().set(0,colonne1);
-        TableColumn<Personne,String> colonne2 = new TableColumn<Personne,String>("Prénom");
-		colonne2.setCellValueFactory(new PropertyValueFactory<Personne,String>("prenom"));
-        tvListePersonne.getColumns().set(1,colonne2);
-        TableColumn<Personne,String> colonne3 = new TableColumn<Personne,String>("Statut");
-		colonne3.setCellValueFactory(new PropertyValueFactory<Personne,String>("status"));
-        tvListePersonne.getColumns().set(2,colonne3);
+        // Permet d'ajouter les colonnes et un nom pour chaque en-tete
+        
+		nom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
+        tvListePersonne.getColumns().set(0,nom);
+		prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("prenom"));
+        tvListePersonne.getColumns().set(1,prenom);
+		status.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("status"));
+        tvListePersonne.getColumns().set(2,status);
+		montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montant"));
+        tvListePersonne.getColumns().set(3,montantDu);
+		montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("paiementEffectuer"));
+        tvListePersonne.getColumns().set(4,montantPaye);
+
+        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
+        tvListePersonne.setItems(Main.getLesInfo());
+        tvListePersonne.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         Ouvrir_Liste.setDisable(true);
     }
