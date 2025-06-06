@@ -4,9 +4,13 @@ public class Personne_Montant {
     
     private double montantDu;
     private double montantPaye;
-    private Personne pers;
-    public Personne_Montant(Personne pers , double montantDu , double montantPaye){
-        this.pers = pers;
+    private String nom;
+    private String prenom;
+    private String status;
+    public Personne_Montant(Personne pers, double montantDu , double montantPaye){
+        this.nom = pers.getNom();
+        this.prenom = pers.getPrenom();
+        this.status = pers.getStatus();
         this.montantDu = montantDu;
         this.montantPaye = montantPaye;
     }
@@ -23,11 +27,28 @@ public class Personne_Montant {
     public void setMontantPaye(double montantPaye) {
         this.montantPaye = montantPaye;
     }
-    public Personne getPers() {
-        return pers;
+
+    public String getNom() {
+        return nom;
     }
-    public void setPers(Personne pers) {
-        this.pers = pers;
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
-    
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

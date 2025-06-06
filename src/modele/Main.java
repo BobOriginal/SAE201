@@ -28,17 +28,18 @@ public class Main extends Application {
 	
 	public static ObservableList<Personne_Montant> getLesEmployes() throws StatusException{
 		try {
-			listPersonne.add(new Personne_Montant(new Personne("test1", "test","non inscrit"),0.00,34.4));
-			listPersonne.add(new Personne_Montant(new Personne("test2", "test","non inscrit"),32.45,0.00));
-			listPersonne.add(new Personne_Montant(new Personne("test3", "test","non inscrit"),0.00,34.4));
-			listPersonne.add(new Personne_Montant(new Personne("test4", "test","non inscrit"),32.45,0.00));
-			listPersonne.add(new Personne_Montant(new Personne("test5", "test","non inscrit"),0.00,0.00));
-			listPersonne.add(new Personne_Montant(new Personne("test6", "test","non inscrit"),32.45,34.4));
-			listPersonne.add(new Personne_Montant(new Personne("test7", "test","non inscrit"),0.00,0.00));
-			listPersonne.add(new Personne_Montant(new Personne("test8", "test","non inscrit"),32.45,34.4));
-			listPersonne.add(new Personne_Montant(new Personne("test9", "test","non inscrit"),32.45,0.00));
-			listPersonne.add(new Personne_Montant(new Personne("test10", "test","non inscrit"),0.00,34.4));
-			listPersonne.add(new Personne_Montant(new Personne("test11", "test","non inscrit"),32.45,0.00));
+			Personne p1 = new Personne("test4", "test","non inscrit");
+			listPersonne.add(new Personne_Montant(p1,0,23.3));
+			listPersonne.add(new Personne_Montant(p1,23.30,0));
+			listPersonne.add(new Personne_Montant(p1,0,23.3));
+			listPersonne.add(new Personne_Montant(p1,23.30,0));
+			listPersonne.add(new Personne_Montant(p1,0,23.3));
+			listPersonne.add(new Personne_Montant(p1,23.30,0));
+			listPersonne.add(new Personne_Montant(p1,0,23.3));
+			listPersonne.add(new Personne_Montant(p1,23.30,0));
+			listPersonne.add(new Personne_Montant(p1,0,23.3));
+			listPersonne.add(new Personne_Montant(p1,23.30,0)	);
+			listPersonne.add(new Personne_Montant(p1,0,23.3));
         } catch (StatusException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
