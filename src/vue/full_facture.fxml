@@ -170,16 +170,6 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label text="Reste a payer :">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="Reste_Payer_Resumer" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
                               <Label text="Mode paiement : ">
                                  <font>
                                     <Font size="15.0" />

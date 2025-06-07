@@ -100,9 +100,6 @@ public class CtrlFacture {
     private TextField Regler_Par_Resumer;
 
     @FXML
-    private TextField Reste_Payer_Resumer;
-
-    @FXML
     private Label Sexe_Nom_Prenom_Val;
 
     @FXML
@@ -210,6 +207,7 @@ public class CtrlFacture {
 
         Sexe_Nom_Prenom_Val.textProperty().bind(value);
 
+        Montant_Payer_Resumer.textProperty().bind(personne.getMaCotisation().getTotal());
     }
 
     public void quitter() {
@@ -234,7 +232,7 @@ public class CtrlFacture {
     }
 
     public void modifierGenre() {
-
+        sexeDestinataire.set(sexeDestinataire.get().equals("Mme") ? "Mr" : "Mme");
     }
 
     public void enableDisable(boolean val) {
@@ -245,7 +243,6 @@ public class CtrlFacture {
         Regler_Par_Resumer.setDisable(val);
         Adresse_Resumer.setDisable(val);
         Montant_Payer_Resumer.setDisable(val);
-        Reste_Payer_Resumer.setDisable(val);
         Mode_Paiement_Resumer.setDisable(val);
         Prenom_Resumer.setDisable(val);
         Ville_Resumer.setDisable(val);
