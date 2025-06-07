@@ -1,5 +1,8 @@
 package controleur;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
@@ -13,6 +16,10 @@ public class CtrlPrincipale {
 
     @FXML
     private TableView<Personne> tvListePersonne;
+
+    @FXML
+    private Button Bouton_Archive;
+
     @FXML
     private Button Ouvrir_Cotisation;
 
@@ -40,6 +47,34 @@ public class CtrlPrincipale {
         TableColumn<Personne, String> colonne3 = new TableColumn<Personne, String>("Statut");
         colonne3.setCellValueFactory(new PropertyValueFactory<Personne, String>("status"));
         tvListePersonne.getColumns().set(2, colonne3);
+    }
+
+    @FXML
+    void archive(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cotisation(ActionEvent event) throws IOException {
+        Main.ouvrirCotisation(event);
+        Main.fermerPagePrincipale(event);
+    }
+
+    @FXML
+    void facturation(ActionEvent event) throws IOException {
+        Main.ouvrirFacture(event);
+        Main.fermerPagePrincipale(event);
+    }
+
+    @FXML
+    void quitter(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    void rappel(ActionEvent event) throws IOException {
+        Main.ouvrirRappel(event);
+        Main.fermerPagePrincipale(event);
     }
 
 }

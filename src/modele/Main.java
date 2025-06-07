@@ -30,7 +30,7 @@ public class Main extends Application {
 		fenPrincipal = new FenPrincipale();
 		fenEmail = new FenEmail();
 		fenRappel = new FenRappel();
-		fenFacture.show();
+		fenPrincipal.show();
 	}
 
 	public static void main(String args[]) {
@@ -61,12 +61,12 @@ public class Main extends Application {
 		fenRappel.show();
 	}
 
-	public static void ouvrirEmail(ActionEvent event) throws IOException {
-		fenEmail.show();
-	}
-
 	public static void fermerRappel(ActionEvent event) throws IOException {
 		fenRappel.close();
+	}
+
+	public static void ouvrirEmail(ActionEvent event) throws IOException {
+		fenEmail.show();
 	}
 
 	public static void fermerEmail(ActionEvent event) throws IOException {
@@ -77,11 +77,31 @@ public class Main extends Application {
 		fenArchiver.show();
 	}
 
+	public static void fermerArchiver(ActionEvent event) throws IOException {
+		fenArchiver.close();
+	}
+
+	public static void ouvrirFacture(ActionEvent event) throws IOException {
+		fenFacture.show();
+	}
+
 	public static void fermerFacture(ActionEvent event) throws IOException {
 		fenFacture.close();
 	}
 
 	public static void ouvrirPagePrincipale(ActionEvent event) throws IOException {
 		fenPrincipal.show();
+	}
+
+	public static void fermerPagePrincipale(ActionEvent event) throws IOException {
+		fenPrincipal.close();
+	}
+
+	public static void ouvrirCotisation(ActionEvent event) throws IOException {
+		fenCotisationAnnuelle.show();
+	}
+
+	public static void fermerCotisation(ActionEvent event) throws IOException {
+		fenCotisationAnnuelle.close();
 	}
 }

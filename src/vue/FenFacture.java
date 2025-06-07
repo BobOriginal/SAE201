@@ -29,7 +29,7 @@ public class FenFacture extends Stage {
     private Pane creerSceneGraph() throws IOException {
         File fichier;
 
-        fichier = new File("src/vue/page_facture.fxml");
+        fichier = new File("src/vue/page_facture_2.fxml");
 
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());

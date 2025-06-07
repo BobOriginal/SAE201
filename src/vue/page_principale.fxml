@@ -30,7 +30,7 @@
             </Label>
             <VBox layoutY="221.0" prefHeight="160.0" prefWidth="312.0" spacing="25.0">
                <children>
-                  <Button fx:id="Ouvrir_Rappel" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
+                  <Button fx:id="Ouvrir_Rappel" minHeight="33.0" mnemonicParsing="false" onAction="#rappel" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -38,12 +38,12 @@
                         <Point3D />
                      </rotationAxis>
                   </Button>
-                  <Button fx:id="Ouvrir_Cotisation" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
+                  <Button fx:id="Ouvrir_Cotisation" minHeight="33.0" mnemonicParsing="false" onAction="#cotisation" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="Ouvrir_Facture" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
+                  <Button fx:id="Ouvrir_Facture" minHeight="33.0" mnemonicParsing="false" onAction="#facturation" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -104,7 +104,7 @@
                         <TableColumn prefWidth="100.0" text="Montant Payé" />
                      </columns>
                   </TableView>
-                  <Button fx:id="Ouvrir_Rappel1" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Afficher l'archive">
+                  <Button fx:id="Bouton_Archive" minHeight="33.0" mnemonicParsing="false" onAction="#archive" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Afficher l'archive">
                      <font>
                         <Font size="15.0" />
                      </font>
