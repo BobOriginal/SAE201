@@ -1,5 +1,6 @@
 package controleur;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -141,11 +142,14 @@ public class CtrlFacture {
     }
 
     @FXML
-    void archiver(ActionEvent event) {
+    void archiver(ActionEvent event) throws IOException {
         personne.setEtatArchivage(true);
         modele.Facture facture = new Facture(personne);
         Donnee.listeFacture.ajouterArchive(facture);
         Numero_Val.setText(" " + facture.getNumero());
+
+        Main.ouvrirPagePrincipale(event);
+        Main.fermerFacture(event);
     }
 
     @FXML
@@ -213,6 +217,7 @@ public class CtrlFacture {
         Mode_Paiement_Resumer.textProperty().bindBidirectional(personne.getMaCotisation().typePaiementProperty());
         Mode_Paiement_Val.textProperty().bind(personne.getMaCotisation().typePaiementProperty());
 
+        // Tableau pas encore fonctionnel
         TableColumn<Personne, String> colonne1 = new TableColumn<Personne, String>("Description");
         colonne1.setCellValueFactory(new PropertyValueFactory<Personne, String>("Description"));
         Tableau.getColumns().set(0, colonne1);

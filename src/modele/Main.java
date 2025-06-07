@@ -7,7 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import vue.FactureFen;
+import vue.FenFacture;
+import vue.FenArchiver;
 import vue.FenCotisationAnnuelle;
 import vue.FenEmail;
 import vue.FenPrincipale;
@@ -16,14 +17,16 @@ import vue.FenRappel;
 public class Main extends Application {
 	static private ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
 	private static FenCotisationAnnuelle fenCotisationAnnuelle;
-	private static FactureFen fenFacture;
+	private static FenFacture fenFacture;
 	private static FenPrincipale fenPrincipal;
 	private static FenEmail fenEmail;
 	private static FenRappel fenRappel;
+	private static FenArchiver fenArchiver;
 
 	public void start(Stage f) throws Exception {
 		fenCotisationAnnuelle = new FenCotisationAnnuelle();
-		fenFacture = new FactureFen();
+		fenArchiver = new FenArchiver();
+		fenFacture = new FenFacture();
 		fenPrincipal = new FenPrincipale();
 		fenEmail = new FenEmail();
 		fenRappel = new FenRappel();
@@ -68,5 +71,17 @@ public class Main extends Application {
 
 	public static void fermerEmail(ActionEvent event) throws IOException {
 		fenEmail.close();
+	}
+
+	public static void ouvrirArchiver(ActionEvent event) throws IOException {
+		fenArchiver.show();
+	}
+
+	public static void fermerFacture(ActionEvent event) throws IOException {
+		fenFacture.close();
+	}
+
+	public static void ouvrirPagePrincipale(ActionEvent event) throws IOException {
+		fenPrincipal.show();
 	}
 }

@@ -8,15 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class FactureFen extends Stage {
+public class FenArchiver extends Stage {
 
-    private static modele.Personne lapersonne;
-
-    private controleur.CtrlFacture ctrl;
-
-    public FactureFen() throws IOException {
-
-        lapersonne = modele.Donnee.getUnePersonne(0);
+    public FenArchiver() throws IOException {
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(true);
@@ -29,19 +23,12 @@ public class FactureFen extends Stage {
     private Pane creerSceneGraph() throws IOException {
         File fichier;
 
-        if (lapersonne.getEtatArchivage() == false) {
-            fichier = new File("src/vue/page_facture.fxml");
-        } else {
-            fichier = new File("src/vue/page_archiver.fxml");
-        }
+        fichier = new File("src/vue/page_archiver.fxml");
+
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
-        ctrl = loader.getController();
-
-        ctrl.initialize(lapersonne);
 
         return racine;
     }
-
 }
