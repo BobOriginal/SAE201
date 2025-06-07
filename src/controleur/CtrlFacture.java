@@ -207,7 +207,7 @@ public class CtrlFacture {
 
         Sexe_Nom_Prenom_Val.textProperty().bind(value);
 
-        Montant_Payer_Resumer.textProperty().bind(personne.getMaCotisation().getTotal());
+        Montant_Payer_Resumer.textProperty().bind(Bindings.convert(personne.getMaCotisation().totalProperty()));
     }
 
     public void quitter() {

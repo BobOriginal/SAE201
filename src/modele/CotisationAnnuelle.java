@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class CotisationAnnuelle {
@@ -12,14 +14,14 @@ public class CotisationAnnuelle {
 
 	private int id;
 	private int annee;
-	private IntegerProperty total;
-	private StringProperty typePaiment;
-	private IntegerProperty dejaPayer;
-	private IntegerProperty resteAPayer;
+	private IntegerProperty total = new SimpleIntegerProperty();
+	private StringProperty typePaiment = new SimpleStringProperty();
+	private IntegerProperty dejaPayer = new SimpleIntegerProperty();
+	private IntegerProperty resteAPayer = new SimpleIntegerProperty();
 	private ArrayList<Boolean> aPayer3fois = new ArrayList<Boolean>(3);
 	private ArrayList<Integer> prixCours = new ArrayList<Integer>();
 	private ArrayList<Boolean> aPayersCours = new ArrayList<Boolean>();
-	private IntegerProperty dejaPayerCour;
+	private IntegerProperty dejaPayerCour = new SimpleIntegerProperty();
 
 	public CotisationAnnuelle(int annee, String typePaiment, Personne p) {
 		super();
