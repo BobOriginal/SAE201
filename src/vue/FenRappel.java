@@ -7,9 +7,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class PageRappelFen extends Stage {
+public class FenRappel extends Stage {
 
-    public PageRappelFen() throws IOException {
+    public FenRappel() throws IOException {
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(true);

@@ -8,11 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class PagePrincipaleFen extends Stage {
+public class FenPrincipale extends Stage {
 
     private controleur.CtrlPrincipale ctrl;
 
-    public PagePrincipaleFen() throws IOException {
+    public FenPrincipale() throws IOException {
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(true);

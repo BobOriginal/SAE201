@@ -9,24 +9,24 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import vue.FactureFen;
 import vue.FenCotisationAnnuelle;
-import vue.PageEmailFen;
-import vue.PagePrincipaleFen;
-import vue.PageRappelFen;
+import vue.FenEmail;
+import vue.FenPrincipale;
+import vue.FenRappel;
 
 public class Main extends Application {
 	static private ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
 	private static FenCotisationAnnuelle fenCotisationAnnuelle;
 	private static FactureFen fenFacture;
-	private static PagePrincipaleFen fenPrincipal;
-	private static PageEmailFen fenEmail;
-	private static PageRappelFen fenRappel;
+	private static FenPrincipale fenPrincipal;
+	private static FenEmail fenEmail;
+	private static FenRappel fenRappel;
 
 	public void start(Stage f) throws Exception {
 		fenCotisationAnnuelle = new FenCotisationAnnuelle();
 		fenFacture = new FactureFen();
-		fenPrincipal = new PagePrincipaleFen();
-		fenEmail = new PageEmailFen();
-		fenRappel = new PageRappelFen();
+		fenPrincipal = new FenPrincipale();
+		fenEmail = new FenEmail();
+		fenRappel = new FenRappel();
 		fenFacture.show();
 	}
 

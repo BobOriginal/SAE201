@@ -1,4 +1,5 @@
 package vue;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -6,11 +7,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class PageEmailFen extends Stage{
+public class FenEmail extends Stage {
 
-
-
-    public PageEmailFen() throws IOException {
+    public FenEmail() throws IOException {
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(false);
@@ -26,6 +25,6 @@ public class PageEmailFen extends Stage{
         Pane racine = loader.load();
 
         return racine;
-    
+
     }
 }
