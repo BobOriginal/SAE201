@@ -81,9 +81,9 @@
       </Pane>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="588.0" style="-fx-background-color: #D9D9D9;">
          <top>
-            <HBox prefHeight="0.0" prefWidth="200.0" spacing="95.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="0.0" prefWidth="200.0" spacing="45.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="224.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="77.0" prefWidth="278.0" spacing="10.0">
                      <children>
                         <Label fx:id="Nom_Etudiant" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="255.0" text="étudiant actuel">
                            <font>
@@ -91,6 +91,7 @@
                            </font>
                         </Label>
                         <Button fx:id="Changer_Eleve_Button" mnemonicParsing="false" onAction="#changer_eleve" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Changer élève" />
+                        <Label text="Prévisulatiation" underline="true" />
                      </children>
                   </VBox>
                   <Label alignment="CENTER" contentDisplay="CENTER" text="Modifier la facture" underline="true">
@@ -113,7 +114,7 @@
                         <Button fx:id="Modifier_Button" mnemonicParsing="false" onAction="#modifier" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Modifier" />
                      </children>
                   </HBox>
-                  <VBox prefHeight="176.0" prefWidth="120.0" spacing="10.0">
+                  <VBox prefHeight="176.0" prefWidth="120.0" spacing="20.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0">
                            <children>
@@ -160,12 +161,12 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label text="Montant payer :">
+                              <Label text="Total : ">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="Montant_Payer_Resumer" />
+                              <TextField fx:id="Total_Resumer" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -225,7 +226,7 @@
          <left>
             <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="303.0" style="-fx-background-color: white;">
+                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="303.0" style="-fx-background-color: white;">
                      <top>
                         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
                            <children>
@@ -256,7 +257,7 @@
                               </VBox>
                               <VBox prefHeight="148.0" prefWidth="137.0">
                                  <children>
-                                    <ImageView fitHeight="70.0" fitWidth="84.0">
+                                    <ImageView fitHeight="61.0" fitWidth="66.0">
                                        <image>
                                           <Image url="@../../sources/dancing_people.png" />
                                        </image>
@@ -301,11 +302,11 @@
                               </HBox>
                               <BorderPane prefHeight="200.0" prefWidth="200.0">
                                  <center>
-                                    <TableView fixedCellSize="1.0" prefHeight="44.0" prefWidth="259.0" BorderPane.alignment="CENTER">
+                                    <TableView fx:id="Tableau" fixedCellSize="1.0" prefHeight="129.0" prefWidth="243.0" BorderPane.alignment="CENTER">
                                        <columns>
-                                          <TableColumn fx:id="Description_Col" prefWidth="73.0" style="-fx-background-color: white;" text="Description" />
-                                          <TableColumn fx:id="Nombre_Heure_Col" prefWidth="115.0" style="-fx-background-color: white;" text="Nombre d'heure" />
-                                          <TableColumn fx:id="Prix_Col" prefWidth="51.0" style="-fx-background-color: white;" text="prix" />
+                                          <TableColumn prefWidth="73.0" style="-fx-background-color: white;" text="Description" />
+                                          <TableColumn prefWidth="115.0" style="-fx-background-color: white;" text="Nombre d'heure" />
+                                          <TableColumn prefWidth="51.0" style="-fx-background-color: white;" text="prix" />
                                        </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -316,9 +317,9 @@
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
                               </BorderPane>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <HBox alignment="TOP_RIGHT" prefHeight="0.0" prefWidth="200.0">
+                                    <HBox alignment="CENTER" prefHeight="69.0" prefWidth="210.0">
                                        <children>
                                           <VBox prefHeight="44.0" prefWidth="95.0">
                                              <children>
@@ -337,7 +338,7 @@
                                                 <Insets />
                                              </HBox.margin>
                                              <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                <Insets bottom="5.0" right="5.0" top="5.0" />
                                              </padding>
                                           </VBox>
                                           <VBox prefHeight="44.0" prefWidth="94.0">
@@ -362,27 +363,27 @@
                                           <Insets />
                                        </VBox.margin>
                                        <padding>
-                                          <Insets left="5.0" right="5.0" top="5.0" />
+                                          <Insets right="5.0" top="5.0" />
                                        </padding>
                                     </HBox>
-                                    <HBox alignment="TOP_RIGHT" prefHeight="0.0" prefWidth="200.0">
+                                    <HBox prefHeight="22.0" prefWidth="2010.0">
                                        <children>
                                           <Label text="Mode de paiement">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
                                           </Label>
-                                          <Label fx:id="Mode_Paiement_Val" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="78.0" text=": mode">
+                                          <Label fx:id="Mode_Paiement_Val" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="166.0" text=": mode">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
                                        </children>
                                        <VBox.margin>
-                                          <Insets left="50.0" />
+                                          <Insets />
                                        </VBox.margin>
                                        <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" />
+                                          <Insets bottom="5.0" right="5.0" />
                                        </padding>
                                     </HBox>
                                  </children>

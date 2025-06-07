@@ -13,10 +13,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.converter.NumberStringConverter;
 import modele.Donnee;
 import modele.Facture;
 import modele.Main;
+import modele.Personne;
 
 public class CtrlFacture {
 
@@ -55,9 +59,6 @@ public class CtrlFacture {
     private Label Date_Val;
 
     @FXML
-    private TableColumn<?, ?> Description_Col;
-
-    @FXML
     private Button Facturation_Button;
 
     @FXML
@@ -73,7 +74,7 @@ public class CtrlFacture {
     private Button Modifier_Button;
 
     @FXML
-    private TextField Montant_Payer_Resumer;
+    private TextField Total_Resumer;
 
     @FXML
     private Label Montant_Payer_Val;
@@ -82,13 +83,7 @@ public class CtrlFacture {
     private Label Nom_Etudiant;
 
     @FXML
-    private TableColumn<?, ?> Nombre_Heure_Col;
-
-    @FXML
     private Label Numero_Val;
-
-    @FXML
-    private TableColumn<?, ?> Prix_Col;
 
     @FXML
     private Button Quitter_Button;
@@ -131,6 +126,9 @@ public class CtrlFacture {
 
     @FXML
     private RadioButton Madame;
+
+    @FXML
+    private TableView<Personne> Tableau;
 
     @FXML
     void AllerAuRappel(ActionEvent event) {
@@ -207,7 +205,26 @@ public class CtrlFacture {
 
         Sexe_Nom_Prenom_Val.textProperty().bind(value);
 
-        Montant_Payer_Resumer.textProperty().bind(Bindings.convert(personne.getMaCotisation().totalProperty()));
+        NumberStringConverter converter = new NumberStringConverter();
+        Bindings.bindBidirectional(Total_Resumer.textProperty(), personne.getMaCotisation().totalProperty(),
+                converter);
+        Total_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().totalProperty()));
+        Montant_Payer_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().ResteApayerProperty()));
+        Mode_Paiement_Resumer.textProperty().bindBidirectional(personne.getMaCotisation().typePaiementProperty());
+        Mode_Paiement_Val.textProperty().bind(personne.getMaCotisation().typePaiementProperty());
+
+        TableColumn<Personne, String> colonne1 = new TableColumn<Personne, String>("Description");
+        colonne1.setCellValueFactory(new PropertyValueFactory<Personne, String>("Description"));
+        Tableau.getColumns().set(0, colonne1);
+
+        TableColumn<Personne, String> colonne2 = new TableColumn<Personne, String>("Nombre d'heure");
+        colonne2.setCellValueFactory(new PropertyValueFactory<Personne, String>("Nombre d'heure"));
+        Tableau.getColumns().set(1, colonne2);
+
+        TableColumn<Personne, String> colonne3 = new TableColumn<Personne, String>("prix");
+        colonne3.setCellValueFactory(new PropertyValueFactory<Personne, String>("prix"));
+        Tableau.getColumns().set(2, colonne3);
+
     }
 
     public void quitter() {
@@ -242,7 +259,7 @@ public class CtrlFacture {
         Enregistrer_Button.setDisable(val);
         Regler_Par_Resumer.setDisable(val);
         Adresse_Resumer.setDisable(val);
-        Montant_Payer_Resumer.setDisable(val);
+        Total_Resumer.setDisable(val);
         Mode_Paiement_Resumer.setDisable(val);
         Prenom_Resumer.setDisable(val);
         Ville_Resumer.setDisable(val);

@@ -30,9 +30,9 @@ public class FactureFen extends Stage {
         File fichier;
 
         if (lapersonne.getEtatArchivage() == false) {
-            fichier = new File("src/vue/full_facture.fxml");
+            fichier = new File("src/vue/page_facture.fxml");
         } else {
-            fichier = new File("src/vue/factureArchiver.fxml");
+            fichier = new File("src/vue/page_archiver.fxml");
         }
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());

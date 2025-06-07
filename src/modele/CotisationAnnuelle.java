@@ -116,12 +116,20 @@ public class CotisationAnnuelle {
 		return typePaiment.get();
 	}
 
+	public StringProperty typePaiementProperty() {
+		return typePaiment;
+	}
+
 	public Integer getDejaPayer() {
 		return dejaPayer.get();
 	}
 
 	public Integer getResteAPayer() {
 		return resteAPayer.get();
+	}
+
+	public IntegerProperty ResteApayerProperty() {
+		return resteAPayer;
 	}
 
 	public ArrayList<Boolean> getaPayer3fois() {
