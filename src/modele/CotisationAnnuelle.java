@@ -1,10 +1,8 @@
 package modele;
 
-<<<<<<< HEAD
 import java.util.Iterator;
-=======
+
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -27,7 +25,6 @@ public class CotisationAnnuelle {
 	private IntegerProperty dejaPayerCour = new SimpleIntegerProperty();
 
 	public CotisationAnnuelle(int annee, String typePaiment, Personne p) {
-		super();
 		this.annee = annee;
 		this.typePaiment.set(typePaiment);
 		if (typePaiment == PAIMENT_MULTIPLE) {
@@ -163,45 +160,4 @@ public class CotisationAnnuelle {
 	public Integer getDejaPayerCour() {
 		return dejaPayerCour.get();
 	}
->>>>>>> Tom
-
-public class CotisationAnnuelle {
-	private int id;
-	private int annee;
-	private Double total;
-	private String typePaiment;
-	private Double dejaPayer;
-	private Double resteAPayer;
-	private Personne personne;
-	
-	public CotisationAnnuelle(int annee, String typePaiment, Personne personne) {
-		super();
-		this.annee = annee;
-		this.typePaiment = typePaiment;
-		this.personne = personne;
-		calculTotal();
-		resteAPayer = total;
-	}
-	
-	private void calculTotal() {
-		Integer res = Tarif.prixInscription;
-		if(personne.getStatus() == Personne.ELEVE_PLEIN_TARIF) {
-			Iterator<Cours> iter = personne.getMesCours().iterator();
-			while(iter.hasNext()) {
-				res = res + Tarif.prixCourPleinTarif.get(iter.next().getNbHeure());
-			}
-		}else if(personne.getStatus() == Personne.ELEVE_TARIF_REDUIT) {
-			Iterator<Cours> iter = personne.getMesCours().iterator();
-			while(iter.hasNext()) {
-				res = res + Tarif.prixCourTarifReduit.get(iter.next().getNbHeure());
-			}	
-		}else {
-			res = res + Tarif.prixNonInscrit;
-		}
-	}
-	
-	private void payer(Double prix) {
-		resteAPayer -= prix; 
-	}
-	
 }

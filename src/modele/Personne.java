@@ -1,11 +1,6 @@
 package modele;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
-
-import Exceptions.DoublonCoursException;
-import Exceptions.StatusException;
-=======
 import java.util.Calendar;
 
 import Exceptions.DoublonCoursException;
@@ -16,39 +11,13 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
->>>>>>> Tom
 
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
 	final static String ELEVE_PLEIN_TARIF = "plein tarif";
 	final static String NON_INSCRIT = "non inscrit";
 	private int id;
-<<<<<<< HEAD
-	private String nom;
-	private String prenom;
-	private String status;
-	private ArrayList<Cours> mesCours;
-	private ArrayList<CotisationAnnuelle> mesCotisation;
-	static int nbPersonne = 0;
 
-	public Personne(String nom, String prenom, String status) throws StatusException {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		if (status == ELEVE_TARIF_REDUIT ||
-				status == ELEVE_PLEIN_TARIF ||
-				status == NON_INSCRIT) {
-			this.status = status;
-		} else {
-			throw new StatusException();
-		}
-		id = nbPersonne;
-		nbPersonne++;
-		mesCours = new ArrayList<Cours>();
-	}
-
-	public String getNom() {
-=======
 	private StringProperty nom = new SimpleStringProperty();
 	private StringProperty prenom = new SimpleStringProperty();
 	private StringProperty status = new SimpleStringProperty();
@@ -93,17 +62,11 @@ public class Personne {
 	}
 
 	public StringProperty nomProperty() {
->>>>>>> Tom
 		return nom;
 	}
 
 	public void setNom(String nom) {
-<<<<<<< HEAD
-		this.nom = nom;
-	}
 
-	public String getPrenom() {
-=======
 		this.nom.set(nom);
 	}
 
@@ -112,17 +75,10 @@ public class Personne {
 	}
 
 	public StringProperty prenomProperty() {
->>>>>>> Tom
 		return prenom;
 	}
 
 	public void setPrenom(String prenom) {
-<<<<<<< HEAD
-		this.prenom = prenom;
-	}
-
-	public String getStatus() {
-=======
 		this.prenom.set(prenom);
 	}
 
@@ -131,16 +87,12 @@ public class Personne {
 	}
 
 	public StringProperty statusProperty() {
->>>>>>> Tom
 		return status;
 	}
 
 	public void setStatus(String status) {
-<<<<<<< HEAD
-		this.status = status;
-=======
+
 		this.status.set(status);
->>>>>>> Tom
 	}
 
 	public int getId() {
@@ -155,10 +107,6 @@ public class Personne {
 		return mesCours;
 	}
 
-<<<<<<< HEAD
-	private void addCours(Cours c) {
-		mesCours.add(c);
-=======
 	public Double getNbHeureCours() {
 		return nbHeureCours.get();
 	}
@@ -209,7 +157,6 @@ public class Personne {
 		maCotisation.calculTotal(this);
 		maCotisation.calculPrixCour(this);
 		maCotisation.calculdejaPayerCour(this);
->>>>>>> Tom
 	}
 
 	public void ajouterUnCours(Cours c) {
@@ -218,25 +165,19 @@ public class Personne {
 				throw new NullPointerException();
 			} else if (mesCours.contains(c)) {
 				throw new DoublonCoursException();
-<<<<<<< HEAD
-=======
+
 			} else if (status.get().equals(NON_INSCRIT)) {
 				throw new StatusException();
 			} else if (status.get().equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
 				throw new TropDeCoursExecption();
 			} else if (status.get().equals(ELEVE_TARIF_REDUIT) && ((nbHeureCours.get()) + c.getNbHeure()) > 5.0) {
 				throw new TropDeCoursExecption();
->>>>>>> Tom
 			}
 			addCours(c);
 		} catch (NullPointerException e) {
 			System.out.println("Cours valeur null");
 		} catch (DoublonCoursException e) {
-<<<<<<< HEAD
-		}
-	}
 
-=======
 		} catch (StatusException e) {
 			System.out.println("On ne peux pas ajouter un cours a une personne non inscrit");
 		} catch (TropDeCoursExecption e) {
@@ -258,5 +199,4 @@ public class Personne {
 				+ ", adresse=" + adresse + "]";
 	}
 
->>>>>>> Tom
 }
