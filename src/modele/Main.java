@@ -27,7 +27,7 @@ public class Main extends Application {
 		fenPrincipal = new PagePrincipaleFen();
 		fenEmail = new PageEmailFen();
 		fenRappel = new PageRappelFen();
-		fenFacture.show();
+		fenPrincipal.show();
 	}
 
 	public static void main(String args[]) {

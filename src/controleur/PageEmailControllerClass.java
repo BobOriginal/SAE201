@@ -33,12 +33,13 @@ public class PageEmailControllerClass {
 
     @FXML
     private TextField tfObjet;
-    
+
     @FXML
     private TextField tfDestinataires;
-    
+
     @FXML
     private TextArea taContenu;
+
     @FXML
     void quitter(ActionEvent event) {
         System.out.println("Fenetre fermer correctement...");
@@ -56,10 +57,10 @@ public class PageEmailControllerClass {
         Main.ouvrirRappel(event);
     }
 
-    public void initialize(){
-        BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty()).or(taContenu.textProperty().isEmpty());
-		bnEnvoyer.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
+    public void initialize() {
+        BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty())
+                .or(taContenu.textProperty().isEmpty());
+        bnEnvoyer.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
         bnRappel.setDisable(true);
     }
 }
-
