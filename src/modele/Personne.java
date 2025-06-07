@@ -1,15 +1,29 @@
 package modele;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 import Exceptions.DoublonCoursException;
 import Exceptions.StatusException;
+=======
+import java.util.Calendar;
+
+import Exceptions.DoublonCoursException;
+import Exceptions.StatusException;
+import Exceptions.TropDeCoursExecption;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+>>>>>>> Tom
 
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
 	final static String ELEVE_PLEIN_TARIF = "plein tarif";
 	final static String NON_INSCRIT = "non inscrit";
 	private int id;
+<<<<<<< HEAD
 	private String nom;
 	private String prenom;
 	private String status;
@@ -34,27 +48,99 @@ public class Personne {
 	}
 
 	public String getNom() {
+=======
+	private StringProperty nom = new SimpleStringProperty();
+	private StringProperty prenom = new SimpleStringProperty();
+	private StringProperty status = new SimpleStringProperty();
+	private StringProperty sexe = new SimpleStringProperty();
+	private ArrayList<Cours> mesCours;
+	private DoubleProperty nbHeureCours = new SimpleDoubleProperty();
+	private CotisationAnnuelle maCotisation;
+	static int nbPersonne = 0;
+	private StringProperty adresse = new SimpleStringProperty();
+	private StringProperty codePostal = new SimpleStringProperty();
+	private StringProperty ville = new SimpleStringProperty();
+	private boolean factureArchiver = false;
+
+	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe)
+			throws StatusException {
+		super();
+		ville.set(" lannion");
+		codePostal.set("22300");
+
+		this.nom.set(nom);
+		this.prenom.set(prenom);
+		this.adresse.set(adresse);
+		this.sexe.set(sexe);
+
+		nbHeureCours.set(0.0);
+		if (status == ELEVE_TARIF_REDUIT ||
+				status == ELEVE_PLEIN_TARIF ||
+				status == NON_INSCRIT) {
+			this.status.set(status);
+		} else {
+			throw new StatusException();
+		}
+		id = nbPersonne++;
+		mesCours = new ArrayList<Cours>();
+		Calendar c = Calendar.getInstance();
+		int year = c.get(Calendar.YEAR);
+		maCotisation = new CotisationAnnuelle(year, typePaiment, this);
+	}
+
+	public String getNom() {
+		return nom.get();
+	}
+
+	public StringProperty nomProperty() {
+>>>>>>> Tom
 		return nom;
 	}
 
 	public void setNom(String nom) {
+<<<<<<< HEAD
 		this.nom = nom;
 	}
 
 	public String getPrenom() {
+=======
+		this.nom.set(nom);
+	}
+
+	public String getPrenom() {
+		return prenom.get();
+	}
+
+	public StringProperty prenomProperty() {
+>>>>>>> Tom
 		return prenom;
 	}
 
 	public void setPrenom(String prenom) {
+<<<<<<< HEAD
 		this.prenom = prenom;
 	}
 
 	public String getStatus() {
+=======
+		this.prenom.set(prenom);
+	}
+
+	public String getStatus() {
+		return status.get();
+	}
+
+	public StringProperty statusProperty() {
+>>>>>>> Tom
 		return status;
 	}
 
 	public void setStatus(String status) {
+<<<<<<< HEAD
 		this.status = status;
+=======
+		this.status.set(status);
+>>>>>>> Tom
 	}
 
 	public int getId() {
@@ -69,8 +155,61 @@ public class Personne {
 		return mesCours;
 	}
 
+<<<<<<< HEAD
 	private void addCours(Cours c) {
 		mesCours.add(c);
+=======
+	public Double getNbHeureCours() {
+		return nbHeureCours.get();
+	}
+
+	public DoubleProperty nbHeureCoursProperty() {
+		return nbHeureCours;
+	}
+
+	public String getAdresse() {
+		return adresse.get();
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse.set(adresse);
+	}
+
+	public StringProperty adresseProperty() {
+		return adresse;
+	}
+
+	public CotisationAnnuelle getMaCotisation() {
+		return maCotisation;
+	}
+
+	public StringProperty sexeProperty() {
+		return sexe;
+	}
+
+	public StringProperty codePostalProperty() {
+		return codePostal;
+	}
+
+	public StringProperty villeProperty() {
+		return ville;
+	}
+
+	public boolean getEtatArchivage() {
+		return factureArchiver;
+	}
+
+	public void setEtatArchivage(boolean nouvelEtat) {
+		factureArchiver = nouvelEtat;
+	}
+
+	private void addCours(Cours c) {
+		mesCours.add(c);
+		nbHeureCours.set(nbHeureCours.get() + c.getNbHeure());
+		maCotisation.calculTotal(this);
+		maCotisation.calculPrixCour(this);
+		maCotisation.calculdejaPayerCour(this);
+>>>>>>> Tom
 	}
 
 	public void ajouterUnCours(Cours c) {
@@ -79,12 +218,45 @@ public class Personne {
 				throw new NullPointerException();
 			} else if (mesCours.contains(c)) {
 				throw new DoublonCoursException();
+<<<<<<< HEAD
+=======
+			} else if (status.get().equals(NON_INSCRIT)) {
+				throw new StatusException();
+			} else if (status.get().equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
+				throw new TropDeCoursExecption();
+			} else if (status.get().equals(ELEVE_TARIF_REDUIT) && ((nbHeureCours.get()) + c.getNbHeure()) > 5.0) {
+				throw new TropDeCoursExecption();
+>>>>>>> Tom
 			}
 			addCours(c);
 		} catch (NullPointerException e) {
 			System.out.println("Cours valeur null");
 		} catch (DoublonCoursException e) {
+<<<<<<< HEAD
 		}
 	}
 
+=======
+		} catch (StatusException e) {
+			System.out.println("On ne peux pas ajouter un cours a une personne non inscrit");
+		} catch (TropDeCoursExecption e) {
+
+		}
+	}
+
+	public void payer(Integer valeur) {
+		Integer dejaPayer = maCotisation.getDejaPayer() + valeur;
+		Integer resteApayer = maCotisation.getResteAPayer() - valeur;
+		maCotisation.setDejaPayer(dejaPayer, this);
+		maCotisation.setResteAPayer(resteApayer);
+	}
+
+	@Override
+	public String toString() {
+		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", status=" + status + ", sexe=" + sexe
+				+ ", mesCours=" + mesCours + ", nbHeureCours=" + nbHeureCours + ", maCotisation=" + maCotisation
+				+ ", adresse=" + adresse + "]";
+	}
+
+>>>>>>> Tom
 }

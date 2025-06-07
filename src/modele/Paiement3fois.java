@@ -1,7 +1,11 @@
 package modele;
 
 public class Paiement3fois {
+<<<<<<< HEAD
     private Double premier_versement;
+=======
+	private Double premier_versement;
+>>>>>>> Tom
 	private Double deuxieme_versement;
 	private Double troisieme_versement;
 	public Paiement3fois(Double premier_versement, Double deuxieme_versement, Double troisieme_versement) {
@@ -29,4 +33,8 @@ public class Paiement3fois {
 		this.troisieme_versement = troisieme_versement;
 	}
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> Tom
 }

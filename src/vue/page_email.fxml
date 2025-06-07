@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlEmail">
+   <left>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="312.0" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="115.0" fitWidth="210.0" layoutX="51.0" layoutY="35.0">
+               <image>
+                  <Image url="@ODD_Logo_v1.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="39.0" layoutY="175.0" prefHeight="35.0" prefWidth="234.0" text="Suivi des paiements" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <VBox layoutY="221.0" prefHeight="160.0" prefWidth="312.0" spacing="25.0">
+               <children>
+                  <Button fx:id="bnRappel" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Rappel">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </Button>
+                  <Button fx:id="Ouvrir_Cotisation" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Ouvrir_Facture" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="35.0" right="35.0" />
+               </padding>
+            </VBox>
+            <VBox layoutY="474.0" prefWidth="312.0" spacing="25.0">
+               <children>
+                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Quitter" minHeight="33.0" mnemonicParsing="false" onAction="#quitter" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="35.0" left="35.0" right="35.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+      </Pane>
+   </left>
+   <right>
+      <BorderPane prefHeight="600.0" prefWidth="608.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Nouveau Message" BorderPane.alignment="CENTER_LEFT">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="tfDestinataires" promptText="Destinataires">
+                     <font>
+                        <Font name="System Italic" size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="tfObjet" promptText="Objet">
+                     <font>
+                        <Font name="System Italic" size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextArea fx:id="taContenu" prefHeight="391.0" prefWidth="608.0" />
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="312.0" spacing="25.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="bnEnvoyer" minHeight="33.0" mnemonicParsing="false" onAction="#envoyer" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Envoyer">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="bnAnnuler" minHeight="33.0" mnemonicParsing="false" onAction="#annuler" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Annuler">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="35.0" left="35.0" right="35.0" />
+               </padding>
+            </HBox>
+         </bottom></BorderPane>
+   </right>
+</BorderPane>
