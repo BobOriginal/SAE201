@@ -12,11 +12,11 @@ public class FactureFen extends Stage {
 
     private static modele.Personne lapersonne;
 
-    private controleur.FactureControllerClass ctrl;
+    private controleur.CtrlFacture ctrl;
 
     public FactureFen() throws IOException {
 
-        lapersonne =  modele.Donnee.getUnePersonne(0);
+        lapersonne = modele.Donnee.getUnePersonne(0);
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(true);

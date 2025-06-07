@@ -18,7 +18,7 @@ import modele.Donnee;
 import modele.Facture;
 import modele.Main;
 
-public class FactureControllerClass {
+public class CtrlFacture {
 
     private modele.Personne personne;
     private String nomTampon;

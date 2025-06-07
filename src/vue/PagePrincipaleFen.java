@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class PagePrincipaleFen extends Stage {
 
-    private controleur.PagePrincpaleControllerClass ctrl;
+    private controleur.CtrlPrincipale ctrl;
 
     public PagePrincipaleFen() throws IOException {
 

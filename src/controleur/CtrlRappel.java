@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import modele.InfoTabView;
 import modele.Main;
 
-public class PageRappelControllerClass {
+public class CtrlRappel {
 
     @FXML
     private Button Ouvrir_Facture;
@@ -62,27 +62,28 @@ public class PageRappelControllerClass {
         System.exit(0);
     }
 
-    public void initialize() throws StatusException{
+    public void initialize() throws StatusException {
 
-        // Permet d'ajouter les colonnes et un nom pour chaque en-tete 
-		nom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
-        tvListePersonneImpayes.getColumns().set(0,nom);
-		prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("prenom"));
-        tvListePersonneImpayes.getColumns().set(1,prenom);
-		status.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("status"));
-        tvListePersonneImpayes.getColumns().set(2,status);
-		montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montantDu"));
-        tvListePersonneImpayes.getColumns().set(3,montantDu);
-		montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montantPaye"));
-        tvListePersonneImpayes.getColumns().set(4,montantPaye);
+        // Permet d'ajouter les colonnes et un nom pour chaque en-tete
+        nom.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("nom"));
+        tvListePersonneImpayes.getColumns().set(0, nom);
+        prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
+        tvListePersonneImpayes.getColumns().set(1, prenom);
+        status.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("status"));
+        tvListePersonneImpayes.getColumns().set(2, status);
+        montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montantDu"));
+        tvListePersonneImpayes.getColumns().set(3, montantDu);
+        montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montantPaye"));
+        tvListePersonneImpayes.getColumns().set(4, montantPaye);
 
-        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
+        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le
+        // main.
         tvListePersonneImpayes.setItems(Main.getLesInfo());
         tvListePersonneImpayes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         // Permet de griser lorsqu'on ne sélectionne rien
-        BooleanBinding bool = Bindings.equal(tvListePersonneImpayes.getSelectionModel().selectedIndexProperty(),-1);
-		bnRappel.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
+        BooleanBinding bool = Bindings.equal(tvListePersonneImpayes.getSelectionModel().selectedIndexProperty(), -1);
+        bnRappel.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
 
         Ouvrir_Rappel.setDisable(true);
     }
