@@ -22,6 +22,7 @@ public class CotisationAnnuelle {
 	private ArrayList<Integer> prixCours = new ArrayList<Integer>();
 	private ArrayList<Boolean> aPayersCours = new ArrayList<Boolean>();
 	private IntegerProperty dejaPayerCour = new SimpleIntegerProperty();
+	private StringProperty dateFacture = new SimpleStringProperty();
 
 	public CotisationAnnuelle(int annee, String typePaiment, Personne p) {
 		super();
@@ -32,6 +33,9 @@ public class CotisationAnnuelle {
 			aPayer3fois.add(false);
 			aPayer3fois.add(false);
 		}
+
+		dateFacture.set(null);
+
 		Donnee.initTarif();
 		total.set(0);
 		calculPrixCour(p);
@@ -161,4 +165,23 @@ public class CotisationAnnuelle {
 		return dejaPayerCour.get();
 	}
 
+	public void setMontant(int nmontant) {
+		total.set(nmontant);
+	}
+
+	public void setTypePaiement(String tp) {
+		typePaiment.set(tp);
+	}
+
+	public void setDatePaiement(String date) {
+		dateFacture.set(date);
+	}
+
+	public String getDatePaiement() {
+		return dateFacture.get();
+	}
+
+	public StringProperty DatePaiementProperty() {
+		return dateFacture;
+	}
 }

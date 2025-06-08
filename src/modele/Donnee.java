@@ -23,31 +23,31 @@ public class Donnee {
 		try {
 
 			Personne p1 = new Personne("nomP1", "prenomP1", Personne.ELEVE_PLEIN_TARIF, "Lannion",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr", "Lannion", "22300");
 			Personne p2 = new Personne("nomP2", "prenomP2", Personne.ELEVE_TARIF_REDUIT, "Morlaix",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme", "Lannion", "22300");
 			Personne p3 = new Personne("nomP3", "prenomP3", Personne.ELEVE_PLEIN_TARIF, "Rennes",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme", "Lannion", "22300");
 			Personne p4 = new Personne("nomP4", "prenomP4", Personne.ELEVE_PLEIN_TARIF, "Lannion",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr", "Lannion", "22300");
 			Personne p5 = new Personne("nomP5", "prenomP5", Personne.NON_INSCRIT, "Lannion",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme", "Lannion", "22300");
 			Personne p6 = new Personne("nomP6", "prenomP6", Personne.NON_INSCRIT, "Rennes",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr", "Lannion", "22300");
 			Personne p7 = new Personne("nomP7", "prenomP7", Personne.ELEVE_TARIF_REDUIT, "Morlaix",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme", "Lannion", "22300");
 			Personne p8 = new Personne("nomP8", "prenomP8", Personne.ELEVE_TARIF_REDUIT, "Angers",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr", "Lannion", "22300");
 			Personne p9 = new Personne("nomP9", "prenomP9", Personne.ELEVE_TARIF_REDUIT, "Angers",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr", "Lannion", "22300");
 			Personne p10 = new Personne("nomP10", "prenomP10", Personne.ELEVE_PLEIN_TARIF, "Lannion",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme", "Lannion", "22300");
 			Personne p11 = new Personne("nomP11", "prenomP11", Personne.ELEVE_TARIF_REDUIT, "Rennes",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme", "Lannion", "22300");
 			Personne p12 = new Personne("nomP12", "prenomP12", Personne.NON_INSCRIT, "Morlaix",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mr", "Lannion", "22300");
 			Personne p13 = new Personne("nomP13", "prenomP13", Personne.ELEVE_PLEIN_TARIF, "Lannion",
-					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme");
+					CotisationAnnuelle.PAIMENT_UNIQUE, "Mme", "Lannion", "22300");
 
 			CoursDebutant c1 = new CoursDebutant(2025, 2.0, "c1");
 			CoursIntermediare c2 = new CoursIntermediare(2025, 4.5, "c2");

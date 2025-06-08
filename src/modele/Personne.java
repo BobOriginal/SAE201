@@ -30,12 +30,12 @@ public class Personne {
 	private StringProperty ville = new SimpleStringProperty();
 	private boolean factureArchiver = false;
 
-	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe)
-			throws StatusException {
+	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe,
+			String ville, String codePostal) throws StatusException {
 		super();
-		ville.set(" lannion");
-		codePostal.set("22300");
 
+		this.ville.set(ville);
+		this.codePostal.set(codePostal);
 		this.nom.set(nom);
 		this.prenom.set(prenom);
 		this.adresse.set(adresse);
@@ -114,6 +114,30 @@ public class Personne {
 
 	public String getAdresse() {
 		return adresse.get();
+	}
+
+	public String getVille() {
+		return ville.get();
+	}
+
+	public void setVille(String v) {
+		ville.set(v);
+	}
+
+	public void setSexe(String s) {
+		sexe.set(s);
+	}
+
+	public String getSexe() {
+		return sexe.get();
+	}
+
+	public String getCodePostal() {
+		return codePostal.get();
+	}
+
+	public void setCodePostal(String cp) {
+		codePostal.set(cp);
 	}
 
 	public void setAdresse(String adresse) {

@@ -26,12 +26,16 @@ import modele.Personne;
 public class CtrlFacture {
 
     private modele.Personne personne;
+
     private String nomTampon;
+    private String prenomTampon;
     private String adresseTampon;
-    private String montantTampon;
-    private String montantPayerTampon;
-    private String resteApayerTampon;
+    private int totalTampon;
     private String modePaiementTampon;
+    private String codePostalTampon;
+    private String dateTampon;
+    private String villeTampon;
+    private String sexeTampon;
 
     private StringProperty sexeDestinataire = new SimpleStringProperty();
     private StringProperty nomDestinataire = new SimpleStringProperty();
@@ -160,10 +164,16 @@ public class CtrlFacture {
     @FXML
     void modifier(ActionEvent event) {
 
-        nomTampon = Nom_Etudiant.getText();
-        adresseTampon = Adr_Val.getText();
-        montantPayerTampon = Montant_Payer_Val.getText();
-        modePaiementTampon = Mode_Paiement_Val.getText();
+        nomTampon = personne.getNom();
+        prenomTampon = personne.getPrenom();
+        adresseTampon = personne.getAdresse();
+        totalTampon = personne.getMaCotisation().getTotal();
+        modePaiementTampon = personne.getMaCotisation().getTypePaiment();
+        codePostalTampon = personne.getCodePostal();
+        villeTampon = personne.getVille();
+        dateTampon = personne.getMaCotisation().getDatePaiement();
+        sexeTampon = personne.getSexe();
+        // private String dateTampon;
 
         enableDisable(false);
     }
@@ -194,6 +204,7 @@ public class CtrlFacture {
         Ville_Val.textProperty().bind(e.villeProperty());
         Ville_Resumer.textProperty().bindBidirectional(e.villeProperty());
 
+        Date_Facture_Resumer.textProperty().bindBidirectional(e.getMaCotisation().DatePaiementProperty());
         Date_Facture_Resumer.setText(aujourdhui());
         Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
 
@@ -230,6 +241,12 @@ public class CtrlFacture {
         colonne3.setCellValueFactory(new PropertyValueFactory<Personne, String>("prix"));
         Tableau.getColumns().set(2, colonne3);
 
+        if (sexeDestinataire.get().equals("Mr")) {
+            Monsieur.setSelected(true);
+        } else {
+            Madame.setSelected(true);
+        }
+
     }
 
     public void quitter() {
@@ -238,10 +255,24 @@ public class CtrlFacture {
     }
 
     public void annuler(ActionEvent event) {
+
         personne.setNom(nomTampon);
+        personne.setPrenom(prenomTampon);
         personne.setAdresse(adresseTampon);
+        personne.getMaCotisation().setMontant(totalTampon);
+        personne.getMaCotisation().setTypePaiement(modePaiementTampon);
+        personne.setCodePostal(codePostalTampon);
+        personne.setVille(villeTampon);
+        personne.getMaCotisation().setDatePaiement(dateTampon);
+        personne.setSexe(sexeTampon);
 
         enableDisable(true);
+
+        if (sexeDestinataire.get().equals("Mr")) {
+            Monsieur.setSelected(true);
+        } else {
+            Madame.setSelected(true);
+        }
     }
 
     public String aujourdhui() {
