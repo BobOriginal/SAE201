@@ -163,7 +163,6 @@ public class CtrlFacture {
 
     @FXML
     void modifier(ActionEvent event) {
-
         nomTampon = personne.getNom();
         prenomTampon = personne.getPrenom();
         adresseTampon = personne.getAdresse();
@@ -281,7 +280,16 @@ public class CtrlFacture {
     }
 
     public void enregistrer() {
-        enableDisable(true);
+        try {
+            if (personne.getMaCotisation().getTotal() < 0) {
+                throw new Exceptions.TotalIferieurAzeronException();
+            } else {
+                enableDisable(true);
+            }
+        } catch (Exceptions.TotalIferieurAzeronException e) {
+            System.out.println(e);
+        }
+
     }
 
     public void modifierGenre() {
