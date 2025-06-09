@@ -15,7 +15,6 @@ import vue.PageRappelFen;
 
 
 public class Main extends Application {
-	static private ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
 	private static FenCotisationAnnuelle fenCotisationAnnuelle;
 	private static FactureFen fenFacture;
 	private static PagePrincipaleFen fenPrincipal;

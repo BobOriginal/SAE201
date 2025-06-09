@@ -1,10 +1,12 @@
 package controleur;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import Exceptions.StatusException;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.InfoTabView;
 import modele.Main;
+import modele.Personne;
 
 public class PageRappelControllerClass {
 
@@ -102,5 +105,15 @@ public class PageRappelControllerClass {
 		bnRappel.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
 
         Ouvrir_Rappel.setDisable(true);
+    }
+    
+    public ObservableList<InfoTabView> triImpayés() {
+    	ObservableList<InfoTabView> listeImpayes = Main.getLesInfo();
+    	Iterator iter1 = listeImpayes.iterator();
+    	
+    	while(iter1.hasNext()) {
+    		
+    	}
+    	return listeImpayes;
     }
 }
