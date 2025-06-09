@@ -124,7 +124,7 @@ public class CotisationAnnuelle {
 	}
 	
 	public Boolean aPayer() {
-		return resteAPayer==0;
+		return resteAPayer!=0;
 	}
 
 	public ArrayList<Integer> getPrixCours() {

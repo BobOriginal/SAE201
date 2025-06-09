@@ -114,7 +114,6 @@ public class PageRappelControllerClass {
     	
     	while(iter1.hasNext()) {
     		InfoTabView elt = iter1.next();
-    		elt.toString();
     		if(elt.getaPayer()) {
     			iter1.remove();
     		}
