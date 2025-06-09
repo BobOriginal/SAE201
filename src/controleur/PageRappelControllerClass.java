@@ -6,6 +6,7 @@ import java.util.Iterator;
 import Exceptions.StatusException;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -97,7 +98,7 @@ public class PageRappelControllerClass {
         tvListePersonneImpayes.getColumns().set(4,montantPaye);
 
         // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
-        tvListePersonneImpayes.setItems(Main.getLesInfo());
+        tvListePersonneImpayes.setItems(triImpayes());
         tvListePersonneImpayes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         // Permet de griser lorsqu'on ne sélectionne rien
@@ -107,12 +108,16 @@ public class PageRappelControllerClass {
         Ouvrir_Rappel.setDisable(true);
     }
     
-    public ObservableList<InfoTabView> triImpayés() {
-    	ObservableList<InfoTabView> listeImpayes = Main.getLesInfo();
-    	Iterator iter1 = listeImpayes.iterator();
+    public ObservableList<InfoTabView> triImpayes() {
+    	ObservableList<InfoTabView> listeImpayes = FXCollections.observableArrayList(Main.getLesInfo());
+    	Iterator<InfoTabView> iter1 = listeImpayes.iterator();
     	
     	while(iter1.hasNext()) {
-    		
+    		InfoTabView elt = iter1.next();
+    		elt.toString();
+    		if(elt.getaPayer()) {
+    			iter1.remove();
+    		}
     	}
     	return listeImpayes;
     }
