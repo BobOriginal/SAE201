@@ -19,7 +19,7 @@ public class FenFacture extends Stage {
         lapersonne = modele.Donnee.getUnePersonne(0);
 
         this.setTitle("Organizatore di Dance");
-        this.setResizable(true);
+        this.setResizable(false);
 
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);

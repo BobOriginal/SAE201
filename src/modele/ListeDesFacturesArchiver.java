@@ -28,4 +28,11 @@ public class ListeDesFacturesArchiver {
         }
         return listeDesArchives.get(i);
     }
+
+    public void affiche() {
+        int i;
+        for (i = 0; i < listeDesArchives.size(); i++) {
+            System.out.println(listeDesArchives.get(i));
+        }
+    }
 }

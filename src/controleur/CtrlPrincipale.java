@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,6 +34,9 @@ public class CtrlPrincipale {
 
     @FXML
     private Button Quitter;
+
+    @FXML
+    private TableColumn<InfoTabView, Boolean> archiver;
 
     @FXML
     private TableColumn<InfoTabView, String> nom;
@@ -83,28 +87,26 @@ public class CtrlPrincipale {
     }
 
     public void initialize() {
-        // Permet d'ajouter les colonnes et un nom pour chaque en-tete
-
-        nom.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("nom"));
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         tvListePersonne.getColumns().set(0, nom);
-        prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         tvListePersonne.getColumns().set(1, prenom);
-        status.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("status"));
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
         tvListePersonne.getColumns().set(2, status);
-        montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montant"));
+        montantDu.setCellValueFactory(new PropertyValueFactory<>("montant"));
         tvListePersonne.getColumns().set(3, montantDu);
-        montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("paiementEffectuer"));
+        montantPaye.setCellValueFactory(new PropertyValueFactory<>("paiementEffectuer"));
         tvListePersonne.getColumns().set(4, montantPaye);
 
-        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le
-        // main.
         tvListePersonne.setItems(Main.getLesInfo());
         tvListePersonne.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        Bouton_Archive.setDisable(true);
-        Ouvrir_Liste.setDisable(true);
-        // Y'a cela qui faut changer ducoup
-        BooleanBinding bool = Bindings.equal(tvListePersonne.getSelectionModel().selectedIndexProperty(), -1);
-        Bouton_Archive.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false)); // Avec ça ducoup
+
+        BooleanBinding archiveBinding = Bindings.createBooleanBinding(() -> {
+            InfoTabView selected = tvListePersonne.getSelectionModel().getSelectedItem();
+            return selected == null || !selected.getP().getEtatArchivage();
+        }, tvListePersonne.getSelectionModel().selectedItemProperty());
+
+        Bouton_Archive.disableProperty().bind(archiveBinding);
     }
 
 }

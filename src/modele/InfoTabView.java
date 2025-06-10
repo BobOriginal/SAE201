@@ -28,6 +28,7 @@ public class InfoTabView {
 	private BooleanProperty aPayerCour;
 	private IntegerProperty montantCour;
 	private IntegerProperty paiementEffectuerCour;
+	private BooleanProperty archiver;
 
 	public InfoTabView(Personne p) {
 		this.p = p;
@@ -41,6 +42,7 @@ public class InfoTabView {
 		paiementEffectuer = new SimpleIntegerProperty(p.getMaCotisation().getDejaPayer());
 		dejaPayer = new SimpleIntegerProperty(p.getMaCotisation().getDejaPayer());
 		resteAPayer = new SimpleIntegerProperty(p.getMaCotisation().getResteAPayer());
+
 	}
 
 	public InfoTabView(Personne p, int idcours) {
@@ -55,6 +57,7 @@ public class InfoTabView {
 		montantCour = new SimpleIntegerProperty(p.getMaCotisation().getPrixCours().get(idcours));
 		paiementEffectuerCour = new SimpleIntegerProperty(p.getMaCotisation().getDejaPayerCour());
 		nbHeure = new SimpleDoubleProperty(p.nbHeureCoursProperty().get());
+		archiver = new SimpleBooleanProperty(p.getEtatArchivage());
 	}
 
 	public DoubleProperty nbHeureProperty() {
@@ -227,6 +230,10 @@ public class InfoTabView {
 
 	public Double getNombreHeureCour() {
 		return nombreHeureCour.get();
+	}
+
+	public boolean isArchiver() {
+		return archiver.get();
 	}
 
 }

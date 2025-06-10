@@ -48,7 +48,7 @@ public class CtrlEmail {
     }
 
     @FXML
-    void envoyer(ActionEvent event) throws IOException{
+    void envoyer(ActionEvent event) throws IOException {
         Alert alertEnvoyer = new Alert(Alert.AlertType.INFORMATION);
         alertEnvoyer.setTitle("Message!");
         alertEnvoyer.setContentText("Vous avez bien envoyé un rappel à l'élève");
@@ -64,7 +64,8 @@ public class CtrlEmail {
     }
 
     public void initialize() {
-        BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty()).or(taContenu.textProperty().isEmpty());
+        BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty())
+                .or(taContenu.textProperty().isEmpty());
         bnEnvoyer.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
         bnRappel.setDisable(true);
         Ouvrir_Cotisation.setDisable(true);

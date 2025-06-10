@@ -158,6 +158,8 @@ public class CtrlFacture {
 
         Main.ouvrirPagePrincipale(event);
         Main.fermerFacture(event);
+
+        Donnee.listeFacture.affiche();
     }
 
     @FXML

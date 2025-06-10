@@ -19,7 +19,7 @@ import modele.InfoTabView;
 import modele.Main;
 import modele.Personne;
 
-public class CtrlRappel{
+public class CtrlRappel {
 
     @FXML
     private Button Ouvrir_Facture;
@@ -59,6 +59,7 @@ public class CtrlRappel{
         Main.ouvrirEmail(event);
         Main.fermerRappel(event);
     }
+
     @FXML
     void ouvrirCotisations(ActionEvent event) throws IOException {
         Main.ouvrirCotisation(event);
@@ -66,58 +67,60 @@ public class CtrlRappel{
     }
 
     @FXML
-    void ouvrirFacturation(ActionEvent event) throws IOException{
+    void ouvrirFacturation(ActionEvent event) throws IOException {
         Main.ouvrirFacture(event);
         Main.fermerRappel(event);
     }
 
     @FXML
-    void ouvrirMenu(ActionEvent event) throws IOException{
+    void ouvrirMenu(ActionEvent event) throws IOException {
         Main.ouvrirPagePrincipale(event);
         Main.fermerRappel(event);
     }
+
     @FXML
     void quitter(ActionEvent event) {
         System.out.println("Fenetre fermer correctement...");
         System.exit(0);
     }
 
-    public void initialize() throws StatusException{
+    public void initialize() throws StatusException {
 
         // Permet d'ajouter les colonnes et un nom pour chaque en-tete
-        
-		nom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
-        tvListePersonneImpayes.getColumns().set(0,nom);
-		prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("prenom"));
-        tvListePersonneImpayes.getColumns().set(1,prenom);
-		status.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("status"));
-        tvListePersonneImpayes.getColumns().set(2,status);
-		montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montant"));
-        tvListePersonneImpayes.getColumns().set(3,montantDu);
-		montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("paiementEffectuer"));
-        tvListePersonneImpayes.getColumns().set(4,montantPaye);
 
-        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
+        nom.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("nom"));
+        tvListePersonneImpayes.getColumns().set(0, nom);
+        prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
+        tvListePersonneImpayes.getColumns().set(1, prenom);
+        status.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("status"));
+        tvListePersonneImpayes.getColumns().set(2, status);
+        montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montant"));
+        tvListePersonneImpayes.getColumns().set(3, montantDu);
+        montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("paiementEffectuer"));
+        tvListePersonneImpayes.getColumns().set(4, montantPaye);
+
+        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le
+        // main.
         tvListePersonneImpayes.setItems(triImpayes());
         tvListePersonneImpayes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         // Permet de griser lorsqu'on ne sélectionne rien
-        BooleanBinding bool = Bindings.equal(tvListePersonneImpayes.getSelectionModel().selectedIndexProperty(),-1);
-		bnRappel.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
+        BooleanBinding bool = Bindings.equal(tvListePersonneImpayes.getSelectionModel().selectedIndexProperty(), -1);
+        bnRappel.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
 
         Ouvrir_Rappel.setDisable(true);
     }
-    
+
     public ObservableList<InfoTabView> triImpayes() {
-    	ObservableList<InfoTabView> listeImpayes = FXCollections.observableArrayList(Main.getLesInfo());
-    	Iterator<InfoTabView> iter1 = listeImpayes.iterator();
-    	
-    	while(iter1.hasNext()) {
-    		InfoTabView elt = iter1.next();
-    		if(elt.getaPayer()) {
-    			iter1.remove();
-    		}
-    	}
-    	return listeImpayes;
+        ObservableList<InfoTabView> listeImpayes = FXCollections.observableArrayList(Main.getLesInfo());
+        Iterator<InfoTabView> iter1 = listeImpayes.iterator();
+
+        while (iter1.hasNext()) {
+            InfoTabView elt = iter1.next();
+            if (elt.getaPayer()) {
+                iter1.remove();
+            }
+        }
+        return listeImpayes;
     }
 }

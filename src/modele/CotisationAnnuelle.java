@@ -62,6 +62,7 @@ public class CotisationAnnuelle {
 			total.set(Donnee.prixNonInscrit);
 		}
 
+		resteAPayer.set(total.get() - dejaPayer.get());
 	}
 
 	void calculPrixCour(Personne p) {
