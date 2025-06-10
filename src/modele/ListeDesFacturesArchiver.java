@@ -20,4 +20,12 @@ public class ListeDesFacturesArchiver {
             }
         }
     }
+
+    public Facture trouverFacture(int id) {
+        int i = 0;
+        while (listeDesArchives.get(i).getPersonne().getId() != id) {
+            i++;
+        }
+        return listeDesArchives.get(i);
+    }
 }

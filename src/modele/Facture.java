@@ -6,16 +6,22 @@ public class Facture {
 
 	private CotisationAnnuelle data;
 	private Personne personne;
+	private String date;
 
-	public Facture(Personne personne) {
+	public Facture(Personne personne, String date) {
 		numero = ID;
 		ID++;
 		this.personne = personne;
+		this.date = date;
 	}
 
 	/* Getters/Setters... */
 	public void setCotisation(CotisationAnnuelle cA) {
 		data = cA;
+	}
+
+	public String getDate() {
+		return date;
 	}
 
 	public Personne getPersonne() {

@@ -3,8 +3,11 @@ package controleur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import modele.Donnee;
 
 public class CtrlFactureArchiver {
+
+    modele.Facture facture;
 
     @FXML
     private Label Adr_Val;
@@ -42,4 +45,13 @@ public class CtrlFactureArchiver {
     @FXML
     private Label Ville_Val;
 
+    @FXML
+    public void initialize(modele.Personne p) {
+
+        facture = Donnee.listeFacture.trouverFacture(p.getId());
+        Adr_Val.setText(facture.getPersonne().getAdresse());
+        Code_Postal_Val.setText(facture.getPersonne().getCodePostal());
+        Date_Val.setText(facture.getDate());
+
+    }
 }

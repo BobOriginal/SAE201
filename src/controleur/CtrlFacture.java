@@ -152,7 +152,7 @@ public class CtrlFacture {
     @FXML
     void archiver(ActionEvent event) throws IOException {
         personne.setEtatArchivage(true);
-        modele.Facture facture = new Facture(personne);
+        modele.Facture facture = new Facture(personne, Date_Val.getText());
         Donnee.listeFacture.ajouterArchive(facture);
         Numero_Val.setText(" " + facture.getNumero());
 
