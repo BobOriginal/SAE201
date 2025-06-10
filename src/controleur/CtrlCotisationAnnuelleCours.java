@@ -79,15 +79,15 @@ public class CtrlCotisationAnnuelleCours {
 		listeCotisation.getColumns().set(4, colonne5);
 		
 		TableColumn<InfoTabView, Boolean> colonne6 = new TableColumn<InfoTabView,Boolean>("A Payer");
-		colonne6.setCellValueFactory(new PropertyValueFactory<InfoTabView, Boolean>("aPayer"));
+		colonne6.setCellValueFactory(new PropertyValueFactory<InfoTabView, Boolean>("aPayerCour"));
 		listeCotisation.getColumns().set(5, colonne6);
 		
 		TableColumn<InfoTabView, Double> colonne7 = new TableColumn<InfoTabView,Double>("Montant");
-		colonne7.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montant"));
+		colonne7.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montantCour"));
 		listeCotisation.getColumns().set(6, colonne7);
 		
 		TableColumn<InfoTabView, String> colonne8 = new TableColumn<InfoTabView,String>("Paiement deja effectuer");
-		colonne8.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("paiementEffectuer"));
+		colonne8.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("paiementEffectuerCour"));
 		listeCotisation.getColumns().set(7, colonne8);
 		
 		listeCotisation.setItems(Main.getLesInfoCours());
@@ -133,7 +133,4 @@ public class CtrlCotisationAnnuelleCours {
     void listeImpayer(ActionEvent event) {
 
     }
-    
-    
-
 }
