@@ -6,9 +6,10 @@ import java.util.Calendar;
 import Exceptions.DoublonCoursException;
 import Exceptions.StatusException;
 import Exceptions.TropDeCoursExecption;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -28,12 +29,13 @@ public class Personne {
 	private StringProperty adresse = new SimpleStringProperty();
 	private StringProperty codePostal = new SimpleStringProperty();
 	private StringProperty ville = new SimpleStringProperty();
-	private boolean factureArchiver = false;
+	private BooleanProperty factureArchiver = new SimpleBooleanProperty();
 
 	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe,
 			String ville, String codePostal) throws StatusException {
 		super();
 
+		factureArchiver.set(false);
 		this.ville.set(ville);
 		this.codePostal.set(codePostal);
 		this.nom.set(nom);
@@ -165,11 +167,11 @@ public class Personne {
 	}
 
 	public boolean getEtatArchivage() {
-		return factureArchiver;
+		return factureArchiver.get();
 	}
 
 	public void setEtatArchivage(boolean nouvelEtat) {
-		factureArchiver = nouvelEtat;
+		factureArchiver.set(nouvelEtat);
 	}
 
 	private void addCours(Cours c) {
