@@ -42,14 +42,10 @@ public class Main extends Application {
 	}
 
 	static public ObservableList<InfoTabView> getLesInfoCours() {
-
 		return Donnee.getLesInfoCours();
 	}
 
 	static public ObservableList<InfoTabView> getLesInfo() {
-		Donnee.initTarif();
-		Donnee.chargementDonnees();
-		Donnee.chargementLesInfo();
 		return Donnee.getLesInfo();
 	}
 	public static void ouvrirRappel(ActionEvent event) throws IOException {

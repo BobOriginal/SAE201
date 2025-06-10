@@ -39,6 +39,8 @@ public class CrtlCotisationAnnuelle {
 
     @FXML void initialize() {
 
+    	
+    	
     	TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView,String>("Nom");
 		colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
 		listeCotisation.getColumns().set(0, colonne1);
@@ -97,12 +99,12 @@ public class CrtlCotisationAnnuelle {
 
     @FXML
     void modifier(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void suprimer(ActionEvent event) {
-    	
+    	Donnee.removeInfo(listeCotisation.getSelectionModel().getSelectedItem());
     }
 
     @FXML

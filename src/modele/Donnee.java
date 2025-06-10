@@ -205,6 +205,5 @@ public class Donnee {
 		while(iter.hasNext()) {
 			System.out.println(iter.next());
 		}
-		
 	}
 }
