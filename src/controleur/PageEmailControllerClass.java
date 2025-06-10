@@ -6,9 +6,12 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import modele.Main;
 
 public class PageEmailControllerClass {
@@ -46,8 +49,13 @@ public class PageEmailControllerClass {
     }
 
     @FXML
-    void envoyer(ActionEvent event) {
-        
+    void envoyer(ActionEvent event) throws IOException{
+        Alert alertEnvoyer = new Alert(Alert.AlertType.INFORMATION);
+        alertEnvoyer.setTitle("Message!");
+        alertEnvoyer.setContentText("Vous avez bien envoyé un rappel à l'élève");
+        alertEnvoyer.showAndWait();
+        Main.fermerEmail(event);
+        Main.ouvrirRappel(event);
     }
 
     @FXML
@@ -55,13 +63,20 @@ public class PageEmailControllerClass {
         Main.fermerEmail(event);
         Main.ouvrirRappel(event);
     }
+    @FXML
+    void emailcorrect(ActionEvent event) {
 
+    }
     public void initialize(){
         BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty()).or(taContenu.textProperty().isEmpty());
 		bnEnvoyer.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
+        if(tfDestinataires.getText().contains("@")){
+            bnEnvoyer.setDisable(true);
+        }
         bnRappel.setDisable(true);
         Ouvrir_Cotisation.setDisable(true);
         Ouvrir_Facture.setDisable(true);
+        
     }
 }
 
