@@ -9,6 +9,8 @@ import javafx.beans.property.StringProperty;
 
 public class InfoTabView{
 	
+	private Personne p;
+	private int idCours;
 	private StringProperty nom;
 	private StringProperty prenom;
 	private StringProperty status;
@@ -22,6 +24,7 @@ public class InfoTabView{
 	private IntegerProperty paiementEffectuerCour;
 	
 	public InfoTabView(Personne p) {
+		this.p = p;
 		nom = new SimpleStringProperty(p.getNom());
 		prenom = new SimpleStringProperty(p.getPrenom());
 		status = new SimpleStringProperty(p.getStatus());
@@ -33,6 +36,8 @@ public class InfoTabView{
 	}
 	
 	public InfoTabView(Personne p, int idcours) {
+		this.p = p;
+		this.idCours = idcours;
 		nom = new SimpleStringProperty(p.getNom());
 		prenom = new SimpleStringProperty(p.getPrenom());
 		status = new SimpleStringProperty(p.getStatus());
@@ -170,4 +175,22 @@ public class InfoTabView{
 	public void setPaiementEffectuerCour(IntegerProperty paiementEffectuerCour) {
 		this.paiementEffectuerCour = paiementEffectuerCour;
 	}
+
+	public Personne getP() {
+		return p;
+	}
+
+	public int getIdCours() {
+		return idCours;
+	}
+
+	@Override
+	public String toString() {
+		return "InfoTabView [p=" + p + ", idCours=" + idCours + ", nom=" + nom + ", prenom=" + prenom + ", status="
+				+ status + ", typePaiement=" + typePaiement + ", aPayer=" + aPayer + ", montant=" + montant
+				+ ", paiementEffectuer=" + paiementEffectuer + ", cours=" + cours + ", aPayerCour=" + aPayerCour
+				+ ", montantCour=" + montantCour + ", paiementEffectuerCour=" + paiementEffectuerCour + "]";
+	}
+	
+	
 }

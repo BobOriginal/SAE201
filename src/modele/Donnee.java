@@ -187,4 +187,24 @@ public class Donnee {
 	private void removeTarifReduit(Double nombreHeur) {
 		prixCourTarifReduit.remove(nombreHeur);
 	}
+	
+	public static void removeInfo(InfoTabView itv) {
+		lesInfo.remove(itv);
+	}
+	
+	public static void afficheInfo() {
+		Iterator<InfoTabView> iter = lesInfo.iterator();
+		while(iter.hasNext()) {
+			System.out.println(iter.next());
+		}
+		
+	}
+	
+	public static void afficheInfoCours() {
+		Iterator<InfoTabView> iter = lesInfoCours.iterator();
+		while(iter.hasNext()) {
+			System.out.println(iter.next());
+		}
+		
+	}
 }
