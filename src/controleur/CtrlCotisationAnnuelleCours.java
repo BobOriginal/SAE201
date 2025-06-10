@@ -1,7 +1,5 @@
 package controleur;
 
-
-
 import java.io.IOException;
 
 import javafx.beans.binding.Bindings;
@@ -18,7 +16,7 @@ import modele.Donnee;
 import modele.InfoTabView;
 import modele.Main;
 
-public class CrtlCotisationAnnuelle {
+public class CtrlCotisationAnnuelleCours {
 
 
     @FXML
@@ -55,39 +53,44 @@ public class CrtlCotisationAnnuelle {
     private Label Total_prevu;
 
     @FXML void initialize() {
+    	
     	Total_prevu.textProperty().bind(Bindings.concat(Donnee.total()+"€"));
     	Total_deja_payer.textProperty().bind(Bindings.concat(Donnee.dejaPayer()+"€"));
     	Reste_a_payer.textProperty().bind(Bindings.concat(Donnee.resteAPayer()+"€"));
     	
-    	TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView,String>("Nom");
-		colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
+    	TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView,String>("Cours");
+		colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("cours"));
 		listeCotisation.getColumns().set(0, colonne1);
 		
-		TableColumn<InfoTabView, String> colonne2 = new TableColumn<InfoTabView,String>("Prenom");
-		colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
+		TableColumn<InfoTabView, String> colonne2 = new TableColumn<InfoTabView,String>("Nom");
+		colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("nom"));
 		listeCotisation.getColumns().set(1, colonne2);
 		
-		TableColumn<InfoTabView, String> colonne3 = new TableColumn<InfoTabView,String>("Status");
-		colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("status"));
+		TableColumn<InfoTabView, String> colonne3 = new TableColumn<InfoTabView,String>("Prenom");
+		colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("prenom"));
 		listeCotisation.getColumns().set(2, colonne3);
 		
-		TableColumn<InfoTabView, String> colonne4 = new TableColumn<InfoTabView,String>("Type de paiement");
-		colonne4.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("typePaiement"));
+		TableColumn<InfoTabView, String> colonne4 = new TableColumn<InfoTabView,String>("Status");
+		colonne4.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("Status"));
 		listeCotisation.getColumns().set(3, colonne4);
 		
-		TableColumn<InfoTabView, Boolean> colonne5 = new TableColumn<InfoTabView,Boolean>("A Payer");
-		colonne5.setCellValueFactory(new PropertyValueFactory<InfoTabView, Boolean>("aPayer"));
+		TableColumn<InfoTabView, String> colonne5 = new TableColumn<InfoTabView,String>("Type de paiement");
+		colonne5.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("typePaiement"));
 		listeCotisation.getColumns().set(4, colonne5);
 		
-		TableColumn<InfoTabView, Double> colonne6 = new TableColumn<InfoTabView,Double>("Montant");
-		colonne6.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montant"));
+		TableColumn<InfoTabView, Boolean> colonne6 = new TableColumn<InfoTabView,Boolean>("A Payer");
+		colonne6.setCellValueFactory(new PropertyValueFactory<InfoTabView, Boolean>("aPayer"));
 		listeCotisation.getColumns().set(5, colonne6);
 		
-		TableColumn<InfoTabView, String> colonne7 = new TableColumn<InfoTabView,String>("Paiement deja effectuer");
-		colonne7.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("paiementEffectuer"));
+		TableColumn<InfoTabView, Double> colonne7 = new TableColumn<InfoTabView,Double>("Montant");
+		colonne7.setCellValueFactory(new PropertyValueFactory<InfoTabView, Double>("montant"));
 		listeCotisation.getColumns().set(6, colonne7);
 		
-		listeCotisation.setItems(Main.getLesInfo());
+		TableColumn<InfoTabView, String> colonne8 = new TableColumn<InfoTabView,String>("Paiement deja effectuer");
+		colonne8.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("paiementEffectuer"));
+		listeCotisation.getColumns().set(7, colonne8);
+		
+		listeCotisation.setItems(Main.getLesInfoCours());
 		listeCotisation.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		
 		//A FAIRE griser les boutons Modifier et Supprimer quand aucune sélection
@@ -130,4 +133,7 @@ public class CrtlCotisationAnnuelle {
     void listeImpayer(ActionEvent event) {
 
     }
+    
+    
+
 }

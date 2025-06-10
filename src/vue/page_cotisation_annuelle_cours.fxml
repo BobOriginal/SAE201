@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CrtlCotisationAnnuelle">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlCotisationAnnuelleCours">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="312.0" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
          <children>
@@ -76,39 +76,40 @@
                </VBox.margin>
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" text="Triez par :">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="bnTrierCour" mnemonicParsing="false" onAction="#trierCour" prefHeight="20.0" prefWidth="75.0" text="Cours">
+                  <Button fx:id="bnTrierCour" disable="true" mnemonicParsing="false" onAction="#trierCour" prefHeight="20.0" prefWidth="75.0" text="Cours">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="bnTriezNom" disable="true" mnemonicParsing="false" onAction="#triezNom" prefHeight="20.0" prefWidth="75.0" text="Nom">
+                  <Button fx:id="bnTriezNom" mnemonicParsing="false" onAction="#triezNom" prefHeight="20.0" prefWidth="75.0" text="Nom">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
             </HBox>
             <VBox prefHeight="491.0" prefWidth="578.0" spacing="10.0">
                <children>
                   <TableView fx:id="listeCotisation" maxWidth="-1.0">
-                    <columns>
-                      <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Nom" />
-                      <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Prenom" />
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Status" />
+                     <columns>
                         <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Cours" />
+                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Nom" />
+                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Prenom" />
+                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Status" />
+                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Type de paiement" />
                         <TableColumn minWidth="-1.0" prefWidth="-1.0" text="A payer" />
                         <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Montant" />
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="payment efectuer" />
-                    </columns>
+                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Paiment deja effectuer" />
+                     </columns>
                   </TableView>
                   <HBox spacing="30.0">
                      <children>

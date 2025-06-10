@@ -19,6 +19,8 @@ public class InfoTabView{
 	private StringProperty typePaiement;
 	private BooleanProperty aPayer;
 	private IntegerProperty montant;
+	private IntegerProperty dejaPayer;
+	private IntegerProperty resteAPayer;
 	private IntegerProperty paiementEffectuer;
 	private DoubleProperty nombreHeureCour;
 	private StringProperty cours;
@@ -36,6 +38,8 @@ public class InfoTabView{
 		aPayer = new SimpleBooleanProperty(p.getMaCotisation().aPayer());
 		montant = new SimpleIntegerProperty(p.getMaCotisation().getTotal());
 		paiementEffectuer = new SimpleIntegerProperty( p.getMaCotisation().getDejaPayer());
+		dejaPayer = new SimpleIntegerProperty(p.getMaCotisation().getDejaPayer());
+		resteAPayer = new SimpleIntegerProperty(p.getMaCotisation().getResteAPayer());
 	}
 	
 	public InfoTabView(Personne p, int idcours) {
@@ -175,6 +179,10 @@ public class InfoTabView{
 	public int getPaiementEffectuerCour() {
 		return paiementEffectuerCour.get();
 	}
+	
+	public IntegerProperty paiementEffectuerCourProperty() {
+		return this.paiementEffectuerCour;
+	}
 
 	public void setPaiementEffectuerCour(IntegerProperty paiementEffectuerCour) {
 		this.paiementEffectuerCour = paiementEffectuerCour;
@@ -195,6 +203,27 @@ public class InfoTabView{
 				+ ", paiementEffectuer=" + paiementEffectuer + ", cours=" + cours + ", aPayerCour=" + aPayerCour
 				+ ", montantCour=" + montantCour + ", paiementEffectuerCour=" + paiementEffectuerCour + "]";
 	}
+
+	public int getDejaPayer() {
+		return dejaPayer.get();
+	}
+	
+	public IntegerProperty dejaPayerProperty() {
+		return this.dejaPayer;
+	}
+
+	public int getResteAPayer() {
+		return resteAPayer.get();
+	}
+	
+	public IntegerProperty resteAPayerProperty() {
+		return this.resteAPayer;
+	}
+
+	public Double getNombreHeureCour() {
+		return nombreHeureCour.get();
+	}
+	
 	
 	
 }

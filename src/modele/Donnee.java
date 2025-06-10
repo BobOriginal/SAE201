@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -18,6 +19,9 @@ public class Donnee {
 	static Integer prixNonInscrit = 44;
 	static Integer prixInscription = 33;
 	public static ListeDesFacturesArchiver listeFacture;
+	static Integer Total = 0;
+	static Integer dejaPayer = 0;
+	static Integer restAPayer = 0;
 
 	static public void chargementDonnees() {
 		try {
@@ -109,6 +113,8 @@ public class Donnee {
 				lesInfoCours.add(new InfoTabView(p, i));
 			}
 		}
+		triInfo();
+		triInfoCour();
 	}
 
 	protected static void initTarif() {
@@ -220,8 +226,47 @@ public class Donnee {
 		int total = 0;
 		Iterator<InfoTabView> iter = lesInfo.iterator();
 		while(iter.hasNext()) {
-			total = total + iter.next().get;
+			total = total + iter.next().getDejaPayer();
 		}
 		return total;
 	}
+	
+	public static int resteAPayer() {
+		return total()-dejaPayer();
+	}
+
+	public static Integer getTotal() {
+		return Total;
+	}
+
+	public static void setTotal(Integer total) {
+		Total = total;
+	}
+
+	public static Integer getDejaPayer() {
+		return dejaPayer;
+	}
+
+	public static void setDejaPayer(Integer dejaPayer) {
+		Donnee.dejaPayer = dejaPayer;
+	}
+
+	public static Integer getRestAPayer() {
+		return restAPayer;
+	}
+
+	public static void setRestAPayer(Integer restAPayer) {
+		Donnee.restAPayer = restAPayer;
+	}
+	
+	private static void triInfo() {
+		Comparator<InfoTabView> myComparator = new comparator.LesInfoComparator();
+		lesInfo.sort(myComparator);
+	}
+	
+	private static void triInfoCour() {
+		Comparator<InfoTabView> myComparator = new comparator.LesInfoCoursComparator();
+		lesInfoCours.sort(myComparator);
+	}
+	
 }
