@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -20,8 +21,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.converter.NumberStringConverter;
 import modele.Donnee;
 import modele.Facture;
+import modele.InfoTabView;
 import modele.Main;
-import modele.Personne;
 
 public class CtrlFacture {
 
@@ -133,7 +134,7 @@ public class CtrlFacture {
     private RadioButton Madame;
 
     @FXML
-    private TableView<Personne> Tableau;
+    private TableView<InfoTabView> Tableau;
 
     @FXML
     void AllerAuRappel(ActionEvent event) {
@@ -228,17 +229,20 @@ public class CtrlFacture {
         Mode_Paiement_Val.textProperty().bind(personne.getMaCotisation().typePaiementProperty());
 
         // Tableau pas encore fonctionnel
-        TableColumn<Personne, String> colonne1 = new TableColumn<Personne, String>("Description");
-        colonne1.setCellValueFactory(new PropertyValueFactory<Personne, String>("Description"));
+        TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView, String>("Description");
+        colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("cours"));
         Tableau.getColumns().set(0, colonne1);
 
-        TableColumn<Personne, String> colonne2 = new TableColumn<Personne, String>("Nombre d'heure");
-        colonne2.setCellValueFactory(new PropertyValueFactory<Personne, String>("Nombre d'heure"));
+        TableColumn<InfoTabView, String> colonne2 = new TableColumn<InfoTabView, String>("Nombre d'heure");
+        colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("nbHeure"));
         Tableau.getColumns().set(1, colonne2);
 
-        TableColumn<Personne, String> colonne3 = new TableColumn<Personne, String>("prix");
-        colonne3.setCellValueFactory(new PropertyValueFactory<Personne, String>("prix"));
+        TableColumn<InfoTabView, String> colonne3 = new TableColumn<InfoTabView, String>("prix");
+        colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("montantCour"));
         Tableau.getColumns().set(2, colonne3);
+
+        Tableau.setItems(Main.getLesInfoCours());
+        Tableau.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         if (sexeDestinataire.get().equals("Mr")) {
             Monsieur.setSelected(true);

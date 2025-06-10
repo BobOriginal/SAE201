@@ -42,7 +42,9 @@ public class Main extends Application {
 	}
 
 	static public ObservableList<InfoTabView> getLesInfoCours() {
-
+		Donnee.initTarif();
+		Donnee.chargementDonnees();
+		Donnee.chargementLesInfo();
 		return Donnee.getLesInfoCours();
 	}
 

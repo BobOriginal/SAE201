@@ -298,7 +298,10 @@
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
                                           <Label fx:id="Code_Postal_Val" text="Codepostal" />
-                                          <Label fx:id="Ville_Val" text=" Ville" />
+                                          <Label fx:id="Ville_Val" text="Ville">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                        </children>
                                     </HBox>
                                  </children>
@@ -310,11 +313,11 @@
                         </HBox>
                         <BorderPane prefHeight="200.0" prefWidth="200.0">
                            <center>
-                              <TableView fx:id="Tableau" fixedCellSize="1.0" prefHeight="129.0" prefWidth="243.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="Tableau" fixedCellSize="30.0" BorderPane.alignment="CENTER">
                                  <columns>
-                                    <TableColumn prefWidth="73.0" style="-fx-background-color: white;" text="Description" />
-                                    <TableColumn prefWidth="115.0" style="-fx-background-color: white;" text="Nombre d'heure" />
-                                    <TableColumn prefWidth="51.0" style="-fx-background-color: white;" text="prix" />
+                                    <TableColumn minWidth="-1.0" prefWidth="150.0" style="-fx-background-color: white;" text="Description" fx:id="x" />
+                                    <TableColumn minWidth="-1.0" prefWidth="150.0" style="-fx-background-color: white;" text="Nombre d'heure" />
+                                    <TableColumn minWidth="-1.0" prefWidth="150.0" style="-fx-background-color: white;" text="prix" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
