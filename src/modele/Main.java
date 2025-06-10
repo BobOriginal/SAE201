@@ -54,6 +54,7 @@ public class Main extends Application {
 	static public ObservableList<InfoTabView> getLesInfo() {
 		return Donnee.getLesInfo();
 	}
+
 	public static void ouvrirRappel(ActionEvent event) throws IOException {
 		fenRappel.show();
 	}
@@ -101,7 +102,7 @@ public class Main extends Application {
 	public static void fermerCotisation(ActionEvent event) throws IOException {
 		fenCotisationAnnuelle.close();
 	}
-	
+
 	public static void ouvrirCotisationCours(ActionEvent event) throws IOException {
 		fenCotisationAnnuelleCours.show();
 	}
@@ -109,7 +110,7 @@ public class Main extends Application {
 	public static void fermerCotisationCours(ActionEvent event) throws IOException {
 		fenCotisationAnnuelleCours.close();
 	}
-	
+
 	public static void ouvrirModification(ActionEvent event) throws IOException {
 		fenModification.getCtrl().metAjourTab();
 		fenModification.show();

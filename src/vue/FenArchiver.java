@@ -18,6 +18,7 @@ public class FenArchiver extends Stage {
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
         this.close();
+
     }
 
     private Pane creerSceneGraph() throws IOException {
