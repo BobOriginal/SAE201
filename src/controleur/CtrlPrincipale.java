@@ -1,6 +1,8 @@
 package controleur;
 import java.io.IOException;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,7 +47,10 @@ public class CtrlPrincipale {
 
     @FXML
     private TableColumn<InfoTabView, Double> montantDu;
-        
+
+    @FXML
+    private Button Bouton_Archive;
+    
     public void quitter() {
         System.out.println("Fenetre fermer correctement...");
         System.exit(0);
@@ -69,8 +74,9 @@ public class CtrlPrincipale {
         Main.fermerPagePrincipale(event);
     }
     @FXML
-    void archive(ActionEvent event) {
-        
+    void archive(ActionEvent event) throws IOException{
+        Main.ouvrirArchiver(event);
+        Main.fermerPagePrincipale(event);;
     }
     public void initialize(){
         // Permet d'ajouter les colonnes et un nom pour chaque en-tete
@@ -89,8 +95,10 @@ public class CtrlPrincipale {
         // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
         tvListePersonne.setItems(Main.getLesInfo());
         tvListePersonne.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
+        Bouton_Archive.setDisable(true);
         Ouvrir_Liste.setDisable(true);
+        BooleanBinding bool = Bindings.equal(tvListePersonne.getSelectionModel().selectedIndexProperty(),-1); // Y'a cela qui faut changer ducoup 
+		Bouton_Archive.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false)); // Avec ça ducoup 
     }
 
 

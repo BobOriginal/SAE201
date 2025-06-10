@@ -6,11 +6,13 @@ import java.util.Calendar;
 import Exceptions.DoublonCoursException;
 import Exceptions.StatusException;
 import Exceptions.TropDeCoursExecption;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableNumberValue;
 
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
