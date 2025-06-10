@@ -1,5 +1,4 @@
 package controleur;
-
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -9,17 +8,14 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import modele.InfoTabView;
 import modele.Main;
-import modele.Personne;
 
 public class CtrlPrincipale {
 
     @FXML
-    private TableView<Personne> tvListePersonne;
-
-    @FXML
-    private Button Bouton_Archive;
-
+    private TableView<InfoTabView> tvListePersonne;
+    
     @FXML
     private Button Ouvrir_Cotisation;
 
@@ -28,46 +24,30 @@ public class CtrlPrincipale {
 
     @FXML
     private Button Ouvrir_Rappel;
+    
+    @FXML
+    private Button Ouvrir_Liste;
 
     @FXML
     private Button Quitter;
+    
+    @FXML
+    private TableColumn<InfoTabView, String> nom;
 
+    @FXML
+    private TableColumn<InfoTabView, String> prenom;
+
+    @FXML
+    private TableColumn<InfoTabView, Double> montantPaye;
+
+    @FXML
+    private TableColumn<InfoTabView, String> status;
+
+    @FXML
+    private TableColumn<InfoTabView, Double> montantDu;
+        
     public void quitter() {
         System.out.println("Fenetre fermer correctement...");
-        System.exit(0);
-    }
-
-    public void initialize() {
-        TableColumn<Personne, String> colonne1 = new TableColumn<Personne, String>("Nom");
-        colonne1.setCellValueFactory(new PropertyValueFactory<Personne, String>("nom"));
-        tvListePersonne.getColumns().set(0, colonne1);
-        TableColumn<Personne, String> colonne2 = new TableColumn<Personne, String>("Prénom");
-        colonne2.setCellValueFactory(new PropertyValueFactory<Personne, String>("prenom"));
-        tvListePersonne.getColumns().set(1, colonne2);
-        TableColumn<Personne, String> colonne3 = new TableColumn<Personne, String>("Statut");
-        colonne3.setCellValueFactory(new PropertyValueFactory<Personne, String>("status"));
-        tvListePersonne.getColumns().set(2, colonne3);
-    }
-
-    @FXML
-    void archive(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cotisation(ActionEvent event) throws IOException {
-        Main.ouvrirCotisation(event);
-        Main.fermerPagePrincipale(event);
-    }
-
-    @FXML
-    void facturation(ActionEvent event) throws IOException {
-        Main.ouvrirFacture(event);
-        Main.fermerPagePrincipale(event);
-    }
-
-    @FXML
-    void quitter(ActionEvent event) {
         System.exit(0);
     }
 
@@ -76,5 +56,42 @@ public class CtrlPrincipale {
         Main.ouvrirRappel(event);
         Main.fermerPagePrincipale(event);
     }
+
+    @FXML
+    void ouvrirCotisations(ActionEvent event) throws IOException{
+        Main.ouvrirCotisation(event);
+        Main.fermerPagePrincipale(event);
+    }
+
+    @FXML
+    void ouvrirFacturation(ActionEvent event)throws IOException {
+        Main.ouvrirFacture(event);
+        Main.fermerPagePrincipale(event);
+    }
+    @FXML
+    void archive(ActionEvent event) {
+        
+    }
+    public void initialize(){
+        // Permet d'ajouter les colonnes et un nom pour chaque en-tete
+        
+		nom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("nom"));
+        tvListePersonne.getColumns().set(0,nom);
+		prenom.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("prenom"));
+        tvListePersonne.getColumns().set(1,prenom);
+		status.setCellValueFactory(new PropertyValueFactory<InfoTabView,String>("status"));
+        tvListePersonne.getColumns().set(2,status);
+		montantDu.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("montant"));
+        tvListePersonne.getColumns().set(3,montantDu);
+		montantPaye.setCellValueFactory(new PropertyValueFactory<InfoTabView,Double>("paiementEffectuer"));
+        tvListePersonne.getColumns().set(4,montantPaye);
+
+        // Ajouter dans la TableList les données de chaque élément qu'on a mis dans le main.
+        tvListePersonne.setItems(Main.getLesInfo());
+        tvListePersonne.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        Ouvrir_Liste.setDisable(true);
+    }
+
 
 }

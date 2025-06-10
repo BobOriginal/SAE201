@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
@@ -14,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlPrincipale">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlPrincipale">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="312.0" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
          <children>
@@ -38,12 +44,12 @@
                         <Point3D />
                      </rotationAxis>
                   </Button>
-                  <Button fx:id="Ouvrir_Cotisation" minHeight="33.0" mnemonicParsing="false" onAction="#cotisation" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
+                  <Button fx:id="Ouvrir_Cotisation" minHeight="33.0" mnemonicParsing="false" onAction="#ouvrirCotisations" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="Ouvrir_Facture" minHeight="33.0" mnemonicParsing="false" onAction="#facturation" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
+                  <Button fx:id="Ouvrir_Facture" minHeight="33.0" mnemonicParsing="false" onAction="#ouvrirFacturation" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Facturation">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -55,7 +61,7 @@
             </VBox>
             <VBox layoutY="474.0" prefWidth="312.0" spacing="25.0">
                <children>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
+                  <Button fx:id="Ouvrir_Liste" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Liste des inscrits">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -99,9 +105,9 @@
                      <columns>
                         <TableColumn fx:id="nom" prefWidth="100.0" text="Nom" />
                         <TableColumn fx:id="prenom" prefWidth="100.0" text="Prénom" />
-                        <TableColumn fx:id="prenom1" prefWidth="100.0" text="Status" />
-                        <TableColumn prefWidth="100.0" text="Montant Dû" />
-                        <TableColumn prefWidth="100.0" text="Montant Payé" />
+                        <TableColumn fx:id="status" prefWidth="100.0" text="Status" />
+                        <TableColumn fx:id="montantDu" prefWidth="100.0" text="Montant Dû" />
+                        <TableColumn fx:id="montantPaye" prefWidth="100.0" text="Montant Payé" />
                      </columns>
                   </TableView>
                   <Button fx:id="Bouton_Archive" minHeight="33.0" mnemonicParsing="false" onAction="#archive" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Afficher l'archive">

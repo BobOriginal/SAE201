@@ -52,11 +52,6 @@ public class Main extends Application {
 		Donnee.chargementLesInfo();
 		return Donnee.getLesInfo();
 	}
-
-	public static void retourMenu() {
-
-	}
-
 	public static void ouvrirRappel(ActionEvent event) throws IOException {
 		fenRappel.show();
 	}

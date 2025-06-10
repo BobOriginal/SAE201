@@ -132,13 +132,15 @@ public class CtrlFacture {
     private TableView<Personne> Tableau;
 
     @FXML
-    void AllerAuRappel(ActionEvent event) {
-
+    void AllerAuRappel(ActionEvent event) throws IOException {
+        Main.ouvrirRappel(event);
+        Main.fermerFacture(event);
     }
 
     @FXML
-    void allerAuCotisation(ActionEvent event) {
-
+    void allerAuCotisation(ActionEvent event) throws IOException{
+        Main.ouvrirCotisation(event);
+        Main.fermerFacture(event);
     }
 
     @FXML
@@ -169,10 +171,9 @@ public class CtrlFacture {
     }
 
     @FXML
-    void retourMenu(ActionEvent event) {
-
-        Main.retourMenu();
-
+    void retourMenu(ActionEvent event) throws IOException {
+        Main.ouvrirPagePrincipale(event);
+        Main.fermerFacture(event);
     }
 
     @FXML
