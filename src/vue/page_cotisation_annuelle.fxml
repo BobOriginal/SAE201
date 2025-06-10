@@ -146,7 +146,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="152$">
+                              <Label fx:id="Total_prevu" text="152$">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
@@ -162,7 +162,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="100$">
+                              <Label fx:id="Total_deja_payer" text="100$">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
@@ -178,7 +178,7 @@
                                     <Insets top="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="52$">
+                              <Label fx:id="Reste_a_payer" text="52$">
                                  <font>
                                     <Font size="12.0" />
                                  </font>

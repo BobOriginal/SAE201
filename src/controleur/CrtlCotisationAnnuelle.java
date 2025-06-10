@@ -1,10 +1,13 @@
 package controleur;
 
+
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,6 +39,18 @@ public class CrtlCotisationAnnuelle {
 
     @FXML
     private TableView<InfoTabView> listeCotisation;
+    
+
+    @FXML
+    private Label Reste_a_payer;
+    
+
+    @FXML
+    private Label Total_deja_payer;
+    
+
+    @FXML
+    private Label Total_prevu;
 
     @FXML void initialize() {
 

@@ -1,8 +1,10 @@
 package modele;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -18,6 +20,7 @@ public class InfoTabView{
 	private BooleanProperty aPayer;
 	private IntegerProperty montant;
 	private IntegerProperty paiementEffectuer;
+	private DoubleProperty nombreHeureCour;
 	private StringProperty cours;
 	private BooleanProperty aPayerCour;
 	private IntegerProperty montantCour;
@@ -46,6 +49,7 @@ public class InfoTabView{
 		aPayerCour = new SimpleBooleanProperty(p.getMaCotisation().getAPayersCours().get(idcours));
 		montantCour = new SimpleIntegerProperty(p.getMaCotisation().getPrixCours().get(idcours));
 		paiementEffectuerCour = new SimpleIntegerProperty(p.getMaCotisation().getDejaPayerCour());
+		nombreHeureCour = new SimpleDoubleProperty(p.getMesCours().get(idcours).getNbHeure());
 	}
 
 	public String getNom() {

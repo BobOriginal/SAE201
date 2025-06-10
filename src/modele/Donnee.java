@@ -206,4 +206,22 @@ public class Donnee {
 			System.out.println(iter.next());
 		}
 	}
+	
+	public static int total() {
+		int total = 0;
+		Iterator<InfoTabView> iter = lesInfo.iterator();
+		while(iter.hasNext()) {
+			total = total + iter.next().getMontant();
+		}
+		return total;
+	}
+	
+	public static int dejaPayer() {
+		int total = 0;
+		Iterator<InfoTabView> iter = lesInfo.iterator();
+		while(iter.hasNext()) {
+			total = total + iter.next().get;
+		}
+		return total;
+	}
 }
