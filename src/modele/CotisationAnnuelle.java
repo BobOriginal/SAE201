@@ -49,6 +49,8 @@ public class CotisationAnnuelle {
 		}else {
 			total = Donnee.prixNonInscrit;
 		}
+		resteAPayer = total - dejaPayer;
+
 		
 	}
 	void calculPrixCour(Personne p) {
@@ -124,7 +126,7 @@ public class CotisationAnnuelle {
 	}
 	
 	public Boolean aPayer() {
-		return resteAPayer!=0;
+		return resteAPayer==0;
 	}
 
 	public ArrayList<Integer> getPrixCours() {
