@@ -3,9 +3,12 @@ package controleur;
 
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,9 +17,11 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import modele.Cours;
 import modele.Donnee;
 import modele.InfoTabView;
 import modele.Main;
+import modele.Personne;
 
 public class CrtlCotisationAnnuelle {
 
@@ -117,8 +122,10 @@ public class CrtlCotisationAnnuelle {
     }
 
     @FXML
-    void modifier(ActionEvent event) {
-    	
+    void modifier(ActionEvent event) throws IOException {
+    	CtrlModification.setlaPersonne(listeCotisation.getSelectionModel().getSelectedItem().getP());
+    	Main.fermerCotisation(event);
+    	Main.ouvrirModification(event);   	
     }
 
     @FXML
@@ -127,7 +134,9 @@ public class CrtlCotisationAnnuelle {
     }
 
     @FXML
-    void listeImpayer(ActionEvent event) {
-
+    void listeImpayer(ActionEvent event) throws IOException{
+    	Main.fermerCotisation(event);
+    	Main.ouvrirRappel(event);
     }
+    
 }

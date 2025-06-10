@@ -120,8 +120,10 @@ public class CtrlCotisationAnnuelleCours {
     }
 
     @FXML
-    void modifier(ActionEvent event) {
-    	
+    void modifier(ActionEvent event) throws IOException {
+    	CtrlModification.setlaPersonne(listeCotisation.getSelectionModel().getSelectedItem().getP());
+    	Main.fermerCotisationCours(event);
+    	Main.ouvrirModification(event);   	
     }
 
     @FXML
@@ -130,7 +132,8 @@ public class CtrlCotisationAnnuelleCours {
     }
 
     @FXML
-    void listeImpayer(ActionEvent event) {
-
+    void listeImpayer(ActionEvent event) throws IOException {
+    	Main.fermerCotisationCours(event);
+    	Main.ouvrirRappel(event);
     }
 }

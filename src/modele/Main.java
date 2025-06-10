@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import vue.FenFacture;
+import vue.FenModification;
 import vue.FenArchiver;
 import vue.FenCotisationAnnuelle;
 import vue.FenCotisationAnnuelleCours;
@@ -24,6 +25,7 @@ public class Main extends Application {
 	private static FenRappel fenRappel;
 	private static FenArchiver fenArchiver;
 	private static FenCotisationAnnuelleCours fenCotisationAnnuelleCours;
+	private static FenModification fenModification;
 
 	public void start(Stage f) throws Exception {
 		fenCotisationAnnuelle = new FenCotisationAnnuelle();
@@ -33,6 +35,7 @@ public class Main extends Application {
 		fenEmail = new FenEmail();
 		fenRappel = new FenRappel();
 		fenCotisationAnnuelleCours = new FenCotisationAnnuelleCours();
+		fenModification = new FenModification();
 		fenPrincipal.show();
 	}
 
@@ -105,5 +108,14 @@ public class Main extends Application {
 
 	public static void fermerCotisationCours(ActionEvent event) throws IOException {
 		fenCotisationAnnuelleCours.close();
+	}
+	
+	public static void ouvrirModification(ActionEvent event) throws IOException {
+		fenModification.getCtrl().metAjourTab();
+		fenModification.show();
+	}
+
+	public static void fermerModification(ActionEvent event) throws IOException {
+		fenModification.close();
 	}
 }

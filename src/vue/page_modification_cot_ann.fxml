@@ -7,14 +7,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="312.0" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
          <children>
             <ImageView fitHeight="115.0" fitWidth="210.0" layoutX="51.0" layoutY="35.0">
                <image>
-                  <Image url="@SAE201-main/sources/ODD_Logo_v1.png" />
+                  <Image url="@../../sources/ODD_Logo_v1.png" />
                </image>
             </ImageView>
             <Label layoutX="39.0" layoutY="175.0" prefHeight="35.0" prefWidth="234.0" text="Suivi des paiements" textAlignment="CENTER" textFill="WHITE" underline="true">
@@ -74,15 +73,15 @@
             <Label text="Modification Cotisation" />
             <HBox>
                <children>
-                  <TableView>
+                  <TableView prefHeight="500.0" prefWidth="449.0">
                      <columns>
                         <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Column X" />
                      </columns>
                   </TableView>
                   <VBox spacing="20.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Ajouter" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Ajouter" />
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Supprimer" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
