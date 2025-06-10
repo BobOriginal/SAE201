@@ -79,7 +79,7 @@
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </padding>
       </Pane>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="403.0" style="-fx-background-color: #D9D9D9;">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="329.0" style="-fx-background-color: #D9D9D9;">
          <top>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="200.0" spacing="45.0" BorderPane.alignment="CENTER">
                <children>
@@ -100,7 +100,7 @@
             </HBox>
          </top>
          <center>
-            <VBox alignment="CENTER" prefHeight="510.0" prefWidth="335.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="535.0" prefWidth="330.0" spacing="10.0" BorderPane.alignment="TOP_LEFT">
                <children>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="200.0" spacing="50.0">
                      <children>
@@ -224,7 +224,7 @@
             </VBox>
          </center>
       </BorderPane>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="368.0" style="-fx-background-color: #D9D9D9;">
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="443.0" style="-fx-background-color: #D9D9D9;">
          <children>
             <Label alignment="CENTER" text="Prévisulatiation" underline="true">
                <font>
