@@ -6,20 +6,17 @@ import java.util.Calendar;
 import Exceptions.DoublonCoursException;
 import Exceptions.StatusException;
 import Exceptions.TropDeCoursExecption;
-import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableNumberValue;
 
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
 	final static String ELEVE_PLEIN_TARIF = "plein tarif";
 	final static String NON_INSCRIT = "non inscrit";
 	private int id;
-
 	private StringProperty nom = new SimpleStringProperty();
 	private StringProperty prenom = new SimpleStringProperty();
 	private StringProperty status = new SimpleStringProperty();
@@ -33,12 +30,12 @@ public class Personne {
 	private StringProperty ville = new SimpleStringProperty();
 	private boolean factureArchiver = false;
 
-	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe)
-			throws StatusException {
+	public Personne(String nom, String prenom, String status, String adresse, String typePaiment, String sexe,
+			String ville, String codePostal) throws StatusException {
 		super();
-		ville.set(" lannion");
-		codePostal.set("22300");
 
+		this.ville.set(ville);
+		this.codePostal.set(codePostal);
 		this.nom.set(nom);
 		this.prenom.set(prenom);
 		this.adresse.set(adresse);
@@ -68,7 +65,6 @@ public class Personne {
 	}
 
 	public void setNom(String nom) {
-
 		this.nom.set(nom);
 	}
 
@@ -93,7 +89,6 @@ public class Personne {
 	}
 
 	public void setStatus(String status) {
-
 		this.status.set(status);
 	}
 
@@ -119,6 +114,30 @@ public class Personne {
 
 	public String getAdresse() {
 		return adresse.get();
+	}
+
+	public String getVille() {
+		return ville.get();
+	}
+
+	public void setVille(String v) {
+		ville.set(v);
+	}
+
+	public void setSexe(String s) {
+		sexe.set(s);
+	}
+
+	public String getSexe() {
+		return sexe.get();
+	}
+
+	public String getCodePostal() {
+		return codePostal.get();
+	}
+
+	public void setCodePostal(String cp) {
+		codePostal.set(cp);
 	}
 
 	public void setAdresse(String adresse) {
@@ -167,7 +186,6 @@ public class Personne {
 				throw new NullPointerException();
 			} else if (mesCours.contains(c)) {
 				throw new DoublonCoursException();
-
 			} else if (status.get().equals(NON_INSCRIT)) {
 				throw new StatusException();
 			} else if (status.get().equals(ELEVE_PLEIN_TARIF) && ((nbHeureCours.get()) + c.getNbHeure()) > 7.5) {
@@ -179,7 +197,6 @@ public class Personne {
 		} catch (NullPointerException e) {
 			System.out.println("Cours valeur null");
 		} catch (DoublonCoursException e) {
-
 		} catch (StatusException e) {
 			System.out.println("On ne peux pas ajouter un cours a une personne non inscrit");
 		} catch (TropDeCoursExecption e) {

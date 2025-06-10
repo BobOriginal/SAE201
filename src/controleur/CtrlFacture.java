@@ -1,3 +1,4 @@
+
 package controleur;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -20,18 +22,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.converter.NumberStringConverter;
 import modele.Donnee;
 import modele.Facture;
+import modele.InfoTabView;
 import modele.Main;
-import modele.Personne;
 
 public class CtrlFacture {
 
     private modele.Personne personne;
+
     private String nomTampon;
+    private String prenomTampon;
     private String adresseTampon;
-    private String montantTampon;
-    private String montantPayerTampon;
-    private String resteApayerTampon;
+    private int totalTampon;
     private String modePaiementTampon;
+    private String codePostalTampon;
+    private String dateTampon;
+    private String villeTampon;
+    private String sexeTampon;
 
     private StringProperty sexeDestinataire = new SimpleStringProperty();
     private StringProperty nomDestinataire = new SimpleStringProperty();
@@ -129,7 +135,7 @@ public class CtrlFacture {
     private RadioButton Madame;
 
     @FXML
-    private TableView<Personne> Tableau;
+    private TableView<InfoTabView> Tableau;
 
     @FXML
     void AllerAuRappel(ActionEvent event) throws IOException {
@@ -138,7 +144,7 @@ public class CtrlFacture {
     }
 
     @FXML
-    void allerAuCotisation(ActionEvent event) throws IOException{
+    void allerAuCotisation(ActionEvent event) throws IOException {
         Main.ouvrirCotisation(event);
         Main.fermerFacture(event);
     }
@@ -155,17 +161,23 @@ public class CtrlFacture {
     }
 
     @FXML
-    void changer_eleve(ActionEvent event) {
-
+    void changer_eleve(ActionEvent event) throws IOException {
+        Main.ouvrirPagePrincipale(event);
+        Main.fermerFacture(event);
     }
 
     @FXML
     void modifier(ActionEvent event) {
-
-        nomTampon = Nom_Etudiant.getText();
-        adresseTampon = Adr_Val.getText();
-        montantPayerTampon = Montant_Payer_Val.getText();
-        modePaiementTampon = Mode_Paiement_Val.getText();
+        nomTampon = personne.getNom();
+        prenomTampon = personne.getPrenom();
+        adresseTampon = personne.getAdresse();
+        totalTampon = personne.getMaCotisation().getTotal();
+        modePaiementTampon = personne.getMaCotisation().getTypePaiment();
+        codePostalTampon = personne.getCodePostal();
+        villeTampon = personne.getVille();
+        dateTampon = personne.getMaCotisation().getDatePaiement();
+        sexeTampon = personne.getSexe();
+        // private String dateTampon;
 
         enableDisable(false);
     }
@@ -195,6 +207,7 @@ public class CtrlFacture {
         Ville_Val.textProperty().bind(e.villeProperty());
         Ville_Resumer.textProperty().bindBidirectional(e.villeProperty());
 
+        Date_Facture_Resumer.textProperty().bindBidirectional(e.getMaCotisation().DatePaiementProperty());
         Date_Facture_Resumer.setText(aujourdhui());
         Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
 
@@ -219,17 +232,26 @@ public class CtrlFacture {
         Mode_Paiement_Val.textProperty().bind(personne.getMaCotisation().typePaiementProperty());
 
         // Tableau pas encore fonctionnel
-        TableColumn<Personne, String> colonne1 = new TableColumn<Personne, String>("Description");
-        colonne1.setCellValueFactory(new PropertyValueFactory<Personne, String>("Description"));
+        TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView, String>("Description");
+        colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("cours"));
         Tableau.getColumns().set(0, colonne1);
 
-        TableColumn<Personne, String> colonne2 = new TableColumn<Personne, String>("Nombre d'heure");
-        colonne2.setCellValueFactory(new PropertyValueFactory<Personne, String>("Nombre d'heure"));
+        TableColumn<InfoTabView, String> colonne2 = new TableColumn<InfoTabView, String>("Nombre d'heure");
+        colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("nbHeure"));
         Tableau.getColumns().set(1, colonne2);
 
-        TableColumn<Personne, String> colonne3 = new TableColumn<Personne, String>("prix");
-        colonne3.setCellValueFactory(new PropertyValueFactory<Personne, String>("prix"));
+        TableColumn<InfoTabView, String> colonne3 = new TableColumn<InfoTabView, String>("prix");
+        colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("montantCour"));
         Tableau.getColumns().set(2, colonne3);
+
+        Tableau.setItems(Main.getLesInfoCours());
+        Tableau.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        if (sexeDestinataire.get().equals("Mr")) {
+            Monsieur.setSelected(true);
+        } else {
+            Madame.setSelected(true);
+        }
 
     }
 
@@ -239,10 +261,24 @@ public class CtrlFacture {
     }
 
     public void annuler(ActionEvent event) {
+
         personne.setNom(nomTampon);
+        personne.setPrenom(prenomTampon);
         personne.setAdresse(adresseTampon);
+        personne.getMaCotisation().setMontant(totalTampon);
+        personne.getMaCotisation().setTypePaiement(modePaiementTampon);
+        personne.setCodePostal(codePostalTampon);
+        personne.setVille(villeTampon);
+        personne.getMaCotisation().setDatePaiement(dateTampon);
+        personne.setSexe(sexeTampon);
 
         enableDisable(true);
+
+        if (sexeDestinataire.get().equals("Mr")) {
+            Monsieur.setSelected(true);
+        } else {
+            Madame.setSelected(true);
+        }
     }
 
     public String aujourdhui() {
