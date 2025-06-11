@@ -54,7 +54,7 @@ public class CtrlEmail {
         Alert alertEnvoyer = new Alert(Alert.AlertType.INFORMATION);
         if(!Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",tfDestinataires.getText())) {
         	alertPopUp.setTitle("Erreur de regex dans le Destinataires !");
-        	alertPopUp.setContentText("Vous devez mettre une paterne dans le destinataires qui doit etre conforme à un email.");
+        	alertPopUp.setContentText("Mettez une paterne qui doit etre conforme à un email.");
         	alertPopUp.showAndWait();
         }
         else {
