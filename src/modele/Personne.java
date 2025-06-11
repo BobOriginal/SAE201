@@ -16,7 +16,7 @@ import javafx.beans.property.StringProperty;
 public class Personne {
 	final static String ELEVE_TARIF_REDUIT = "tarif reduit";
 	final static String ELEVE_PLEIN_TARIF = "plein tarif";
-	final static String NON_INSCRIT = "non inscrit";
+	public final static String NON_INSCRIT = "non inscrit";
 	private int id;
 	private StringProperty nom = new SimpleStringProperty();
 	private StringProperty prenom = new SimpleStringProperty();

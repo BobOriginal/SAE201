@@ -6,7 +6,10 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -15,42 +18,77 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import modele.Donnee;
 import modele.InfoTabView;
 import modele.Main;
+import modele.Personne;
+import modele.Personne;
 
 public class CtrlCotisationAnnuelleCours {
 
+
+	@FXML
+    private Label Reste_a_payer;
+
+    @FXML
+    private Label Total_deja_payer;
+
+    @FXML
+    private Label Total_prevu;
+
+    @FXML
+    private Button bnFacturation;
 
     @FXML
     private Button bnListeImpayer;
 
     @FXML
-    private Button bnTrierCour;
-
-    @FXML
-    private Button bnSuprimer;
-
-    @FXML
-    private Button bnTriezNom;
-
-    @FXML
-    private Button bnAjouter;
+    private Button bnListeInscrit;
 
     @FXML
     private Button bnModifier;
 
     @FXML
+    private Button bnQuitter;
+
+    @FXML
+    private Button bnRappel;
+
+    @FXML
+    private Button bnSuprimer;
+
+    @FXML
+    private Button bnTrierCour;
+
+    @FXML
+    private Button bnTriezNom;
+
+    @FXML
     private TableView<InfoTabView> listeCotisation;
     
-
-    @FXML
-    private Label Reste_a_payer;
     
-
     @FXML
-    private Label Total_deja_payer;
+    void listeInscrit(ActionEvent event) throws IOException{
+    	Main.fermerCotisation(event);
+    	Main.ouvrirPagePrincipale(event);
+    	
+    }
     
+    @FXML
+    void quitter(ActionEvent event) throws IOException {
+    	Main.quitter(event);
+    }
 
     @FXML
-    private Label Total_prevu;
+    void rappel(ActionEvent event) throws IOException {
+    	Main.fermerCotisation(event);
+    	Main.ouvrirRappel(event);
+    }
+
+    @FXML
+    void facturation(ActionEvent event) throws IOException {
+    	controleur.CtrlFacture.setEleve(listeCotisation.getSelectionModel().getSelectedItem().getP());
+    	Main.fermerCotisation(event);
+    	Main.ouvrirFacture(event);
+    }
+
 
     @FXML void initialize() {
     	
@@ -100,6 +138,7 @@ public class CtrlCotisationAnnuelleCours {
 				, -1);
 		bnSuprimer.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
 		bnModifier.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
+		bnFacturation.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
     }
     
     @FXML
@@ -114,21 +153,39 @@ public class CtrlCotisationAnnuelleCours {
     	Main.ouvrirCotisation(event);
     }
 
-    @FXML
-    void ajouter(ActionEvent event) {
-
-    }
-
+   
     @FXML
     void modifier(ActionEvent event) throws IOException {
-    	CtrlModification.setlaPersonne(listeCotisation.getSelectionModel().getSelectedItem().getP());
-    	Main.fermerCotisationCours(event);
-    	Main.ouvrirModification(event);   	
+    	Personne p = listeCotisation.getSelectionModel().getSelectedItem().getP();
+    	if(p.getStatus().equals(Personne.NON_INSCRIT)) {
+    		Alert alert = new Alert(
+        			AlertType.ERROR,
+        			"Cette personne n'assite a aucun cour"
+        			);
+        	alert.setTitle("Modification impossible");
+        	alert.show();
+    	}
+    	else {
+    		CtrlModification.setlaPersonne(p);
+        	Main.fermerCotisationCours(event);
+        	Main.ouvrirModification(event);
+    	}
     }
 
     @FXML
     void suprimer(ActionEvent event) {
-    	Donnee.removeInfo(listeCotisation.getSelectionModel().getSelectedItem());
+   
+        	Alert alert = new Alert(
+        			AlertType.CONFIRMATION,
+        			"Voulez-vous vraiment supprimer cet cotisation annuelle elle ne pourras pas etre recrée ?",
+        			ButtonType.YES,
+        			ButtonType.NO
+        			);
+        	alert.setTitle("Confirmation de suppression");
+        	if(alert.showAndWait().get() == ButtonType.YES) {
+        		Donnee.removeInfo(listeCotisation.getSelectionModel().getSelectedItem());
+        	}
+        
     }
 
     @FXML

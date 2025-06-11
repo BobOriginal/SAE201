@@ -55,7 +55,7 @@ public class CtrlRappel {
     private Button Quitter;
 
     @FXML
-    void rappel(ActionEvent event) throws IOException {
+    void rappel(ActionEvent event) throws IOException {  	
         Main.ouvrirEmail(event);
         Main.fermerRappel(event);
     }
@@ -68,6 +68,7 @@ public class CtrlRappel {
 
     @FXML
     void ouvrirFacturation(ActionEvent event) throws IOException {
+    	CtrlFacture.setEleve(tvListePersonneImpayes.getSelectionModel().getSelectedItem().getP());
         Main.ouvrirFacture(event);
         Main.fermerRappel(event);
     }
@@ -107,7 +108,7 @@ public class CtrlRappel {
         // Permet de griser lorsqu'on ne sélectionne rien
         BooleanBinding bool = Bindings.equal(tvListePersonneImpayes.getSelectionModel().selectedIndexProperty(), -1);
         bnRappel.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
-
+        Ouvrir_Facture.disableProperty().bind(Bindings.when(bool).then(true).otherwise(false));
         Ouvrir_Rappel.setDisable(true);
     }
 

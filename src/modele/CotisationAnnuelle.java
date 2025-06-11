@@ -129,6 +129,10 @@ public class CotisationAnnuelle {
 	public Integer getDejaPayer() {
 		return dejaPayer.get();
 	}
+	
+	public IntegerProperty dejaPayerProperty() {
+		return dejaPayer;
+	}
 
 	public Integer getResteAPayer() {
 		return resteAPayer.get();

@@ -4,16 +4,19 @@ import java.io.IOException;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.InfoTabView;
 import modele.Main;
+import modele.Personne;
 
 public class CtrlPrincipale {
 
@@ -82,8 +85,18 @@ public class CtrlPrincipale {
 
     @FXML
     void archive(ActionEvent event) throws IOException {
-        Main.ouvrirArchiver(event);
-        Main.fermerPagePrincipale(event);
+    	Personne p = tvListePersonne.getSelectionModel().getSelectedItem().getP();
+    	if(p.getEtatArchivage()) {
+    		 Main.ouvrirArchiver(event);
+    		
+    	}else {
+    		Alert alert = new Alert(
+        			AlertType.ERROR,
+        			"Archive non crée allez la crée dans facturation"
+        			);
+    		alert.show();
+    	}
+      
 
     }
 
@@ -104,10 +117,8 @@ public class CtrlPrincipale {
 
         BooleanBinding rien = Bindings.equal(tvListePersonne.getSelectionModel().selectedIndexProperty(), -1);
         Ouvrir_Facture.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
-        Ouvrir_Rappel.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
-        Ouvrir_Cotisation.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
+        Bouton_Archive.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
         Ouvrir_Liste.setDisable(true);
-        Bouton_Archive.setDisable(true);
     }
 
 }

@@ -226,9 +226,9 @@ public class CtrlFacture {
         return mesCours;
     }
 
-    public void quitter() {
+    public void quitter() throws IOException {
         System.out.println("Fenetre fermer correctement...");
-        System.exit(0);
+        Main.quitter(null);
     }
 
     public void annuler(ActionEvent event) {
@@ -334,7 +334,7 @@ public class CtrlFacture {
         Bindings.bindBidirectional(Total_Resumer.textProperty(), personne.getMaCotisation().totalProperty(),
                 converter);
         Total_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().totalProperty()));
-        Montant_Payer_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().ResteApayerProperty()));
+        Montant_Payer_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().dejaPayerProperty()));
         Mode_Paiement_Resumer.textProperty().bindBidirectional(personne.getMaCotisation().typePaiementProperty());
         Mode_Paiement_Val.textProperty().bind(personne.getMaCotisation().typePaiementProperty());
 
