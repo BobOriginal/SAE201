@@ -66,33 +66,146 @@ public class Donnee {
 			lesCours.add(c3);
 			lesCours.add(c4);
 			lesCours.add(c5);
-			try {
-				p1.ajouterUnCours(c1);
-				p1.ajouterUnCours(c2);
-				p2.ajouterUnCours(c5);
-				p3.ajouterUnCours(c4);
-				p3.ajouterUnCours(c4);
-				p4.ajouterUnCours(c2);
-				p5.ajouterUnCours(c1);
-				p6.ajouterUnCours(c2);
-				p6.ajouterUnCours(c5);
-				p7.ajouterUnCours(c4);
-				p7.ajouterUnCours(c3);
-				p7.ajouterUnCours(c2);
-				p8.ajouterUnCours(c1);
-				p9.ajouterUnCours(c2);
-				p9.ajouterUnCours(c5);
-				p9.ajouterUnCours(c4);
-				p10.ajouterUnCours(c4);
-				p10.ajouterUnCours(c2);
-				p11.ajouterUnCours(c2);
-				p11.ajouterUnCours(c5);
-				p12.ajouterUnCours(c4);
-				p13.ajouterUnCours(c4);
-				p13.ajouterUnCours(c2);
-			}catch (TropDeCoursExecption e) {
-				// TODO: handle exception
-			}
+			
+				try {
+					p1.ajouterUnCours(c1);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p1.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p2.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p3.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p3.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p4.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p5.ajouterUnCours(c1);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p6.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p6.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p7.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p7.ajouterUnCours(c3);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p7.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p8.ajouterUnCours(c1);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p9.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p9.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p9.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p10.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p10.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p11.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p11.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p12.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p13.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p13.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 			
 
 			lesPersonnes.add(p1);
