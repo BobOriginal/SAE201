@@ -52,15 +52,18 @@ public class CtrlEmail {
     void envoyer(ActionEvent event) throws IOException {
     	Alert alertPopUp = new Alert(Alert.AlertType.INFORMATION);
         Alert alertEnvoyer = new Alert(Alert.AlertType.INFORMATION);
-        if(!tfDestinataires.getText().contains("@")) {
+        if(!Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",tfDestinataires.getText())) {
         	alertPopUp.setTitle("Erreur de regex dans le Destinataires !");
-        	alertPopUp.setContentText("Vous devez mettre un '@' dans le destinataires");
+        	alertPopUp.setContentText("Vous devez mettre une paterne dans le destinataires qui doit etre conforme à un email.");
         	alertPopUp.showAndWait();
         }
         else {
             alertEnvoyer.setTitle("Message!");
             alertEnvoyer.setContentText("Vous avez bien envoyé un rappel à l'élève");
             alertEnvoyer.showAndWait();
+            tfDestinataires.setText(null);
+            tfObjet.setText(null);
+            taContenu.setText(null);
             Main.fermerEmail(event);
             Main.ouvrirRappel(event);
         }
@@ -68,6 +71,9 @@ public class CtrlEmail {
 
     @FXML
     void annuler(ActionEvent event) throws IOException {
+        tfDestinataires.setText(null);
+        tfObjet.setText(null);
+        taContenu.setText(null);
         Main.fermerEmail(event);
         Main.ouvrirRappel(event);
     }
