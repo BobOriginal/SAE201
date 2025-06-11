@@ -14,6 +14,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -30,6 +32,7 @@ import modele.InfoTabView;
 import modele.InfoTabViewCours;
 import modele.Main;
 import modele.Personne;
+import vue.FenArchiver;
 
 public class CtrlFacture {
 
@@ -291,15 +294,21 @@ public class CtrlFacture {
         Tableau.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
-    public static void setEleve(Personne p) {
-        personne = p;
+    public static boolean setEleve(Personne p) throws IOException {
+        if (p.getEtatArchivage() == true) {
+
+            return false;
+        } else {
+            personne = p;
+            return true;
+        }
     }
 
     public static Personne getEleve() {
         return personne;
     }
 
-    public void updateValue() {
+    public void updateValue() throws IOException {
 
         Nom_Etudiant.textProperty().bind(getEleve().nomProperty());
         Regler_Par_Resumer.textProperty().bindBidirectional(getEleve().nomProperty());
@@ -343,5 +352,6 @@ public class CtrlFacture {
         } else {
             Madame.setSelected(true);
         }
+
     }
 }

@@ -60,7 +60,7 @@ public class Donnee {
 			CoursAvancer c3 = new CoursAvancer(2025, 3.0, "c3");
 			CoursDebutant c4 = new CoursDebutant(2025, 2.0, "c4");
 			CoursIntermediare c5 = new CoursIntermediare(2025, 1.0, "c5");
-			
+
 			lesCours.add(c1);
 			lesCours.add(c2);
 			lesCours.add(c3);
@@ -90,10 +90,9 @@ public class Donnee {
 				p12.ajouterUnCours(c4);
 				p13.ajouterUnCours(c4);
 				p13.ajouterUnCours(c2);
-			}catch (TropDeCoursExecption e) {
+			} catch (TropDeCoursExecption e) {
 				// TODO: handle exception
 			}
-			
 
 			lesPersonnes.add(p1);
 			lesPersonnes.add(p2);
@@ -284,7 +283,5 @@ public class Donnee {
 	public static ObservableList<Cours> getLesCours() {
 		return lesCours;
 	}
-	
-	
 
 }

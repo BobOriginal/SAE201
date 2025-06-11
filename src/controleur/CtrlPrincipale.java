@@ -79,8 +79,16 @@ public class CtrlPrincipale {
     @FXML
     void ouvrirFacturation(ActionEvent event) throws IOException {
         CtrlFacture.setEleve(tvListePersonne.getSelectionModel().getSelectedItem().getP());
-        Main.ouvrirFacture(event);
-        Main.fermerPagePrincipale(event);
+        if (CtrlFacture.setEleve(tvListePersonne.getSelectionModel().getSelectedItem().getP()) == false) {
+            Alert alert = new Alert(
+                    AlertType.ERROR,
+                    "L'élève a déjà une archive de crée. Vous pouvez la consulter, mais il n'est pas possible d'en faire une autre.");
+            alert.showAndWait();
+            Main.fermerArchiverBourrin();
+        } else {
+            Main.ouvrirFacture(event);
+            Main.fermerPagePrincipale(event);
+        }
     }
 
     @FXML
