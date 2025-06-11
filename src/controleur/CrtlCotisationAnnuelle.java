@@ -92,7 +92,6 @@ public class CrtlCotisationAnnuelle {
     }
 
     
-    
     @FXML void initialize() {
     	Total_prevu.textProperty().bind(Bindings.concat(Donnee.total()+"€"));
     	Total_deja_payer.textProperty().bind(Bindings.concat(Donnee.dejaPayer()+"€"));

@@ -175,6 +175,8 @@ public class Personne {
 	}
 	public void retirerCour(Cours c) {
 		mesCours.remove(c);
+		nbHeureCours.set(nbHeureCours.get() - c.getNbHeure());
+		maCotisation.calculTotal(this);
 	}
 	private void addCours(Cours c) {
 		mesCours.add(c);

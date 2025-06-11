@@ -60,39 +60,153 @@ public class Donnee {
 			CoursAvancer c3 = new CoursAvancer(2025, 3.0, "c3");
 			CoursDebutant c4 = new CoursDebutant(2025, 2.0, "c4");
 			CoursIntermediare c5 = new CoursIntermediare(2025, 1.0, "c5");
-
+			
 			lesCours.add(c1);
 			lesCours.add(c2);
 			lesCours.add(c3);
 			lesCours.add(c4);
 			lesCours.add(c5);
-			try {
-				p1.ajouterUnCours(c1);
-				p1.ajouterUnCours(c2);
-				p2.ajouterUnCours(c5);
-				p3.ajouterUnCours(c4);
-				p3.ajouterUnCours(c4);
-				p4.ajouterUnCours(c2);
-				p5.ajouterUnCours(c1);
-				p6.ajouterUnCours(c2);
-				p6.ajouterUnCours(c5);
-				p7.ajouterUnCours(c4);
-				p7.ajouterUnCours(c3);
-				p7.ajouterUnCours(c2);
-				p8.ajouterUnCours(c1);
-				p9.ajouterUnCours(c2);
-				p9.ajouterUnCours(c5);
-				p9.ajouterUnCours(c4);
-				p10.ajouterUnCours(c4);
-				p10.ajouterUnCours(c2);
-				p11.ajouterUnCours(c2);
-				p11.ajouterUnCours(c5);
-				p12.ajouterUnCours(c4);
-				p13.ajouterUnCours(c4);
-				p13.ajouterUnCours(c2);
-			} catch (TropDeCoursExecption e) {
-				// TODO: handle exception
-			}
+			
+				try {
+					p1.ajouterUnCours(c1);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p1.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p2.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p3.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p3.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p4.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p5.ajouterUnCours(c1);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p6.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p6.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p7.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p7.ajouterUnCours(c3);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p7.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p8.ajouterUnCours(c1);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p9.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p9.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p9.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p10.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					p10.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p11.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p11.ajouterUnCours(c5);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p12.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p13.ajouterUnCours(c4);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+				try {
+					p13.ajouterUnCours(c2);
+				} catch (TropDeCoursExecption e) {
+					// TODO Auto-generated catch block
+					
+				}
+			
+			
 
 			lesPersonnes.add(p1);
 			lesPersonnes.add(p2);
@@ -283,5 +397,7 @@ public class Donnee {
 	public static ObservableList<Cours> getLesCours() {
 		return lesCours;
 	}
+	
+	
 
 }

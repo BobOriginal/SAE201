@@ -46,23 +46,26 @@ public class CotisationAnnuelle {
 	}
 
 	void calculTotal(Personne p) {
-
-		if (p.getStatus().equals(Personne.ELEVE_PLEIN_TARIF)) {
-			if (Donnee.prixCourPleinTarif.get(p.getNbHeureCours()) == null) {
-				System.out.println(p.getNbHeureCours());
-			}
-			total.set(Donnee.prixCourPleinTarif.get(p.getNbHeureCours()));
-
-		} else if (p.getStatus().equals(Personne.ELEVE_TARIF_REDUIT)) {
-			if (Donnee.prixCourTarifReduit.get(p.getNbHeureCours()) == null) {
-				System.out.println(p.getNbHeureCours());
-			}
-			total.set(Donnee.prixCourTarifReduit.get(p.getNbHeureCours()));
-
-		} else {
-			total.set(Donnee.prixNonInscrit);
+		if(p.getNbHeureCours() == 0) {
+			total.set(Donnee.prixInscription);
 		}
+		else {
+			if (p.getStatus().equals(Personne.ELEVE_PLEIN_TARIF)) {
+				if (Donnee.prixCourPleinTarif.get(p.getNbHeureCours()) == null) {
+					System.out.println(p.getNbHeureCours());
+				}
+				total.set(Donnee.prixCourPleinTarif.get(p.getNbHeureCours()));
 
+			} else if (p.getStatus().equals(Personne.ELEVE_TARIF_REDUIT)) {
+				if (Donnee.prixCourTarifReduit.get(p.getNbHeureCours()) == null) {
+					System.out.println(p.getNbHeureCours());
+				}
+				total.set(Donnee.prixCourTarifReduit.get(p.getNbHeureCours()));
+
+			} else {
+				total.set(Donnee.prixNonInscrit);
+			}
+		}
 		resteAPayer.set(total.get() - dejaPayer.get());
 	}
 

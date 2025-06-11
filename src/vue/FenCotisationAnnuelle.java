@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 public class FenCotisationAnnuelle extends Stage {
 
+	
     public FenCotisationAnnuelle() throws IOException {
 
         this.setTitle("Organizatore di Dance");

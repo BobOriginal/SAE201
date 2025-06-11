@@ -114,6 +114,7 @@ public class Main extends Application {
 	}
 
 	public static void ouvrirCotisation(ActionEvent event) throws IOException {
+		
 		fenCotisationAnnuelle.show();
 	}
 
@@ -143,6 +144,7 @@ public class Main extends Application {
 	}
 
 	public static void ouvrirAjouterCours(ActionEvent event) throws IOException {
+		fenAjouterCours.getCtrl().update();
 		fenAjouterCours.show();
 	}
 

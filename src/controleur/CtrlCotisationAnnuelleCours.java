@@ -1,9 +1,12 @@
 package controleur;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -15,10 +18,10 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import modele.Cours;
 import modele.Donnee;
 import modele.InfoTabView;
 import modele.Main;
-import modele.Personne;
 import modele.Personne;
 
 public class CtrlCotisationAnnuelleCours {
@@ -63,10 +66,37 @@ public class CtrlCotisationAnnuelleCours {
     @FXML
     private TableView<InfoTabView> listeCotisation;
     
+    @FXML
+    private TableView<Cours> tabCour;
+
+
+    @FXML
+    private Button bnSelectioner;
+
+    @FXML
+    void changeTab(ActionEvent event) {
+    	Cours c = tabCour.getSelectionModel().getSelectedItem();
+    	updateTrie(c);
+    }
+    
+   
+    
+    private void updateTrie(Cours c) {
+    	ObservableList<InfoTabView> lesInfo = FXCollections.observableArrayList();
+    	Iterator<InfoTabView> iter = Main.getLesInfoCours().iterator();
+    	while(iter.hasNext()) {
+    		InfoTabView info = iter.next();
+    		if(info.getCours().equals(c.getIntituler())) {
+    			lesInfo.add(info);
+    		}
+    	}
+    	
+    	listeCotisation.setItems(lesInfo);
+    }
     
     @FXML
     void listeInscrit(ActionEvent event) throws IOException{
-    	Main.fermerCotisation(event);
+    	Main.fermerCotisationCours(event);
     	Main.ouvrirPagePrincipale(event);
     	
     }
@@ -78,7 +108,7 @@ public class CtrlCotisationAnnuelleCours {
 
     @FXML
     void rappel(ActionEvent event) throws IOException {
-    	Main.fermerCotisation(event);
+    	Main.fermerCotisationCours(event);
     	Main.ouvrirRappel(event);
     }
 
@@ -139,6 +169,23 @@ public class CtrlCotisationAnnuelleCours {
 		bnSuprimer.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
 		bnModifier.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
 		bnFacturation.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
+		
+		
+		//tabCours
+		
+		TableColumn<Cours, String> colonne1Cour = new TableColumn<Cours,String>("Cours");
+		colonne1Cour.setCellValueFactory(new PropertyValueFactory<Cours,String>("intituler"));
+		tabCour.getColumns().set(0, colonne1Cour);
+		
+		tabCour.setItems(Main.getLesCours());
+		tabCour.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+		
+		BooleanBinding rien2 =
+				 Bindings.equal(tabCour.getSelectionModel().selectedIndexProperty()
+				, -1);
+		bnSelectioner.disableProperty().bind(Bindings.when(rien2).then(true).otherwise(false));
+		
+		
     }
     
     @FXML

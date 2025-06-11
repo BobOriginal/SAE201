@@ -65,7 +65,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
+                  <Button fx:id="bnQuitter" minHeight="33.0" mnemonicParsing="false" onAction="#quitter" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -102,6 +102,7 @@
                      <children>
                         <Button fx:id="bnAjouter" mnemonicParsing="false" onAction="#ajouterCours" prefWidth="100.0" text="Ajouter" />
                         <Button fx:id="bnSupprimer" mnemonicParsing="false" onAction="#supprimerCours" prefWidth="100.0" text="Supprimer" />
+                        <Button fx:id="bnRetour" mnemonicParsing="false" onAction="#retour" prefWidth="100.0" text="retour" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

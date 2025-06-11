@@ -27,6 +27,10 @@ import modele.Personne;
 
 public class CtrlModification {
 	private static Personne laPersonne = null;
+	
+	@FXML
+	private Button bnRetour;
+
     @FXML
     private ResourceBundle resources;
 
@@ -48,7 +52,23 @@ public class CtrlModification {
     
     @FXML
     private Label eleve;
-
+    
+    @FXML
+    private Button bnQuitter;
+    
+    @FXML
+    void quitter(ActionEvent event) throws IOException {
+    	Main.quitter(event);
+    }
+    
+    
+    @FXML
+    void retour(ActionEvent event) throws IOException {
+    	Main.fermerModification(event);
+    	Main.ouvrirCotisation(event);
+    }
+ 
+    
     @FXML
     void ajouterCours(ActionEvent event) throws IOException {
     	CtrlAjouterCours.setP(laPersonne);
@@ -99,6 +119,17 @@ public class CtrlModification {
     }
 
     public ObservableList<Cours> CoursPersonne(Personne p) {
+    	ObservableList<Cours> mesCours = FXCollections.observableArrayList();
+    	Iterator<Cours> iter = p.getMesCours().iterator();
+    	//System.out.print(p);
+    	while(iter.hasNext()) {
+    		mesCours.add(iter.next());
+    		//System.out.print(mesCours);
+    	}
+    	return mesCours;
+    }
+    
+    public static ObservableList<Cours> CoursPersonneS(Personne p) {
     	ObservableList<Cours> mesCours = FXCollections.observableArrayList();
     	Iterator<Cours> iter = p.getMesCours().iterator();
     	//System.out.print(p);

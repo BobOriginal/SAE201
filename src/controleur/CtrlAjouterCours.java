@@ -1,10 +1,13 @@
 package controleur;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import Exceptions.TropDeCoursExecption;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -15,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.Cours;
+import modele.InfoTabView;
 import modele.Main;
 import modele.Personne;
 
@@ -48,21 +52,22 @@ public class CtrlAjouterCours {
         			"Cour deja ajouter"
         			);
         	alert.setTitle("Validation impossible");
-        	alert.show();
+        	alert.showAndWait();
     	}else {
     		try {
     			p.ajouterUnCours(c);
+    			Main.fermerAjouterCours(event);
+            	Main.ouvrirModification(event);
 			} catch (TropDeCoursExecption e) {
 				Alert alert = new Alert(
 	        			AlertType.ERROR,
-	        			"L'éleve assiste à trop de cour."
+	        			"L'éleve assiste à trop de cour.\n"
 	        			+ "il ne peux pas en suivre d'autre "
 	        			);
 	        	alert.setTitle("Validation");
-	        	alert.show();
+	        	alert.showAndWait();
 			}
-    		Main.fermerAjouterCours(event);
-        	Main.ouvrirModification(event);
+    		
     	}
     }
     
@@ -85,6 +90,24 @@ public class CtrlAjouterCours {
 
     }
 
+    public ObservableList<Cours> CoursPersonne(Personne p) {
+    	ObservableList<Cours> lesCour = FXCollections.observableArrayList();
+    	Iterator<Cours> iter = Main.getLesCours().iterator();
+    	while(iter.hasNext()) {
+    		Cours cours = iter.next();
+    		if(!p.getMesCours().contains(cours)) {
+    			lesCour.add(cours);
+    		}
+    	}
+    	
+    	
+    	return lesCour;
+    }
+    
+    public void update() {
+    	lesCours.setItems(CoursPersonne(p));
+    }
+    
 	public static Personne getP() {
 		return p;
 	}
