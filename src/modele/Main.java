@@ -71,7 +71,8 @@ public class Main extends Application {
 		fenEmail.close();
 	}
 
-	public static void ouvrirArchiver(ActionEvent event) throws IOException {
+	public static void ouvrirArchiver(ActionEvent event, int id) throws IOException {
+		fenArchiver.getCtrl().setFacture(Donnee.listeFacture.trouverFacture(id));
 		fenArchiver.show();
 	}
 
@@ -122,7 +123,8 @@ public class Main extends Application {
 	public static void fermerModification(ActionEvent event) throws IOException {
 		fenModification.close();
 	}
-	public static void quitter(ActionEvent event)  throws IOException {
+
+	public static void quitter(ActionEvent event) throws IOException {
 		System.exit(0);
 	}
 }

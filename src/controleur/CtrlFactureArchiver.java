@@ -7,7 +7,7 @@ import modele.Donnee;
 
 public class CtrlFactureArchiver {
 
-    modele.Facture facture;
+    private static modele.Facture facture;
 
     @FXML
     private Label Adr_Val;
@@ -46,12 +46,16 @@ public class CtrlFactureArchiver {
     private Label Ville_Val;
 
     @FXML
-    public void initialize(modele.Personne p) {
+    public void initialize() {
 
-        facture = Donnee.listeFacture.trouverFacture(p.getId());
         Adr_Val.setText(facture.getPersonne().getAdresse());
         Code_Postal_Val.setText(facture.getPersonne().getCodePostal());
         Date_Val.setText(facture.getDate());
 
     }
+
+    public void setFacture(modele.Facture f) {
+        facture = f;
+    }
+
 }

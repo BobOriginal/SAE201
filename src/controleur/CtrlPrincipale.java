@@ -85,18 +85,16 @@ public class CtrlPrincipale {
 
     @FXML
     void archive(ActionEvent event) throws IOException {
-    	Personne p = tvListePersonne.getSelectionModel().getSelectedItem().getP();
-    	if(p.getEtatArchivage()) {
-    		 Main.ouvrirArchiver(event);
-    		
-    	}else {
-    		Alert alert = new Alert(
-        			AlertType.ERROR,
-        			"Archive non crée allez la crée dans facturation"
-        			);
-    		alert.show();
-    	}
-      
+        Personne p = tvListePersonne.getSelectionModel().getSelectedItem().getP();
+        if (p.getEtatArchivage()) {
+            Main.ouvrirArchiver(event, p.getId());
+
+        } else {
+            Alert alert = new Alert(
+                    AlertType.ERROR,
+                    "Archive non crée allez la crée dans facturation");
+            alert.show();
+        }
 
     }
 

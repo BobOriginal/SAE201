@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class FenArchiver extends Stage {
+    private static controleur.CtrlFactureArchiver ctrl;
 
     public FenArchiver() throws IOException {
 
@@ -30,6 +31,13 @@ public class FenArchiver extends Stage {
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
 
+        ctrl = loader.getController();
+        ctrl.initialize();
+
         return racine;
+    }
+
+    public controleur.CtrlFactureArchiver getCtrl() {
+        return ctrl;
     }
 }
