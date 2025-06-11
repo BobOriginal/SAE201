@@ -78,15 +78,15 @@ public class CtrlCotisationAnnuelleCours {
 
     @FXML
     void rappel(ActionEvent event) throws IOException {
-    	Main.fermerCotisation(event);
     	Main.ouvrirRappel(event);
+    	Main.fermerCotisationCours(event);
     }
 
     @FXML
     void facturation(ActionEvent event) throws IOException {
     	controleur.CtrlFacture.setEleve(listeCotisation.getSelectionModel().getSelectedItem().getP());
-    	Main.fermerCotisation(event);
     	Main.ouvrirFacture(event);
+    	Main.fermerCotisationCours(event);
     }
 
 
