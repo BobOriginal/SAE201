@@ -102,15 +102,12 @@ public class CtrlPrincipale {
         tvListePersonne.setItems(Main.getLesInfo());
         tvListePersonne.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        BooleanBinding archiveBinding = Bindings.createBooleanBinding(() -> {
-            InfoTabView selected = tvListePersonne.getSelectionModel().getSelectedItem();
-            return !selected.getP().getEtatArchivage();
-        }, tvListePersonne.getSelectionModel().selectedItemProperty());
-
-        Bouton_Archive.disableProperty().bind(Bindings.when(archiveBinding).then(true).otherwise(false));
-
         BooleanBinding rien = Bindings.equal(tvListePersonne.getSelectionModel().selectedIndexProperty(), -1);
         Ouvrir_Facture.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
+        Ouvrir_Rappel.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
+        Ouvrir_Cotisation.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
+        Ouvrir_Liste.setDisable(true);
+        Bouton_Archive.setDisable(true);
     }
 
 }
