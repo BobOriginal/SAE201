@@ -4,11 +4,14 @@ package controleur;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,14 +23,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.converter.NumberStringConverter;
+import modele.Cours;
 import modele.Donnee;
 import modele.Facture;
 import modele.InfoTabView;
+import modele.InfoTabViewCours;
 import modele.Main;
+import modele.Personne;
 
 public class CtrlFacture {
 
-    private modele.Personne personne;
+    private static modele.Personne personne;
 
     private String nomTampon;
     private String prenomTampon;
@@ -135,7 +141,7 @@ public class CtrlFacture {
     private RadioButton Madame;
 
     @FXML
-    private TableView<InfoTabView> Tableau;
+    private TableView<InfoTabViewCours> Tableau;
 
     @FXML
     void AllerAuRappel(ActionEvent event) throws IOException {
@@ -191,70 +197,33 @@ public class CtrlFacture {
     }
 
     @FXML
-    public void initialize(modele.Personne e) {
-        personne = e;
+    public void initialize() {
 
         enableDisable(true);
 
-        Nom_Etudiant.textProperty().bind(e.nomProperty());
-        Regler_Par_Resumer.textProperty().bindBidirectional(e.nomProperty());
-        Prenom_Resumer.textProperty().bindBidirectional(e.prenomProperty());
-
-        Adr_Val.textProperty().bind(e.adresseProperty());
-        Adresse_Resumer.textProperty().bindBidirectional(e.adresseProperty());
-
-        Code_Postal_Val.textProperty().bind(Bindings.convert(e.codePostalProperty()));
-        Code_Postal_Resumer.textProperty().bindBidirectional(e.codePostalProperty());
-
-        Ville_Val.textProperty().bind(e.villeProperty());
-        Ville_Resumer.textProperty().bindBidirectional(e.villeProperty());
-
-        Date_Facture_Resumer.textProperty().bindBidirectional(e.getMaCotisation().DatePaiementProperty());
-        Date_Facture_Resumer.setText(aujourdhui());
-        Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
-
-        sexeDestinataire.bindBidirectional(e.sexeProperty());
-        nomDestinataire.bindBidirectional(e.nomProperty());
-        prenomDestinataire.bindBidirectional(e.prenomProperty());
-
-        StringBinding value = (StringBinding) sexeDestinataire
-                .concat(espace
-                        .concat(nomDestinataire
-                                .concat(espace
-                                        .concat(prenomDestinataire))));
-
-        Sexe_Nom_Prenom_Val.textProperty().bind(value);
-
-        NumberStringConverter converter = new NumberStringConverter();
-        Bindings.bindBidirectional(Total_Resumer.textProperty(), personne.getMaCotisation().totalProperty(),
-                converter);
-        Total_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().totalProperty()));
-        Montant_Payer_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().ResteApayerProperty()));
-        Mode_Paiement_Resumer.textProperty().bindBidirectional(personne.getMaCotisation().typePaiementProperty());
-        Mode_Paiement_Val.textProperty().bind(personne.getMaCotisation().typePaiementProperty());
-
-        // Tableau pas encore fonctionnel
-        TableColumn<InfoTabView, String> colonne1 = new TableColumn<InfoTabView, String>("Description");
-        colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("cours"));
+        TableColumn<InfoTabViewCours, String> colonne1 = new TableColumn<InfoTabViewCours, String>("Description");
+        colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabViewCours, String>("libelle"));
         Tableau.getColumns().set(0, colonne1);
 
-        TableColumn<InfoTabView, String> colonne2 = new TableColumn<InfoTabView, String>("Nombre d'heure");
-        colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("nbHeure"));
+        TableColumn<InfoTabViewCours, Double> colonne2 = new TableColumn<InfoTabViewCours, Double>("Nombre d'heure");
+        colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabViewCours, Double>("nbHeure"));
         Tableau.getColumns().set(1, colonne2);
 
-        TableColumn<InfoTabView, String> colonne3 = new TableColumn<InfoTabView, String>("prix");
-        colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabView, String>("montantCour"));
+        TableColumn<InfoTabViewCours, Double> colonne3 = new TableColumn<InfoTabViewCours, Double>("prix");
+        colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabViewCours, Double>("prix"));
         Tableau.getColumns().set(2, colonne3);
 
-        Tableau.setItems(Main.getLesInfoCours());
-        Tableau.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
 
-        if (sexeDestinataire.get().equals("Mr")) {
-            Monsieur.setSelected(true);
-        } else {
-            Madame.setSelected(true);
+    public ObservableList<InfoTabViewCours> CoursPersonne(Personne p) {
+        ObservableList<InfoTabViewCours> mesCours = FXCollections.observableArrayList();
+        Iterator<Cours> iter = p.getMesCours().iterator();
+        System.out.print(p);
+        while (iter.hasNext()) {
+            Cours c = iter.next();
+            mesCours.add(new InfoTabViewCours(c, p));
         }
-
+        return mesCours;
     }
 
     public void quitter() {
@@ -315,4 +284,64 @@ public class CtrlFacture {
         Modifier_Button.setDisable(!val);
     }
 
+    public void updateTab() {
+        // Tableau pas encore fonctionnel
+
+        Tableau.setItems(CoursPersonne(personne));
+        Tableau.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+    public static void setEleve(Personne p) {
+        personne = p;
+    }
+
+    public static Personne getEleve() {
+        return personne;
+    }
+
+    public void updateValue() {
+
+        Nom_Etudiant.textProperty().bind(getEleve().nomProperty());
+        Regler_Par_Resumer.textProperty().bindBidirectional(getEleve().nomProperty());
+        Prenom_Resumer.textProperty().bindBidirectional(getEleve().prenomProperty());
+
+        Adr_Val.textProperty().bind(getEleve().adresseProperty());
+        Adresse_Resumer.textProperty().bindBidirectional(getEleve().adresseProperty());
+
+        Code_Postal_Val.textProperty().bind(Bindings.convert(getEleve().codePostalProperty()));
+        Code_Postal_Resumer.textProperty().bindBidirectional(getEleve().codePostalProperty());
+
+        Ville_Val.textProperty().bind(getEleve().villeProperty());
+        Ville_Resumer.textProperty().bindBidirectional(getEleve().villeProperty());
+
+        Date_Facture_Resumer.textProperty().bindBidirectional(getEleve().getMaCotisation().DatePaiementProperty());
+        Date_Facture_Resumer.setText(aujourdhui());
+        Date_Val.textProperty().bindBidirectional(Date_Facture_Resumer.textProperty());
+
+        sexeDestinataire.bindBidirectional(getEleve().sexeProperty());
+        nomDestinataire.bindBidirectional(getEleve().nomProperty());
+        prenomDestinataire.bindBidirectional(getEleve().prenomProperty());
+
+        StringBinding value = (StringBinding) sexeDestinataire
+                .concat(espace
+                        .concat(nomDestinataire
+                                .concat(espace
+                                        .concat(prenomDestinataire))));
+
+        Sexe_Nom_Prenom_Val.textProperty().bind(value);
+
+        NumberStringConverter converter = new NumberStringConverter();
+        Bindings.bindBidirectional(Total_Resumer.textProperty(), personne.getMaCotisation().totalProperty(),
+                converter);
+        Total_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().totalProperty()));
+        Montant_Payer_Val.textProperty().bind(Bindings.convert(personne.getMaCotisation().ResteApayerProperty()));
+        Mode_Paiement_Resumer.textProperty().bindBidirectional(personne.getMaCotisation().typePaiementProperty());
+        Mode_Paiement_Val.textProperty().bind(personne.getMaCotisation().typePaiementProperty());
+
+        if (sexeDestinataire.get().equals("Mr")) {
+            Monsieur.setSelected(true);
+        } else {
+            Madame.setSelected(true);
+        }
+    }
 }

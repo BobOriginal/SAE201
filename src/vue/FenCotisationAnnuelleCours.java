@@ -9,11 +9,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class FenCotisationAnnuelleCours extends Stage {
-
-    public FenCotisationAnnuelleCours() throws IOException {
+	
+	public FenCotisationAnnuelleCours() throws IOException {
 
         this.setTitle("Organizatore di Dance");
-        this.setResizable(false);
+        this.setResizable(true);
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
     }

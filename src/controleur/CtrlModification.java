@@ -44,14 +44,10 @@ public class CtrlModification {
     }
 
     @FXML
+	public
     void initialize() {
     	
-    	TableColumn<Cours, String> colonne1 = new TableColumn<Cours,String>("Cours");
-		colonne1.setCellValueFactory(new PropertyValueFactory<Cours,String>("intituler"));
-		lesCours.getColumns().set(0, colonne1);
-		
-		lesCours.setItems(CoursPersonne(laPersonne));
-		lesCours.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    
 
     }
     public void metAjourTab(){

@@ -10,13 +10,9 @@ import javafx.stage.Stage;
 
 public class FenFacture extends Stage {
 
-    private static modele.Personne lapersonne;
-
     private controleur.CtrlFacture ctrl;
 
     public FenFacture() throws IOException {
-
-        lapersonne = modele.Donnee.getUnePersonne(0);
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(false);
@@ -35,9 +31,12 @@ public class FenFacture extends Stage {
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
         ctrl = loader.getController();
-        ctrl.initialize(lapersonne);
+        ctrl.initialize();
 
         return racine;
     }
 
+    public controleur.CtrlFacture getCtrl() {
+        return ctrl;
+    }
 }

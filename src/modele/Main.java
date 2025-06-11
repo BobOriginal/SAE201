@@ -80,6 +80,8 @@ public class Main extends Application {
 	}
 
 	public static void ouvrirFacture(ActionEvent event) throws IOException {
+		fenFacture.getCtrl().updateTab();
+		fenFacture.getCtrl().updateValue();
 		fenFacture.show();
 	}
 

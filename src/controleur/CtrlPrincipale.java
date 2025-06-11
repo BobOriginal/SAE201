@@ -75,6 +75,7 @@ public class CtrlPrincipale {
 
     @FXML
     void ouvrirFacturation(ActionEvent event) throws IOException {
+        CtrlFacture.setEleve(tvListePersonne.getSelectionModel().getSelectedItem().getP());
         Main.ouvrirFacture(event);
         Main.fermerPagePrincipale(event);
     }
@@ -107,6 +108,9 @@ public class CtrlPrincipale {
         }, tvListePersonne.getSelectionModel().selectedItemProperty());
 
         Bouton_Archive.disableProperty().bind(archiveBinding);
+
+        BooleanBinding rien = Bindings.equal(tvListePersonne.getSelectionModel().selectedIndexProperty(), -1);
+        Ouvrir_Facture.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
     }
 
 }

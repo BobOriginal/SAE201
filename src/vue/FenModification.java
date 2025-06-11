@@ -8,14 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class FenModification extends Stage {
-
-    private controleur.CtrlModification ctrl;
-
-    public FenModification() throws IOException {
+public class FenModification extends Stage{
+	
+	private controleur.CtrlModification ctrl;
+	
+	public FenModification() throws IOException {
 
         this.setTitle("Organizatore di Dance");
-        this.setResizable(false);
+        this.setResizable(true);
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
     }
@@ -26,13 +26,14 @@ public class FenModification extends Stage {
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
-
+        
         ctrl = loader.getController();
-
+        ctrl.initialize();
+       
         return racine;
     }
 
-    public controleur.CtrlModification getCtrl() {
-        return ctrl;
-    }
+	public controleur.CtrlModification getCtrl() {
+		return ctrl;
+	}
 }
