@@ -13,7 +13,7 @@ public class FenCotisationAnnuelleCours extends Stage {
 	public FenCotisationAnnuelleCours() throws IOException {
 
         this.setTitle("Organizatore di Dance");
-        this.setResizable(true);
+        this.setResizable(false);
         Scene laScene = new Scene(creerSceneGraph());
         this.setScene(laScene);
     }

@@ -8,9 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class FenCotisationAnnuelle extends Stage {
-
-    public FenCotisationAnnuelle() throws IOException {
+public class FenAjouterCours extends Stage{
+	
+	private controleur.CtrlAjouterCours ctrl;
+	
+	public FenAjouterCours() throws IOException {
 
         this.setTitle("Organizatore di Dance");
         this.setResizable(false);
@@ -20,11 +22,18 @@ public class FenCotisationAnnuelle extends Stage {
 
     private Pane creerSceneGraph() throws IOException {
 
-        File fichier = new File("./src/vue/page_cotisation_annuelle.fxml");
+        File fichier = new File("./src/vue/page_ajouterCours.fxml");
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();
+        
+        ctrl = loader.getController();
 
+       
         return racine;
     }
+
+	public controleur.CtrlAjouterCours getCtrl() {
+		return ctrl;
+	}
 }

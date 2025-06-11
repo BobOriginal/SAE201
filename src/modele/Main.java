@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import vue.FenFacture;
 import vue.FenModification;
+import vue.FenAjouterCours;
 import vue.FenArchiver;
 import vue.FenCotisationAnnuelle;
 import vue.FenCotisationAnnuelleCours;
@@ -26,7 +27,8 @@ public class Main extends Application {
 	private static FenArchiver fenArchiver;
 	private static FenCotisationAnnuelleCours fenCotisationAnnuelleCours;
 	private static FenModification fenModification;
-
+	private static FenAjouterCours fenAjouterCours ;
+	
 	public void start(Stage f) throws Exception {
 		fenCotisationAnnuelle = new FenCotisationAnnuelle();
 		fenArchiver = new FenArchiver();
@@ -36,6 +38,7 @@ public class Main extends Application {
 		fenRappel = new FenRappel();
 		fenCotisationAnnuelleCours = new FenCotisationAnnuelleCours();
 		fenModification = new FenModification();
+		fenAjouterCours = new FenAjouterCours();
 		fenPrincipal.show();
 	}
 
@@ -53,6 +56,10 @@ public class Main extends Application {
 
 	static public ObservableList<InfoTabView> getLesInfo() {
 		return Donnee.getLesInfo();
+	}
+	
+	public static ObservableList<Cours> getLesCours() {
+		return Donnee.getLesCours();
 	}
 
 	public static void ouvrirRappel(ActionEvent event) throws IOException {
@@ -118,6 +125,14 @@ public class Main extends Application {
 	public static void ouvrirModification(ActionEvent event) throws IOException {
 		fenModification.getCtrl().metAjourTab();
 		fenModification.show();
+	}
+
+	public static void fermerAjouterCours(ActionEvent event) throws IOException {
+		fenAjouterCours.close();
+	}
+	
+	public static void ouvrirAjouterCours(ActionEvent event) throws IOException {
+		fenAjouterCours.show();
 	}
 
 	public static void fermerModification(ActionEvent event) throws IOException {

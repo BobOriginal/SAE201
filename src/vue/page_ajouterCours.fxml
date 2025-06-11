@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlModification">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlAjouterCours">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
          <children>
@@ -37,7 +37,7 @@
                         <Point3D />
                      </rotationAxis>
                   </Button>
-                  <Button fx:id="bnCotAnn" minHeight="33.0" mnemonicParsing="false" onAction="#cotAnn" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
+                  <Button disable="true" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="242.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cotisations annuels">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -59,7 +59,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
+                  <Button disable="true" minHeight="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: #B2B2B2; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Quitter">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -81,13 +81,13 @@
                <children>
                   <TableView fx:id="lesCours" prefHeight="500.0" prefWidth="449.0">
                      <columns>
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Column X" />
+                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Cours" />
                      </columns>
                   </TableView>
                   <VBox spacing="20.0">
                      <children>
-                        <Button fx:id="bnAjouter" mnemonicParsing="false" onAction="#ajouterCours" prefWidth="100.0" text="Ajouter" />
-                        <Button fx:id="bnSupprimer" mnemonicParsing="false" onAction="#supprimerCours" prefWidth="100.0" text="Supprimer" />
+                        <Button fx:id="bnValider" mnemonicParsing="false" onAction="#valider" prefWidth="100.0" text="Valider" />
+                        <Button fx:id="bnAnnuler" mnemonicParsing="false" onAction="#annuler" prefWidth="100.0" text="Annuler" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

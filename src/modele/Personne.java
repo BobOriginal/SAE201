@@ -173,7 +173,9 @@ public class Personne {
 	public void setEtatArchivage(boolean nouvelEtat) {
 		factureArchiver.set(nouvelEtat);
 	}
-
+	public void retirerCour(Cours c) {
+		mesCours.remove(c);
+	}
 	private void addCours(Cours c) {
 		mesCours.add(c);
 		nbHeureCours.set(nbHeureCours.get() + c.getNbHeure());
@@ -205,7 +207,7 @@ public class Personne {
 
 		}
 	}
-
+	
 	public void payer(Integer valeur) {
 		Integer dejaPayer = maCotisation.getDejaPayer() + valeur;
 		Integer resteApayer = maCotisation.getResteAPayer() - valeur;

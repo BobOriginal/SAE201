@@ -48,9 +48,9 @@ public class CtrlFactureArchiver {
     @FXML
     public void initialize() {
 
-        Adr_Val.setText(facture.getPersonne().getAdresse());
-        Code_Postal_Val.setText(facture.getPersonne().getCodePostal());
-        Date_Val.setText(facture.getDate());
+        //Adr_Val.setText(facture.getPersonne().getAdresse());
+        //Code_Postal_Val.setText(facture.getPersonne().getCodePostal());
+        //Date_Val.setText(facture.getDate());
 
     }
 

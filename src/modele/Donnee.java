@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 
 public class Donnee {
 	static private ObservableList<Personne> lesPersonnes = FXCollections.observableArrayList();
+	static private ObservableList<Cours> lesCours = FXCollections.observableArrayList();
 	static private ObservableList<InfoTabView> lesInfo = FXCollections.observableArrayList();
 	static private ObservableList<InfoTabView> lesInfoCours = FXCollections.observableArrayList();
 	static HashMap<Double, Integer> prixCourPleinTarif = new HashMap<Double, Integer>();
@@ -58,6 +59,12 @@ public class Donnee {
 			CoursAvancer c3 = new CoursAvancer(2025, 3.0, "c3");
 			CoursDebutant c4 = new CoursDebutant(2025, 2.0, "c4");
 			CoursIntermediare c5 = new CoursIntermediare(2025, 1.0, "c5");
+			
+			lesCours.add(c1);
+			lesCours.add(c2);
+			lesCours.add(c3);
+			lesCours.add(c4);
+			lesCours.add(c5);
 
 			p1.ajouterUnCours(c1);
 			p1.ajouterUnCours(c2);
@@ -268,5 +275,11 @@ public class Donnee {
 		Comparator<InfoTabView> myComparator = new comparator.LesInfoCoursComparator();
 		lesInfoCours.sort(myComparator);
 	}
+
+	public static ObservableList<Cours> getLesCours() {
+		return lesCours;
+	}
+	
+	
 
 }

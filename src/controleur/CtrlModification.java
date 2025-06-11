@@ -1,19 +1,27 @@
 package controleur;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.Cours;
+import modele.Donnee;
+import modele.Main;
 import modele.Personne;
 
 public class CtrlModification {
@@ -25,28 +33,53 @@ public class CtrlModification {
     private URL location;
 
     @FXML
-    private Button ajouter;
+    private Button bnAjouter;
 
     @FXML
-    private Button supprimer;
+    private Button bnSupprimer;
+    
+    @FXML
+    private Button bnCotAnn;
+
     
     @FXML
     private TableView<Cours> lesCours;
 
     @FXML
-    void ajouterCours(ActionEvent event) {
-
+    void ajouterCours(ActionEvent event) throws IOException {
+    	CtrlAjouterCours.setP(laPersonne);
+    	Main.ouvrirAjouterCours(event);
+    	Main.fermerModification(event);
+    }
+    @FXML
+    void cotAnn(ActionEvent event) throws IOException {
+    	Main.fermerModification(event);
+    	Main.ouvrirCotisation(event);
     }
 
     @FXML
     void supprimerCours(ActionEvent event) {
+    	Alert alert = new Alert(
+    			AlertType.CONFIRMATION,
+    			"Voulez-vous vraiment supprimer ce cour?",
+    			ButtonType.YES,
+    			ButtonType.NO
+    			);
+    	alert.setTitle("Confirmation de suppression");
+    	if(alert.showAndWait().get() == ButtonType.YES) {
+    		laPersonne.retirerCour(lesCours.getSelectionModel().getSelectedItem());
+    		lesCours.setItems(CoursPersonne(laPersonne));
 
+    	}
     }
 
     @FXML
 	public
     void initialize() {
-    	
+    	BooleanBinding rien =
+				 Bindings.equal(lesCours.getSelectionModel().selectedIndexProperty()
+				, -1);
+    	bnSupprimer.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
     
 
     }
