@@ -218,7 +218,7 @@ public class CtrlFacture {
     public ObservableList<InfoTabViewCours> CoursPersonne(Personne p) {
         ObservableList<InfoTabViewCours> mesCours = FXCollections.observableArrayList();
         Iterator<Cours> iter = p.getMesCours().iterator();
-        //System.out.print(p);
+        // System.out.print(p);
         while (iter.hasNext()) {
             Cours c = iter.next();
             mesCours.add(new InfoTabViewCours(c, p));

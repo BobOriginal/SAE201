@@ -27,8 +27,8 @@ public class Main extends Application {
 	private static FenArchiver fenArchiver;
 	private static FenCotisationAnnuelleCours fenCotisationAnnuelleCours;
 	private static FenModification fenModification;
-	private static FenAjouterCours fenAjouterCours ;
-	
+	private static FenAjouterCours fenAjouterCours;
+
 	public void start(Stage f) throws Exception {
 		fenCotisationAnnuelle = new FenCotisationAnnuelle();
 		fenArchiver = new FenArchiver();
@@ -57,7 +57,7 @@ public class Main extends Application {
 	static public ObservableList<InfoTabView> getLesInfo() {
 		return Donnee.getLesInfo();
 	}
-	
+
 	public static ObservableList<Cours> getLesCours() {
 		return Donnee.getLesCours();
 	}
@@ -80,6 +80,7 @@ public class Main extends Application {
 
 	public static void ouvrirArchiver(ActionEvent event, int id) throws IOException {
 		fenArchiver.getCtrl().setFacture(Donnee.listeFacture.trouverFacture(id));
+		fenArchiver.getCtrl().updateTab();
 		fenArchiver.show();
 	}
 
@@ -126,21 +127,18 @@ public class Main extends Application {
 		fenModification.getCtrl().metAjourTab();
 		fenModification.show();
 	}
-	
+
 	public static void fermerModification(ActionEvent event) throws IOException {
 		fenModification.close();
 	}
 
-
 	public static void fermerAjouterCours(ActionEvent event) throws IOException {
 		fenAjouterCours.close();
 	}
-	
+
 	public static void ouvrirAjouterCours(ActionEvent event) throws IOException {
 		fenAjouterCours.show();
 	}
-
-	
 
 	public static void quitter(ActionEvent event) throws IOException {
 		System.exit(0);

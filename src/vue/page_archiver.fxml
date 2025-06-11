@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -16,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="974.0" prefWidth="606.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlFactureArchiver">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="606.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlFactureArchiver">
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="250.0" BorderPane.alignment="CENTER">
          <children>
@@ -95,7 +90,7 @@
             </HBox>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <TableView fx:id="Tableau" fixedCellSize="1.0" prefHeight="44.0" prefWidth="259.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="Tableau" fixedCellSize="30.0" prefHeight="44.0" prefWidth="259.0" BorderPane.alignment="CENTER">
                      <columns>
                         <TableColumn prefWidth="73.0" style="-fx-background-color: white;" text="Description" />
                         <TableColumn prefWidth="115.0" style="-fx-background-color: white;" text="Nombre d'heure" />
@@ -115,7 +110,7 @@
             </BorderPane>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="0.0" prefWidth="546.0">
+                  <HBox alignment="TOP_RIGHT" prefHeight="99.0" prefWidth="356.0">
                      <children>
                         <VBox prefHeight="44.0" prefWidth="95.0">
                            <children>
@@ -139,12 +134,12 @@
                         </VBox>
                         <VBox prefHeight="44.0" prefWidth="94.0">
                            <children>
-                              <Label fx:id="Total_Val" text=": valeur">
+                              <Label fx:id="Total_Val" prefHeight="27.0" prefWidth="125.0" text=": valeur">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="Montant_Payer_Val" prefWidth="57.0" text=": valeur">
+                              <Label fx:id="Montant_Payer_Val" prefHeight="27.0" prefWidth="188.0" text=": valeur">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -156,7 +151,7 @@
                         </VBox>
                      </children>
                      <VBox.margin>
-                        <Insets />
+                        <Insets right="100.0" />
                      </VBox.margin>
                      <padding>
                         <Insets left="5.0" right="5.0" top="35.0" />
@@ -169,14 +164,14 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="Mode_Paiement_Val" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="78.0" text=": mode">
+                        <Label fx:id="Mode_Paiement_Val" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="128.0" text=": mode">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets left="50.0" />
+                        <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" />

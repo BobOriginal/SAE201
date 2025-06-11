@@ -1,14 +1,18 @@
 package controleur;
 
-import javafx.beans.binding.StringBinding;
+import java.util.Iterator;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import modele.Donnee;
+import modele.Cours;
 import modele.InfoTabViewCours;
+import modele.Personne;
 
 public class CtrlFactureArchiver {
 
@@ -29,10 +33,8 @@ public class CtrlFactureArchiver {
     @FXML
     private Label Montant_Payer_Val;
 
-
     @FXML
     private Label Numero_Val;
-
 
     @FXML
     private Label Sexe_Nom_Prenom_Val;
@@ -42,16 +44,14 @@ public class CtrlFactureArchiver {
 
     @FXML
     private Label Ville_Val;
-    
 
     @FXML
     private TableView<InfoTabViewCours> Tableau;
 
-
     @FXML
     public void initialize() {
 
-    	TableColumn<InfoTabViewCours, String> colonne1 = new TableColumn<InfoTabViewCours, String>("Description");
+        TableColumn<InfoTabViewCours, String> colonne1 = new TableColumn<InfoTabViewCours, String>("Description");
         colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabViewCours, String>("libelle"));
         Tableau.getColumns().set(0, colonne1);
 
@@ -73,17 +73,29 @@ public class CtrlFactureArchiver {
         Mode_Paiement_Val.setText(facture.getCotisation().getTypePaiment());
         Montant_Payer_Val.setText(facture.getCotisation().getTotal().toString());
         Numero_Val.setText("" + facture.getNumero());
-        
-        Sexe_Nom_Prenom_Val.setText(facture.getPersonne().getSexe() + " " + 
-        							facture.getPersonne().getNom()  + " " +
-        							facture.getPersonne().getPrenom()
-        							);
-        
+
+        Sexe_Nom_Prenom_Val.setText(facture.getPersonne().getSexe() + " " +
+                facture.getPersonne().getNom() + " " +
+                facture.getPersonne().getPrenom());
+
         Total_Val.setText(facture.getCotisation().getTotal().toString());
-        
-        
-        
+
     }
-    
+
+    public void updateTab() {
+        Tableau.setItems(CoursPersonne(facture.getPersonne()));
+        Tableau.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+    public ObservableList<InfoTabViewCours> CoursPersonne(Personne p) {
+        ObservableList<InfoTabViewCours> mesCours = FXCollections.observableArrayList();
+        Iterator<Cours> iter = p.getMesCours().iterator();
+        // System.out.print(p);
+        while (iter.hasNext()) {
+            Cours c = iter.next();
+            mesCours.add(new InfoTabViewCours(c, p));
+        }
+        return mesCours;
+    }
 
 }
