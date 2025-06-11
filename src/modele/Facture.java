@@ -12,6 +12,7 @@ public class Facture {
 		numero = ID;
 		ID++;
 		this.personne = personne;
+		this.data = personne.getMaCotisation();
 		this.date = date;
 	}
 

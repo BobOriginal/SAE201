@@ -20,7 +20,7 @@ public class FenCotisationAnnuelleCours extends Stage {
 
     private Pane creerSceneGraph() throws IOException {
 
-        File fichier = new File("./src/vue/page_cotisation_annuelle_cours.fxml");
+        File fichier = new File("src/vue/page_cotisation_annuelle_cours.fxml");
         FXMLLoader loader;
         loader = new FXMLLoader(fichier.toURI().toURL());
         Pane racine = loader.load();

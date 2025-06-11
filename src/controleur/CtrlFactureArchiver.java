@@ -1,9 +1,14 @@
 package controleur;
 
+import javafx.beans.binding.StringBinding;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import modele.Donnee;
+import modele.InfoTabViewCours;
 
 public class CtrlFactureArchiver {
 
@@ -19,22 +24,15 @@ public class CtrlFactureArchiver {
     private Label Date_Val;
 
     @FXML
-    private TableColumn<?, ?> Description_Col;
-
-    @FXML
     private Label Mode_Paiement_Val;
 
     @FXML
     private Label Montant_Payer_Val;
 
-    @FXML
-    private TableColumn<?, ?> Nombre_Heure_Col;
 
     @FXML
     private Label Numero_Val;
 
-    @FXML
-    private TableColumn<?, ?> Prix_Col;
 
     @FXML
     private Label Sexe_Nom_Prenom_Val;
@@ -44,18 +42,48 @@ public class CtrlFactureArchiver {
 
     @FXML
     private Label Ville_Val;
+    
+
+    @FXML
+    private TableView<InfoTabViewCours> Tableau;
+
 
     @FXML
     public void initialize() {
 
-        //Adr_Val.setText(facture.getPersonne().getAdresse());
-        //Code_Postal_Val.setText(facture.getPersonne().getCodePostal());
-        //Date_Val.setText(facture.getDate());
+    	TableColumn<InfoTabViewCours, String> colonne1 = new TableColumn<InfoTabViewCours, String>("Description");
+        colonne1.setCellValueFactory(new PropertyValueFactory<InfoTabViewCours, String>("libelle"));
+        Tableau.getColumns().set(0, colonne1);
+
+        TableColumn<InfoTabViewCours, Double> colonne2 = new TableColumn<InfoTabViewCours, Double>("Nombre d'heure");
+        colonne2.setCellValueFactory(new PropertyValueFactory<InfoTabViewCours, Double>("nbHeure"));
+        Tableau.getColumns().set(1, colonne2);
+
+        TableColumn<InfoTabViewCours, Double> colonne3 = new TableColumn<InfoTabViewCours, Double>("prix");
+        colonne3.setCellValueFactory(new PropertyValueFactory<InfoTabViewCours, Double>("prix"));
+        Tableau.getColumns().set(2, colonne3);
 
     }
 
     public void setFacture(modele.Facture f) {
         facture = f;
+        Adr_Val.setText(facture.getPersonne().getAdresse());
+        Code_Postal_Val.setText(facture.getPersonne().getCodePostal());
+        Date_Val.setText(facture.getDate());
+        Mode_Paiement_Val.setText(facture.getCotisation().getTypePaiment());
+        Montant_Payer_Val.setText(facture.getCotisation().getTotal().toString());
+        Numero_Val.setText("" + facture.getNumero());
+        
+        Sexe_Nom_Prenom_Val.setText(facture.getPersonne().getSexe() + " " + 
+        							facture.getPersonne().getNom()  + " " +
+        							facture.getPersonne().getPrenom()
+        							);
+        
+        Total_Val.setText(facture.getCotisation().getTotal().toString());
+        
+        
+        
     }
+    
 
 }

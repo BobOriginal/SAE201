@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="974.0" prefWidth="606.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlFactureArchiver">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="974.0" prefWidth="606.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlFactureArchiver">
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="250.0" BorderPane.alignment="CENTER">
          <children>
@@ -90,11 +95,11 @@
             </HBox>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <TableView fixedCellSize="1.0" prefHeight="44.0" prefWidth="259.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="Tableau" fixedCellSize="1.0" prefHeight="44.0" prefWidth="259.0" BorderPane.alignment="CENTER">
                      <columns>
-                        <TableColumn fx:id="Description_Col" prefWidth="73.0" style="-fx-background-color: white;" text="Description" />
-                        <TableColumn fx:id="Nombre_Heure_Col" prefWidth="115.0" style="-fx-background-color: white;" text="Nombre d'heure" />
-                        <TableColumn fx:id="Prix_Col" prefWidth="51.0" style="-fx-background-color: white;" text="prix" />
+                        <TableColumn prefWidth="73.0" style="-fx-background-color: white;" text="Description" />
+                        <TableColumn prefWidth="115.0" style="-fx-background-color: white;" text="Nombre d'heure" />
+                        <TableColumn prefWidth="51.0" style="-fx-background-color: white;" text="prix" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
