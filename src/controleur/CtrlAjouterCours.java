@@ -2,6 +2,7 @@ package controleur;
 
 import java.io.IOException;
 
+import Exceptions.TropDeCoursExecption;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
@@ -49,13 +50,17 @@ public class CtrlAjouterCours {
         	alert.setTitle("Validation impossible");
         	alert.show();
     	}else {
-    		p.ajouterUnCours(c);
-    		Alert alert = new Alert(
-        			AlertType.INFORMATION,
-        			"Cour à été ajouter"
-        			);
-        	alert.setTitle("Validation");
-        	alert.show();
+    		try {
+    			p.ajouterUnCours(c);
+			} catch (TropDeCoursExecption e) {
+				Alert alert = new Alert(
+	        			AlertType.ERROR,
+	        			"L'éleve assiste à trop de cour."
+	        			+ "il ne peux pas en suivre d'autre "
+	        			);
+	        	alert.setTitle("Validation");
+	        	alert.show();
+			}
     		Main.fermerAjouterCours(event);
         	Main.ouvrirModification(event);
     	}

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
@@ -13,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlAjouterCours">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.CtrlAjouterCours">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="312.0" style="-fx-background-color: #556691;">
          <children>
@@ -77,27 +83,32 @@
       <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="588.0">
          <children>
             <Label text="Modification Cotisation" />
-            <HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="lesCours" prefHeight="500.0" prefWidth="449.0">
-                     <columns>
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Cours" />
-                     </columns>
-                  </TableView>
-                  <VBox spacing="20.0">
+                  <Label text="Cours ajoutable :" />
+                  <HBox>
                      <children>
-                        <Button fx:id="bnValider" mnemonicParsing="false" onAction="#valider" prefWidth="100.0" text="Valider" />
-                        <Button fx:id="bnAnnuler" mnemonicParsing="false" onAction="#annuler" prefWidth="100.0" text="Annuler" />
+                        <TableView fx:id="lesCours" prefHeight="500.0" prefWidth="449.0">
+                           <columns>
+                              <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Cours" />
+                           </columns>
+                        </TableView>
+                        <VBox spacing="20.0">
+                           <children>
+                              <Button fx:id="bnValider" mnemonicParsing="false" onAction="#valider" prefWidth="100.0" text="Valider" />
+                              <Button fx:id="bnAnnuler" mnemonicParsing="false" onAction="#annuler" prefWidth="100.0" text="Annuler" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets bottom="1.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets bottom="1.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </VBox>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
          <HBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -5,22 +5,23 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
-import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.Cours;
-import modele.Donnee;
 import modele.Main;
 import modele.Personne;
 
@@ -44,12 +45,15 @@ public class CtrlModification {
     
     @FXML
     private TableView<Cours> lesCours;
+    
+    @FXML
+    private Label eleve;
 
     @FXML
     void ajouterCours(ActionEvent event) throws IOException {
     	CtrlAjouterCours.setP(laPersonne);
-    	Main.ouvrirAjouterCours(event);
     	Main.fermerModification(event);
+    	Main.ouvrirAjouterCours(event);
     }
     @FXML
     void cotAnn(ActionEvent event) throws IOException {
@@ -90,15 +94,17 @@ public class CtrlModification {
 		
 		lesCours.setItems(CoursPersonne(laPersonne));
 		lesCours.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+	
+		 eleve.textProperty().bind(new SimpleStringProperty("Cours de l\'éléve "+getlaPersonne().getNom()+" : "));
     }
 
     public ObservableList<Cours> CoursPersonne(Personne p) {
     	ObservableList<Cours> mesCours = FXCollections.observableArrayList();
     	Iterator<Cours> iter = p.getMesCours().iterator();
-    	System.out.print(p);
+    	//System.out.print(p);
     	while(iter.hasNext()) {
     		mesCours.add(iter.next());
-    		System.out.print(mesCours);
+    		//System.out.print(mesCours);
     	}
     	return mesCours;
     }

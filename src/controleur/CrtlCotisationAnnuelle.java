@@ -165,7 +165,7 @@ public class CrtlCotisationAnnuelle {
     	}
     	else {
     		CtrlModification.setlaPersonne(p);
-        	Main.fermerCotisationCours(event);
+        	Main.fermerCotisation(event);
         	Main.ouvrirModification(event);
     	}
     }

@@ -184,7 +184,7 @@ public class Personne {
 		maCotisation.calculdejaPayerCour(this);
 	}
 
-	public void ajouterUnCours(Cours c) {
+	public void ajouterUnCours(Cours c) throws TropDeCoursExecption {
 		try {
 			if (c == null) {
 				throw new NullPointerException();
@@ -203,7 +203,6 @@ public class Personne {
 		} catch (DoublonCoursException e) {
 		} catch (StatusException e) {
 			System.out.println("On ne peux pas ajouter un cours a une personne non inscrit");
-		} catch (TropDeCoursExecption e) {
 
 		}
 	}

@@ -42,6 +42,7 @@ public class CotisationAnnuelle {
 		calculPrixCour(p);
 		dejaPayer.set(0);
 		resteAPayer.set(total.get());
+		
 	}
 
 	void calculTotal(Personne p) {

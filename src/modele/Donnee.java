@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import Exceptions.StatusException;
+import Exceptions.TropDeCoursExecption;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -65,30 +66,34 @@ public class Donnee {
 			lesCours.add(c3);
 			lesCours.add(c4);
 			lesCours.add(c5);
-
-			p1.ajouterUnCours(c1);
-			p1.ajouterUnCours(c2);
-			p2.ajouterUnCours(c5);
-			p3.ajouterUnCours(c4);
-			p3.ajouterUnCours(c4);
-			p4.ajouterUnCours(c2);
-			p5.ajouterUnCours(c1);
-			p6.ajouterUnCours(c2);
-			p6.ajouterUnCours(c5);
-			p7.ajouterUnCours(c4);
-			p7.ajouterUnCours(c3);
-			p7.ajouterUnCours(c2);
-			p8.ajouterUnCours(c1);
-			p9.ajouterUnCours(c2);
-			p9.ajouterUnCours(c5);
-			p9.ajouterUnCours(c4);
-			p10.ajouterUnCours(c4);
-			p10.ajouterUnCours(c2);
-			p11.ajouterUnCours(c2);
-			p11.ajouterUnCours(c5);
-			p12.ajouterUnCours(c4);
-			p13.ajouterUnCours(c4);
-			p13.ajouterUnCours(c2);
+			try {
+				p1.ajouterUnCours(c1);
+				p1.ajouterUnCours(c2);
+				p2.ajouterUnCours(c5);
+				p3.ajouterUnCours(c4);
+				p3.ajouterUnCours(c4);
+				p4.ajouterUnCours(c2);
+				p5.ajouterUnCours(c1);
+				p6.ajouterUnCours(c2);
+				p6.ajouterUnCours(c5);
+				p7.ajouterUnCours(c4);
+				p7.ajouterUnCours(c3);
+				p7.ajouterUnCours(c2);
+				p8.ajouterUnCours(c1);
+				p9.ajouterUnCours(c2);
+				p9.ajouterUnCours(c5);
+				p9.ajouterUnCours(c4);
+				p10.ajouterUnCours(c4);
+				p10.ajouterUnCours(c2);
+				p11.ajouterUnCours(c2);
+				p11.ajouterUnCours(c5);
+				p12.ajouterUnCours(c4);
+				p13.ajouterUnCours(c4);
+				p13.ajouterUnCours(c2);
+			}catch (TropDeCoursExecption e) {
+				// TODO: handle exception
+			}
+			
 
 			lesPersonnes.add(p1);
 			lesPersonnes.add(p2);

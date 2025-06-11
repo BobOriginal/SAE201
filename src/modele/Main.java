@@ -126,6 +126,11 @@ public class Main extends Application {
 		fenModification.getCtrl().metAjourTab();
 		fenModification.show();
 	}
+	
+	public static void fermerModification(ActionEvent event) throws IOException {
+		fenModification.close();
+	}
+
 
 	public static void fermerAjouterCours(ActionEvent event) throws IOException {
 		fenAjouterCours.close();
@@ -135,9 +140,7 @@ public class Main extends Application {
 		fenAjouterCours.show();
 	}
 
-	public static void fermerModification(ActionEvent event) throws IOException {
-		fenModification.close();
-	}
+	
 
 	public static void quitter(ActionEvent event) throws IOException {
 		System.exit(0);
