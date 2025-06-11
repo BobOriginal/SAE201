@@ -91,6 +91,7 @@ public class Main extends Application {
 
 	public static void ouvrirPagePrincipale(ActionEvent event) throws IOException {
 		fenPrincipal.show();
+
 	}
 
 	public static void fermerPagePrincipale(ActionEvent event) throws IOException {

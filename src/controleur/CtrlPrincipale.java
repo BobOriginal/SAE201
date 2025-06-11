@@ -84,7 +84,7 @@ public class CtrlPrincipale {
     void archive(ActionEvent event) throws IOException {
         Main.ouvrirArchiver(event);
         Main.fermerPagePrincipale(event);
-        ;
+
     }
 
     public void initialize() {
@@ -104,10 +104,10 @@ public class CtrlPrincipale {
 
         BooleanBinding archiveBinding = Bindings.createBooleanBinding(() -> {
             InfoTabView selected = tvListePersonne.getSelectionModel().getSelectedItem();
-            return selected == null || !selected.getP().getEtatArchivage();
+            return !selected.getP().getEtatArchivage();
         }, tvListePersonne.getSelectionModel().selectedItemProperty());
 
-        Bouton_Archive.disableProperty().bind(archiveBinding);
+        Bouton_Archive.disableProperty().bind(Bindings.when(archiveBinding).then(true).otherwise(false));
 
         BooleanBinding rien = Bindings.equal(tvListePersonne.getSelectionModel().selectedIndexProperty(), -1);
         Ouvrir_Facture.disableProperty().bind(Bindings.when(rien).then(true).otherwise(false));
