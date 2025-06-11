@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SelectionMode;
@@ -235,23 +236,30 @@ public class CtrlFacture {
     }
 
     public void annuler(ActionEvent event) {
+        Alert alert = new Alert(
+                AlertType.CONFIRMATION,
+                "Voulez-vous vraiment annuler, les ancienne data seront écraser ?",
+                ButtonType.YES,
+                ButtonType.NO);
+        alert.setTitle("Confirmation de suppression");
+        if (alert.showAndWait().get() == ButtonType.YES) {
+            personne.setNom(nomTampon);
+            personne.setPrenom(prenomTampon);
+            personne.setAdresse(adresseTampon);
+            personne.getMaCotisation().setMontant(totalTampon);
+            personne.getMaCotisation().setTypePaiement(modePaiementTampon);
+            personne.setCodePostal(codePostalTampon);
+            personne.setVille(villeTampon);
+            personne.getMaCotisation().setDatePaiement(dateTampon);
+            personne.setSexe(sexeTampon);
 
-        personne.setNom(nomTampon);
-        personne.setPrenom(prenomTampon);
-        personne.setAdresse(adresseTampon);
-        personne.getMaCotisation().setMontant(totalTampon);
-        personne.getMaCotisation().setTypePaiement(modePaiementTampon);
-        personne.setCodePostal(codePostalTampon);
-        personne.setVille(villeTampon);
-        personne.getMaCotisation().setDatePaiement(dateTampon);
-        personne.setSexe(sexeTampon);
+            enableDisable(true);
 
-        enableDisable(true);
-
-        if (sexeDestinataire.get().equals("Mr")) {
-            Monsieur.setSelected(true);
-        } else {
-            Madame.setSelected(true);
+            if (sexeDestinataire.get().equals("Mr")) {
+                Monsieur.setSelected(true);
+            } else {
+                Madame.setSelected(true);
+            }
         }
     }
 
@@ -261,7 +269,16 @@ public class CtrlFacture {
     }
 
     public void enregistrer() {
-        enableDisable(true);
+
+        Alert alert = new Alert(
+                AlertType.CONFIRMATION,
+                "Voulez-vous vraiment enregistrer, les ancienne data seront écraser ?",
+                ButtonType.YES,
+                ButtonType.NO);
+        alert.setTitle("Confirmation de suppression");
+        if (alert.showAndWait().get() == ButtonType.YES) {
+            enableDisable(true);
+        }
     }
 
     public void modifierGenre() {
