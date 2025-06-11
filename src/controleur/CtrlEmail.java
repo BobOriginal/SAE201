@@ -1,6 +1,7 @@
 package controleur;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -49,12 +50,20 @@ public class CtrlEmail {
 
     @FXML
     void envoyer(ActionEvent event) throws IOException {
+    	Alert alertPopUp = new Alert(Alert.AlertType.INFORMATION);
         Alert alertEnvoyer = new Alert(Alert.AlertType.INFORMATION);
-        alertEnvoyer.setTitle("Message!");
-        alertEnvoyer.setContentText("Vous avez bien envoyé un rappel à l'élève");
-        alertEnvoyer.showAndWait();
-        Main.fermerEmail(event);
-        Main.ouvrirRappel(event);
+        if(!tfDestinataires.getText().contains("@")) {
+        	alertPopUp.setTitle("Erreur de regex dans le Destinataires !");
+        	alertPopUp.setContentText("Vous devez mettre un '@' dans le destinataires");
+        	alertPopUp.showAndWait();
+        }
+        else {
+            alertEnvoyer.setTitle("Message!");
+            alertEnvoyer.setContentText("Vous avez bien envoyé un rappel à l'élève");
+            alertEnvoyer.showAndWait();
+            Main.fermerEmail(event);
+            Main.ouvrirRappel(event);
+        }
     }
 
     @FXML
@@ -62,7 +71,6 @@ public class CtrlEmail {
         Main.fermerEmail(event);
         Main.ouvrirRappel(event);
     }
-
     public void initialize() {
         BooleanBinding bool = tfObjet.textProperty().isEmpty().or(tfDestinataires.textProperty().isEmpty())
                 .or(taContenu.textProperty().isEmpty());
@@ -71,4 +79,6 @@ public class CtrlEmail {
         Ouvrir_Cotisation.setDisable(true);
         Ouvrir_Facture.setDisable(true);
     }
+    
+
 }
